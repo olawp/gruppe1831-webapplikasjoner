@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
-export class Fagartikler extends Component {
+export class Artikkel extends Component {
     render() {
         return (
             <div>
-                <header><h1>Fagartikler</h1></header>
                 
             </div>
         )
     }
 }
 
-export default Fagartikler
+export default Artikkel

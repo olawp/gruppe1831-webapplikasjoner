@@ -87,9 +87,17 @@ footer{
 
 .navigationBar a{
   float: right;
-  display: block;
+  display: inline;
   text-align: center;
   padding: 14px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+a{
+  text-align: center;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
@@ -128,15 +136,15 @@ section{
   padding: 200px;
 }
 
-section.hjemKontorer{
+a.hjemKontorer{
   grid-area: 1 / 1 / 2 / 2;
 }
 
-section.hjemKontakt{
+a.hjemKontakt{
   grid-area: 1 / 2 / 2 / 4;
 }
 
-section.hjemArtikkler{
+a.hjemArtikkler{
   grid-area: 2 / 1 / 3 / 4;
 }
 

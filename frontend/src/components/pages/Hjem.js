@@ -6,9 +6,9 @@ export class Hjem extends Component {
             <div>
                 <header><h1>Velkommen til FG Rørleggerservice AS</h1></header>
                 <main className="hjem">
-                    <section className="hjemKontorer">Kontorer</section>
-                    <section className="hjemKontakt">Kontakt</section>
-                    <section className="hjemArtikkler">Se våre fagartikler om oppussing av bad</section>
+                    <a href="/kontorer" className="hjemKontorer"><section>Kontorer</section></a>
+                    <a href="/kontakt" className="hjemKontakt"><section>Kontakt</section></a>
+                    <a href="/fagartikler" className="hjemArtikkler"><section>Se våre fagartikler om oppussing av bad</section></a>
                 </main>
             </div>
         )

@@ -6,6 +6,7 @@ export class Kontorer extends Component {
             <div>
                 <header><h1>Våre kontorer</h1></header>
                 <main>
+                    <button>FILTER</button> <p>LIST VIEW</p> <p>GRID VIEW</p>
                     <h2>Fredrikstad (8 kontorer)</h2>
                     <h2>Sarpsborg (5 kontorer)</h2>
                     <h2>Moss (4 kontorer)</h2>

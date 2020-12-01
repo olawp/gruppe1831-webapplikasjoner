@@ -5,6 +5,9 @@ import Kontorer from '../pages/Kontorer';
 import Fagartikler from '../pages/Fagartikler';
 import Kontakt from '../pages/Kontakt';
 import LoggInn from '../pages/LoggInn';
+import Artikkel from '../pages/Artikkel';
+import DetaljertKontor from '../pages/DetaljertKontor';
+import NyArtikkel from '../pages/NyArtikkel';
 
 export class routes extends Component {
     render() {
@@ -20,6 +23,9 @@ export class routes extends Component {
                     <Route path="/fagartikler" component={Fagartikler} />
                     <Route path="/kontakt" component={Kontakt} />
                     <Route path="/logginn" component={LoggInn} />
+                    <Route path="/artikkel" component={Artikkel} />
+                    <Route path="/kontor" component={DetaljertKontor} />
+                    <Route path="/nyartikkel" component={NyArtikkel} />
                 </Router>
             </div>
         )

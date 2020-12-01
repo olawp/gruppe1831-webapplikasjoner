@@ -1,6 +1,12 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
+import mongoSanitizer from 'express-mongo-sanitize';
+import xssClean from 'xss-clean';
+import hpp from 'hpp';
+
 
 import { PORT } from './constants/index.js';
 import 'dotenv/config.js';
@@ -12,6 +18,10 @@ import user from './routes/user.js';
 import office from './routes/office.js';
 
 const app = express();
+app.use(helmet());
+app.use(mongoSanitizer());
+app.use(xssClean());
+app.use(hpp());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -22,9 +32,12 @@ app.use(express.json());
 app.use(
   cors({
     origin: 'http://localhost:3000',
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
+
+app.use(cookieParser());
 
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/offices`, office);

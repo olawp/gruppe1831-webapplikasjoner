@@ -37,15 +37,11 @@ export class NyArtikkel extends Component {
                         <br/>
                         <Input></Input>
                         <br/>
-                        <label>Innledning</label>
+                        <label>Ingress</label>
                         <br/>
                         <Input></Input>
                         <br/>
-                        <label>Undertittel</label>
-                        <br/>
-                        <Input></Input>
-                        <br/>
-                        <label>Tekst for undertittel</label>
+                        <label>Innhold</label>
                         <br/>
                         <Input></Input>
                         <br/>

@@ -11,8 +11,7 @@ export class Artikkel extends Component {
                         <p>´$dato´</p>
                     </div>
                     <p>´$ingress´</p>
-                    <h3>´$undertittel´</h3>
-                    <p>´$undertitteltekst´</p>
+                    <p>´$innhold´</p>
                     <p>´$kategori´</p>
                     <div>
                         <button>SLETT</button>

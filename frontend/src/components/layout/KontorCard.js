@@ -18,7 +18,7 @@ export class KontorCard extends Component {
             )
         }
         return(
-            <div className="kontorGrid">
+            <div className={this.props.klasse}>
                 {kort}
             </div>
         )

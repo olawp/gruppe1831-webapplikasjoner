@@ -146,14 +146,6 @@ a.hjemArtikkler{
   grid-row-gap: 20px;
 }
 
-.kontorListe p{
-  float: left;
-}
-
-.kontorListe h4{
-  float: left;
-}
-
 .kontorListeTo{
   clear: both;
   display: grid;
@@ -163,14 +155,6 @@ a.hjemArtikkler{
   grid-row-gap: 20px;
 }
 
-.kontorListeTo p{
-  float: left;
-}
-
-.kontorListeTo h4{
-  float: left;
-}
-
 .kontorListeTre{
   clear: both;
   display: grid;
@@ -178,14 +162,6 @@ a.hjemArtikkler{
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-}
-
-.kontorListeTre p{
-  float: left;
-}
-
-.kontorListeTre h4{
-  float: left;
 }
 
 .ansattDiv{

@@ -44,7 +44,15 @@ export const FooterStyle = styled.footer`
     padding-bottom: 20px;
     background: white;
     clear: both;
-` 
+`
+export const KontorCardStyle = styled.div`
+    border: solid;
+    background: white;
+`
+export const KontorListStyle = styled.div`
+    border: solid;
+    background: white;
+`
 
 const theme = {
     button: {

@@ -7,19 +7,23 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
-    author: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
-      required: true,
+    ingress: {
+      type: String,
+      required: true
     },
     content: {
       type: String,
       required: true,
     },
-    subtitle: {
-      type: String,
+    author: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    }
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

@@ -1,19 +1,35 @@
 import React, { Component } from 'react'
 
 export class NyArtikkel extends Component {
+
+    state = {
+        display: "none"
+    }
+
+    closeCategory = () => {
+        this.setState({display: "none"});
+    }
+
+    openCategory = () => {
+        this.setState({display: ""});
+    }
+
     render() {
         return (
             <div>
                 <header><h1>Ny artikkel</h1></header>
                 <main>
-                <div>
-                    <form>
-                        <label>Ny Kategori</label>
-                        <br/>
-                        <input></input>
-                        <br/>
-                        <button>CREATE</button>
-                    </form>
+                <div style={{display: this.state.display}} className="nykategori">
+                    <div className="nykategori-innhold">
+                        <form>
+                            <span onClick={this.closeCategory}>&times;</span>
+                            <label>Ny Kategori</label>
+                            <br/>
+                            <input></input>
+                            <br/>
+                            <button type="button">CREATE</button>
+                        </form>
+                    </div>
                 </div>
                     <form>
                         <label>Tittel</label>
@@ -35,7 +51,7 @@ export class NyArtikkel extends Component {
                         <label>Kategori</label>
                         <br/>
                         <input></input>
-                        <button>LAG NY KATEGORI</button>
+                        <button type="button" onClick={this.openCategory}>LAG NY KATEGORI</button>
                         <br/>
                         <label>Forfatternavn</label>
                         <br/>

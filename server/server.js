@@ -7,7 +7,9 @@ import 'dotenv/config.js';
 import errorMiddleware from './middleware/errors.js';
 
 import databaseConnection from './config/db.js';
+
 import user from './routes/user.js';
+import office from './routes/office.js';
 
 const app = express();
 
@@ -25,6 +27,7 @@ app.use(
 );
 
 app.use(`${process.env.BASEURL}/users`, user);
+app.use(`${process.env.BASEURL}/offices`, office);
 
 app.use(errorMiddleware);
 

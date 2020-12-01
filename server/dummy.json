@@ -1,155 +1,90 @@
 [
-    {
-        "navn": "Rørlegger 1",
-        "adresse": "Rørleggerveien 1",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 2",
-        "adresse": "Rørleggerveien 2",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 3",
-        "adresse": "Rørleggerveien 3",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 4",
-        "adresse": "Rørleggerveien 4",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 5",
-        "adresse": "Rørleggerveien 5",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 6",
-        "adresse": "Rørleggerveien 6",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 7",
-        "adresse": "Rørleggerveien 7",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 8",
-        "adresse": "Rørleggerveien 8",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },{
-        "navn": "Rørlegger 9",
-        "adresse": "Rørleggerveien 9",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "fredrikstad"
-    },
-    {
-        "navn": "Rørlegger 10",
-        "adresse": "Rørleggerveien 10",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "sarpsborg"
-    },
-    {
-        "navn": "Rørlegger 11",
-        "adresse": "Rørleggerveien 11",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "sarpsborg"
-    },
-    {
-        "navn": "Rørlegger 12",
-        "adresse": "Rørleggerveien 12",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "sarpsborg"
-    },
-    {
-        "navn": "Rørlegger 13",
-        "adresse": "Rørleggerveien 13",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "sarpsborg"
-    },
-    {
-        "navn": "Rørlegger 14",
-        "adresse": "Rørleggerveien 14",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "sarpsborg"
-    },
-    {
-        "navn": "Rørlegger 15",
-        "adresse": "Rørleggerveien 15",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "moss"
-    },
-    {
-        "navn": "Rørlegger 16",
-        "adresse": "Rørleggerveien 16",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "moss"
-    },
-    {
-        "navn": "Rørlegger 17",
-        "adresse": "Rørleggerveien 17",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "moss"
-    },
-    {
-        "navn": "Rørlegger 18",
-        "adresse": "Rørleggerveien 18",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "moss"
-    },
-    {
-        "navn": "Rørlegger 19",
-        "adresse": "Rørleggerveien 19",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "oslo"
-    },
-    {
-        "navn": "Rørlegger 20",
-        "adresse": "Rørleggerveien 20",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "oslo"
-    },
-    {
-        "navn": "Rørlegger 21",
-        "adresse": "Rørleggerveien 21",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "oslo"
-    },
-    {
-        "navn": "Rørlegger 22",
-        "adresse": "Rørleggerveien 22",
-        "tlf": "69990000",
-        "email": "sted@nummer@epost.no",
-        "sted": "oslo"
-    }
+  {
+    "number": 1,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 2,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 3,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 4,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 5,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 6,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 7,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 8,
+    "location": "fredrikstad"
+  },
+  {
+    "number": 9,
+    "location": "sarpsborg"
+  },
+  {
+    "number": 10,
+    "location": "sarpsborg"
+  },
+  {
+    "number": 11,
+    "location": "sarpsborg"
+  },
+  {
+    "number": 12,
+    "location": "sarpsborg"
+  },
+  {
+    "number": 13,
+    "location": "sarpsborg"
+  },
+  {
+    "number": 14,
+    "location": "moss"
+  },
+  {
+    "number": 15,
+    "location": "moss"
+  },
+  {
+    "number": 16,
+    "location": "moss"
+  },
+  {
+    "number": 17,
+    "location": "moss"
+  },
+  {
+    "number": 18,
+    "location": "oslo"
+  },
+  {
+    "number": 19,
+    "location": "oslo"
+  },
+  {
+    "number": 20,
+    "location": "oslo"
+  },
+  {
+    "number": 21,
+    "location": "oslo"
+  },
+  {
+    "number": 22,
+    "location": "oslo"
+  }
 ]

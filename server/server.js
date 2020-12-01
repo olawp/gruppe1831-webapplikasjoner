@@ -4,12 +4,18 @@ import cors from 'cors';
 
 import { PORT } from './constants/index.js';
 import 'dotenv/config.js';
+import errorMiddleware from './middleware/errors.js';
 
 import databaseConnection from './config/db.js';
+import user from './routes/user.js';
 
 const app = express();
 
-app.use(express.json);
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
+app.use(express.json());
 
 app.use(
   cors({
@@ -17,6 +23,10 @@ app.use(
     allowedHeaders: ['Content-Type'],
   })
 );
+
+app.use(`${process.env.BASEURL}/users`, user);
+
+app.use(errorMiddleware);
 
 databaseConnection();
 

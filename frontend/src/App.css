@@ -37,9 +37,22 @@
   }
 }
 
+body{
+  background-color: white;
+}
+
 .footerInfo{
   display: inline;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: white;
 }
 
 .navigationBar{
@@ -47,11 +60,16 @@
   top: 0;
   width: 100%;
   box-shadow: 0 10px 10px -10px rgba(0,0,0,.2);
+  overflow: hidden;
+  background: white;
 }
 
 .navigationBar h3{
   float: left;
   display: block;
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 14px;
 }
 
 .navigationBar a{
@@ -78,4 +96,15 @@
 .navigationBar a:hover{
   background-color: #555;
   color: white !important;
+}
+
+.navigationBar a.active{
+  color: #187bcd;
+}
+
+header{
+  background: lightgrey;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 70px;
 }

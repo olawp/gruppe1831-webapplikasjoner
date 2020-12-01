@@ -12,6 +12,22 @@ export class Kontorer extends Component {
         sarpsborgDisplay: "",
         mossDisplay: "",
         osloDisplay: "",
+        fredrikstad: {
+            antallKontorer: 8,
+            lokasjon: "fredrikstad"
+        },
+        sarpsborg: {
+            antallKontorer: 5,
+            lokasjon: "sarpsborg"
+        },
+        moss: {
+            antallKontorer: 4,
+            lokasjon: "moss"
+        },
+        oslo: {
+            antallKontorer: 4,
+            lokasjon: "oslo"
+        },
     }
 
     list = () => {
@@ -59,72 +75,38 @@ export class Kontorer extends Component {
                     </div>
                     <div style={{display: this.state.fredrikstadDisplay}}>
                         <h2 className="kontorTittel">Fredrikstad (8 kontorer)</h2>
-                        <div className="kontorGrid" style={{display: this.state.displayGrid}}>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
+                        <div style={{display: this.state.displayGrid}}>
+                            <KontorCard antallKontorer={this.state.fredrikstad.antallKontorer} lokasjon={this.state.fredrikstad.lokasjon}></KontorCard>
                         </div>
-                        <div className="kontorListe" style={{display: this.state.displayList}}>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
+                        <div style={{display: this.state.displayList}}>
+                            <KontorListe antallKontorer={this.state.fredrikstad.antallKontorer} lokasjon={this.state.fredrikstad.lokasjon}></KontorListe>
                         </div>
                     </div>
                     <div style={{display: this.state.sarpsborgDisplay}}>
                         <h2 className="kontorTittel">Sarpsborg (5 kontorer)</h2>
-                        <div className="kontorGrid" style={{display: this.state.displayGrid}}>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
+                        <div style={{display: this.state.displayGrid}}>
+                            <KontorCard antallKontorer={this.state.sarpsborg.antallKontorer} lokasjon={this.state.sarpsborg.lokasjon}></KontorCard>
                         </div>
-                        <div className="kontorListeTo" style={{display: this.state.displayList}}>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
+                        <div style={{display: this.state.displayList}}>
+                            <KontorListe antallKontorer={this.state.sarpsborg.antallKontorer} lokasjon={this.state.sarpsborg.lokasjon}></KontorListe>
                         </div>
                     </div>
                     <div style={{display: this.state.mossDisplay}}>
                         <h2 className="kontorTittel">Moss (4 kontorer)</h2>
-                        <div className="kontorGridTo" style={{display: this.state.displayGrid}}>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
+                        <div style={{display: this.state.displayGrid}}>
+                            <KontorCard antallKontorer={this.state.moss.antallKontorer} lokasjon={this.state.moss.lokasjon}></KontorCard>
                         </div>
-                        <div className="kontorListeTre" style={{display: this.state.displayList}}>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
+                        <div style={{display: this.state.displayList}}>
+                            <KontorListe antallKontorer={this.state.moss.antallKontorer} lokasjon={this.state.moss.lokasjon}></KontorListe>
                         </div>
                     </div>
                     <div style={{display: this.state.osloDisplay}}>
                         <h2 className="kontorTittel">Oslo (4 kontorer)</h2>
-                        <div className="kontorGridTo" style={{display: this.state.displayGrid}}>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
-                            <KontorCard></KontorCard>
+                        <div style={{display: this.state.displayGrid}}>
+                            <KontorCard antallKontorer={this.state.oslo.antallKontorer} lokasjon={this.state.oslo.lokasjon}></KontorCard>
                         </div>
-                        <div className="kontorListeTre" style={{display: this.state.displayList}}>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
-                            <KontorListe></KontorListe>
+                        <div style={{display: this.state.displayList}}>
+                            <KontorListe antallKontorer={this.state.oslo.antallKontorer} lokasjon={this.state.oslo.lokasjon}></KontorListe>
                         </div>
                     </div>
                 </main>

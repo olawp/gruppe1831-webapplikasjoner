@@ -3,15 +3,23 @@ import {KontorListStyle} from '../../styled/style';
 
 export class KontorListe extends Component {
     render() {
-        return (
-            <div>
+        const liste = [];
+
+        for(let i = 1; i <= this.props.antallKontorer; i++){
+            liste.push(
                 <KontorListStyle>
                     <a href="/kontor">
-                        <p>´$nummer´ </p>
-                        <h4> Rørlegger ´$nummer´ </h4>
-                        <p> Rørleggerveien ´$nummer´ 69 99 00 00 ´$lokasjon´´$nummer´@epost.no</p>
+                        <p>{i}</p>
+                        <h4> Rørlegger {i}</h4>
+                        <p> Rørleggerveien {i} 69 99 00 00 {this.props.lokasjon}{i}@epost.no</p>
                     </a>
                 </KontorListStyle>
+            )
+        }
+
+        return (
+            <div className="kontorListe">
+                {liste}
             </div>
         )
     }

@@ -133,35 +133,8 @@ a.hjemArtikkler{
 }
 
 .kontorTittel{
-  float: left;
-  clear: both;
-}
-
-.kontorListe{
-  clear: both;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(8, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-}
-
-.kontorListeTo{
-  clear: both;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-}
-
-.kontorListeTre{
-  clear: both;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  float: "left";
+  clear: "both";
 }
 
 .ansattDiv{

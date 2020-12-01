@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import KontorCard from '../layout/KontorCard';
 import KontorListe from '../layout/KontorListe';
-import {Button} from '../../styled/style';
+import {Select, Button} from '../../styled/style';
 
 export class Kontorer extends Component {
 
@@ -47,13 +47,13 @@ export class Kontorer extends Component {
                 <header><h1>Våre kontorer</h1></header>
                 <main>
                     <div>
-                        <select name="lokasjon" onChange={this.filter}>
+                        <Select name="lokasjon" onChange={this.filter}>
                             <option value="Alle">Alle</option>
                             <option value="Fredrikstad">Fredrikstad</option>
                             <option value="Sarpsborg">Sarpsborg</option>
                             <option value="Moss">Moss</option>
                             <option value="Oslo">Oslo</option>
-                        </select>
+                        </Select>
                         <Button onClick={this.list}>LIST VIEW</Button>
                         <Button onClick={this.grid}>GRID VIEW</Button>
                     </div>

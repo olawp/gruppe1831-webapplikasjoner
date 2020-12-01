@@ -54,6 +54,14 @@ export const KontorListStyle = styled.div`
     background: white;
 `
 
+export const Select = styled.select`
+    font-size: 16px;
+    border: 1px solid #aaa;
+    margin-top: 5px;
+    padding: 14px;
+    border-radius: 50px;
+`
+
 const theme = {
     button: {
         backgroundColor: "grey",
@@ -93,6 +101,9 @@ const theme = {
         paddingBottom: "20px",
         background: "white",
         clear: "both",
+      },
+      select: {
+
       },
 };
 

@@ -178,3 +178,29 @@ button{
   font-size: 16px;
   border-radius: 50px;
 }
+
+.kontorGrid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.kontorGridTo{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.kontorFunc{
+  float: right;
+  display: block;
+  clear: both;
+}
+
+.kontorer{
+  float: left;
+}

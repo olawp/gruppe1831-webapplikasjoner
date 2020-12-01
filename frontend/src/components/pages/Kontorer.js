@@ -21,6 +21,16 @@ export class Kontorer extends Component {
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
                         </div>
+                        <div className="kontorListe">
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                        </div>
                     </div>
                     <div className="kontorer">
                         <h2>Sarpsborg (5 kontorer)</h2>
@@ -31,6 +41,13 @@ export class Kontorer extends Component {
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
                         </div>
+                        <div className="kontorListeTo">
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                        </div>
                     </div>
                     <div className="kontorer">
                         <h2>Moss (4 kontorer)</h2>
@@ -40,6 +57,12 @@ export class Kontorer extends Component {
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
                         </div>
+                        <div className="kontorListeTre">
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                        </div>
                     </div>
                     <div className="kontorer">
                         <h2>Oslo (4 kontorer)</h2>
@@ -48,6 +71,12 @@ export class Kontorer extends Component {
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
+                        </div>
+                        <div className="kontorListeTre">
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
+                            <KontorListe></KontorListe>
                         </div>
                     </div>
                 </main>

@@ -5,7 +5,13 @@ export class Fagartikler extends Component {
         return (
             <div>
                 <header><h1>Fagartikler</h1></header>
-                
+                <main>
+                    <div>
+                        <a href="/nyartikkel" class="button">NY ARTIKKEL</a>
+                        <button>SØK</button>
+                        <button>FILTER</button>
+                    </div>
+                </main>
             </div>
         )
     }

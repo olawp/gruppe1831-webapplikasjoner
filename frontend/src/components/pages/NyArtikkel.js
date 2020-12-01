@@ -6,6 +6,15 @@ export class NyArtikkel extends Component {
             <div>
                 <header><h1>Ny artikkel</h1></header>
                 <main>
+                <div>
+                    <form>
+                        <label>Ny Kategori</label>
+                        <br/>
+                        <input></input>
+                        <br/>
+                        <button>CREATE</button>
+                    </form>
+                </div>
                     <form>
                         <label>Tittel</label>
                         <br/>

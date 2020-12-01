@@ -15,11 +15,11 @@ export class NyArtikkel extends Component {
                         <br/>
                         <input></input>
                         <br/>
-                        <label>Subtittel</label>
+                        <label>Undertittel</label>
                         <br/>
                         <input></input>
                         <br/>
-                        <label>Tekst for subtittel</label>
+                        <label>Tekst for undertittel</label>
                         <br/>
                         <input></input>
                         <br/>

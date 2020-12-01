@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ArtikkelCard from '../layout/ArtikkelCard';
 
 export class Fagartikler extends Component {
     render() {
@@ -10,6 +11,12 @@ export class Fagartikler extends Component {
                         <a href="/nyartikkel" class="button">NY ARTIKKEL</a>
                         <button>SØK</button>
                         <button>FILTER</button>
+                        <div>
+                            <ArtikkelCard></ArtikkelCard>
+                            <ArtikkelCard></ArtikkelCard>
+                            <ArtikkelCard></ArtikkelCard>
+                            <ArtikkelCard></ArtikkelCard>
+                        </div>
                     </div>
                 </main>
             </div>

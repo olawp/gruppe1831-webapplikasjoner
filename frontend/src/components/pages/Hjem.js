@@ -5,8 +5,10 @@ export class Hjem extends Component {
         return (
             <div>
                 <header><h1>Velkommen til FG Rørleggerservice AS</h1></header>
-                <main>
-        
+                <main className="hjem">
+                    <section className="hjemKontorer">Kontorer</section>
+                    <section className="hjemKontakt">Kontakt</section>
+                    <section className="hjemArtikkler">Se våre fagartikler om oppussing av bad</section>
                 </main>
             </div>
         )

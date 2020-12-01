@@ -22,9 +22,9 @@ export class Kontorer extends Component {
             <div>
                 <header><h1>Våre kontorer</h1></header>
                 <main>
-                    <div className="kontorFunc"><button>FILTER</button> <button onClick={this.list}>LIST VIEW</button> <button onClick={this.grid}>GRID VIEW</button></div>
-                    <div className="kontorer">
-                        <h2>Fredrikstad (8 kontorer)</h2>
+                    <div><button>FILTER</button> <button onClick={this.list}>LIST VIEW</button> <button onClick={this.grid}>GRID VIEW</button></div>
+                    <div>
+                        <h2 className="kontorTittel">Fredrikstad (8 kontorer)</h2>
                         <div className="kontorGrid" style={{display: this.state.displayGrid}}>
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
@@ -47,7 +47,7 @@ export class Kontorer extends Component {
                         </div>
                     </div>
                     <div className="kontorer">
-                        <h2>Sarpsborg (5 kontorer)</h2>
+                        <h2 className="kontorTittel">Sarpsborg (5 kontorer)</h2>
                         <div className="kontorGrid" style={{display: this.state.displayGrid}}>
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
@@ -64,7 +64,7 @@ export class Kontorer extends Component {
                         </div>
                     </div>
                     <div className="kontorer">
-                        <h2>Moss (4 kontorer)</h2>
+                        <h2 className="kontorTittel">Moss (4 kontorer)</h2>
                         <div className="kontorGridTo" style={{display: this.state.displayGrid}}>
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>
@@ -79,7 +79,7 @@ export class Kontorer extends Component {
                         </div>
                     </div>
                     <div className="kontorer">
-                        <h2>Oslo (4 kontorer)</h2>
+                        <h2 className="kontorTittel">Oslo (4 kontorer)</h2>
                         <div className="kontorGridTo" style={{display: this.state.displayGrid}}>
                             <KontorCard></KontorCard>
                             <KontorCard></KontorCard>

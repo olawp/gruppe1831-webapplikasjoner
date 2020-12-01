@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Form, Input, Button} from '../../styled/style';
 
 export class NyArtikkel extends Component {
 
@@ -21,44 +22,44 @@ export class NyArtikkel extends Component {
                 <main>
                 <div style={{display: this.state.display}} className="nykategori">
                     <div className="nykategori-innhold">
-                        <form>
+                        <Form>
                             <span onClick={this.closeCategory}>&times;</span>
                             <label>Ny Kategori</label>
                             <br/>
-                            <input></input>
+                            <Input></Input>
                             <br/>
-                            <button type="button">CREATE</button>
-                        </form>
+                            <Button type="button">CREATE</Button>
+                        </Form>
                     </div>
                 </div>
-                    <form>
+                    <Form>
                         <label>Tittel</label>
                         <br/>
-                        <input></input>
+                        <Input></Input>
                         <br/>
                         <label>Innledning</label>
                         <br/>
-                        <input></input>
+                        <Input></Input>
                         <br/>
                         <label>Undertittel</label>
                         <br/>
-                        <input></input>
+                        <Input></Input>
                         <br/>
                         <label>Tekst for undertittel</label>
                         <br/>
-                        <input></input>
+                        <Input></Input>
                         <br/>
                         <label>Kategori</label>
                         <br/>
-                        <input></input>
-                        <button type="button" onClick={this.openCategory}>LAG NY KATEGORI</button>
+                        <Input></Input>
+                        <Button type="button" onClick={this.openCategory}>LAG NY KATEGORI</Button>
                         <br/>
                         <label>Forfatternavn</label>
                         <br/>
-                        <input></input>
+                        <Input></Input>
                         <br/>
-                        <button>CREATE</button>
-                    </form>
+                        <Button>CREATE</Button>
+                    </Form>
                 </main>
             </div>
         )

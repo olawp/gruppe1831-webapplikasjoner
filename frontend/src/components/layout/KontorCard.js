@@ -5,10 +5,10 @@ export class KontorCard extends Component {
         return (
             <div>
                 <a href="/kontor">
-                    <h4>Rørlegger ´$nummer´</h4>
-                    <p>Rørleggerveien ´$nummer´</p>
+                    <h4>Rørlegger `$nummer`</h4>
+                    <p>Rørleggerveien `$nummer`</p>
                     <p>69 99 00 00</p>
-                    <p>´$lokasjon´´$nummer´@epost.no</p>
+                    <p>`$lokasjon``$nummer`@epost.no</p>
                 </a>
             </div>
         )

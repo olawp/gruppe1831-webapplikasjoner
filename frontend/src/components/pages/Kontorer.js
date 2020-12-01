@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import KontorCard from '../layout/KontorCard';
 import KontorListe from '../layout/KontorListe';
+import {Button} from '../../styled/style';
 
 export class Kontorer extends Component {
 
@@ -22,7 +23,7 @@ export class Kontorer extends Component {
             <div>
                 <header><h1>Våre kontorer</h1></header>
                 <main>
-                    <div><button>FILTER</button> <button onClick={this.list}>LIST VIEW</button> <button onClick={this.grid}>GRID VIEW</button></div>
+                    <div><Button>FILTER</Button> <Button onClick={this.list}>LIST VIEW</Button> <Button onClick={this.grid}>GRID VIEW</Button></div>
                     <div>
                         <h2 className="kontorTittel">Fredrikstad (8 kontorer)</h2>
                         <div className="kontorGrid" style={{display: this.state.displayGrid}}>

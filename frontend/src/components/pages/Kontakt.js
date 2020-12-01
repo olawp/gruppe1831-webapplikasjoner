@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Form, Input, Button} from '../../styled/style';
 
 export class Kontakt extends Component {
     render() {
@@ -6,27 +7,27 @@ export class Kontakt extends Component {
             <div>
                 <header><h1>Kontakt oss</h1></header>
                 <main>
-                    <form>
+                    <Form>
                         <label>
                             Din E-post*:
                         </label>
                         <br/>
-                        <input type="email"></input>
+                        <Input type="email"></Input>
                         <br/>
                         <label>
                             Ditt telefonnummer:
                         </label>
                         <br/>
-                        <input type="tel"></input>
+                        <Input type="tel"></Input>
                         <br/>
                         <label>
                             Ditt spørsmål*:
                         </label>
                         <br/>
-                        <input type="text"></input>
+                        <Input type="text"></Input>
                         <br/>
-                        <button type="submit">Send</button>
-                    </form>
+                        <Button type="submit">Send</Button>
+                    </Form>
                     <p>* = påkrevd</p>
                 </main>
             </div>

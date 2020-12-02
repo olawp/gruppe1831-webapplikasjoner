@@ -11,9 +11,13 @@ export class Artikkel extends Component {
     componentDidMount(){
         Axios.get('http://localhost:5000/api/v1/articles/' + window.location.href.split("/")[4].toString())
         .then(res => this.setState({ artikkel: res.data }))
-        .catch(
-            //TODO: ADD CATCH FOR WHEN SHIT GOES WRONG
-            )
+        .catch(function(error){
+            if(error.toString() === "Error: Request failed with status code 500"){
+                document.getElementById("tittel").innerHTML = "Finner ikke artikkelen du ser etter";
+                document.getElementById("forfatter").innerHTML = "";
+                console.log("Finner ikke artikkelen")
+            }
+        })
     }
 
     convertDate(){
@@ -26,10 +30,10 @@ export class Artikkel extends Component {
     render() {
         return (
             <div>
-                <header><h1>{this.state.artikkel.title}</h1></header>
+                <header><h1 id="tittel">{this.state.artikkel.title}</h1></header>
                 <main>
                     <div>
-                        <ForfatterNavn>Av {this.state.artikkel.author}</ForfatterNavn>
+                        <ForfatterNavn id="forfatter">Av {this.state.artikkel.author}</ForfatterNavn>
                         <Dato>{this.convertDate()}</Dato>
                     </div>
                     <ArtikkelTekst>{this.state.artikkel.ingress}</ArtikkelTekst>

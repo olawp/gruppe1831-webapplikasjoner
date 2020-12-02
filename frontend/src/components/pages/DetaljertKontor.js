@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AnsattCard from '../layout/AnsattCard';
+import AnsattCard from '../ansatt/AnsattCard';
 
 export class DetaljertKontor extends Component {
     render() {

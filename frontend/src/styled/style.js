@@ -97,6 +97,57 @@ export const NavStyle = styled.nav`
     background: white;
 `
 
+export const ForfatterNavn = styled.p`
+    text-align: left;
+    float: left;
+    font-weight: bold;
+    font-size: 10px;
+`
+
+export const Dato = styled.p`
+    text-align: left;
+    float: right;
+    font-weight: bold;
+    font-size: 10px;
+`
+
+export const ArtikkelTekst = styled.p`
+    text-align: left;
+    float: left;
+    clear: both;
+`
+
+export const ArtikkelKategori = styled.p`
+    text-align: left;
+    float: left;
+    font-weight: bold;
+    font-size: 10px;
+`
+
+export const SlettKnapp = styled.button`
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    float: left;
+    clear: both;
+`
+
+export const RedigerKnapp = styled.button`
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 5px;
+    float: left;
+`
+
 const theme = {
     button: {
         backgroundColor: "grey",
@@ -136,10 +187,7 @@ const theme = {
         paddingBottom: "20px",
         background: "white",
         clear: "both",
-      },
-      select: {
-
-      },
+      }
 };
 
 const Style = ({ children }) => (

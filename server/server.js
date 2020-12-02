@@ -7,7 +7,6 @@ import mongoSanitizer from 'express-mongo-sanitize';
 import xssClean from 'xss-clean';
 import hpp from 'hpp';
 
-
 import { PORT } from './constants/index.js';
 import 'dotenv/config.js';
 import errorMiddleware from './middleware/errors.js';
@@ -16,6 +15,7 @@ import databaseConnection from './config/db.js';
 
 import user from './routes/user.js';
 import office from './routes/office.js';
+import article from './routes/article.js';
 
 const app = express();
 app.use(helmet());
@@ -41,6 +41,7 @@ app.use(cookieParser());
 
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/offices`, office);
+app.use(`${process.env.BASEURL}/articles`, article);
 
 app.use(errorMiddleware);
 

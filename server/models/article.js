@@ -9,7 +9,7 @@ const articleSchema = new Schema(
     },
     ingress: {
       type: String,
-      required: true
+      required: true,
     },
     content: {
       type: String,
@@ -23,7 +23,7 @@ const articleSchema = new Schema(
     category: {
       type: String,
       required: true,
-    }
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

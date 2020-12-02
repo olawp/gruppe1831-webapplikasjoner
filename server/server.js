@@ -16,6 +16,7 @@ import databaseConnection from './config/db.js';
 import user from './routes/user.js';
 import office from './routes/office.js';
 import article from './routes/article.js';
+import auth from './routes/auth.js';
 
 const app = express();
 app.use(helmet());
@@ -42,6 +43,7 @@ app.use(cookieParser());
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/offices`, office);
 app.use(`${process.env.BASEURL}/articles`, article);
+app.use(`${process.env.BASEURL}/`, auth);
 
 app.use(errorMiddleware);
 

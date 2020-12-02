@@ -7,7 +7,7 @@ export const listArticles = async () => Article.find().populate();
 export const createArticle = async (data) => Article.create(data);
 
 export const updateArticle = async (id, data) => {
-  Article.findByIdAndUpdate(id, data, {
+  await Article.findByIdAndUpdate(id, data, {
     new: true,
     runValidators: true,
     useFindAndModify: false,

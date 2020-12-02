@@ -122,6 +122,7 @@ export const ArtikkelKategori = styled.p`
     float: left;
     font-weight: bold;
     font-size: 10px;
+    clear: both;
 `
 
 export const SlettKnapp = styled.button`

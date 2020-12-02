@@ -8,7 +8,7 @@ export class Navbar extends Component {
     }
 
     burgerMenu = () => {
-        this.setState({display: "block"});
+        this.setState({display: "inline-block"});
     }
 
     render() {

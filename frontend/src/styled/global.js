@@ -185,18 +185,19 @@ a.hjemArtikkler{
   a.hjemKontakt { grid-area: 2 / 1 / 3 / 2; }
   a.hjemArtikkler { grid-area: 3 / 1 / 4 / 2; }
 
-  section{
-    background: lightgrey;
-    padding: 100px;
+  .kontorGrid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
   }
-}
 
-@media only screen and (max-width: 500px) {
   section{
     background: lightgrey;
     padding: 100px;
   }
-  
+
   .navigationBar a{
     float: right;
     display: none;
@@ -210,6 +211,14 @@ a.hjemArtikkler{
 
   .mobileMenu{
     display: inline;
+  }
+  
+}
+
+@media only screen and (max-width: 500px) {
+  section{
+    background: lightgrey;
+    padding: 100px;
   }
 
   .kontorGrid{

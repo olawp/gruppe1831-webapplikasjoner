@@ -23,15 +23,6 @@ main.hjem{
   padding-right: 15px;
 }
 
-.navigationBar{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  box-shadow: 0 10px 10px -10px rgba(0,0,0,.2);
-  overflow: hidden;
-  background: white;
-}
-
 .navigationBar h3{
   float: left;
   display: block;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button} from '../../styled/style';
+import {NavStyle, Button} from '../../styled/style';
 
 export class Navbar extends Component {
 
@@ -14,7 +14,7 @@ export class Navbar extends Component {
     render() {
         return (
             <div>
-                <nav className="navigationBar">
+                <NavStyle className="navigationBar">
                     <h3>FG</h3>
                     <Button className="mobileMenu" onClick={this.burgerMenu}>Menu</Button>
                     <div>
@@ -24,7 +24,7 @@ export class Navbar extends Component {
                         <a style={{display: this.state.display}} href="/kontorer">Kontorer</a>
                         <a style={{display: this.state.display}} className="active" href="/">Hjem</a>
                     </div>
-                </nav>
+                </NavStyle>
             </div>
         )
     }

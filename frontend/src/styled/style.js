@@ -88,6 +88,15 @@ export const SmallContent = styled.p`
     padding-left: 30px;
 `
 
+export const NavStyle = styled.nav`
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 10px 10px -10px rgba(0,0,0,.2);
+    overflow: hidden;
+    background: white;
+`
+
 const theme = {
     button: {
         backgroundColor: "grey",

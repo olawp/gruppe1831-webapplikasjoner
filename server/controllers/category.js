@@ -1,4 +1,4 @@
-import { categoryController, categoryService } from '../services/index.js';
+import { categoryService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from '../middleware/catchAsync.js';
 

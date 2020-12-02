@@ -17,7 +17,7 @@ export const logout = async () => {
 
 }
 
-export const getInfo = async () => {
+export const getUserInfo = async () => {
     try {
         return await http.get('/me');
     } catch (error) {

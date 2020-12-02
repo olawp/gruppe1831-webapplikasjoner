@@ -18,7 +18,7 @@ export class Navbar extends Component {
                     <h3>FG</h3>
                     <Button className="mobileMenu" onClick={this.burgerMenu}>Menu</Button>
                     <div>
-                        <a style={{display: this.state.display}} className="loggInn" href="/logginn">LOGG INN</a>
+                        <a style={{display: this.state.display}} className="login" href="/login">LOGG INN</a>
                         <a style={{display: this.state.display}} href="/kontakt">Kontakt</a>
                         <a style={{display: this.state.display}} href="/fagartikler">Fagartikler</a>
                         <a style={{display: this.state.display}} href="/kontorer">Kontorer</a>

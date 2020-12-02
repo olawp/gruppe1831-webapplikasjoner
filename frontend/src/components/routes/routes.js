@@ -22,10 +22,12 @@ export class routes extends Component {
                     <Route path="/kontorer" component={Kontorer} />
                     <Route path="/fagartikler" component={Fagartikler} />
                     <Route path="/kontakt" component={Kontakt} />
-                    <Route path="/logginn" component={LoggInn} />
                     <Route path="/artikkel" component={Artikkel} />
                     <Route path="/kontor" component={DetaljertKontor} />
                     <Route path="/nyartikkel" component={NyArtikkel} />
+                    <Route path="/login">
+                        <LoggInn />
+                    </Route>
                 </Router>
             </div>
         )

@@ -5,7 +5,9 @@ import Axios from 'axios';
 export class NyArtikkel extends Component {
 
     state = {
-        display: "none"
+        display: "none",
+        kategorier: [],
+        forfattere: ["Navn Navnesen", "Ola Nordmann", "Kari Nordmann"]
     }
 
     closeCategory = () => {
@@ -14,6 +16,13 @@ export class NyArtikkel extends Component {
 
     openCategory = () => {
         this.setState({display: ""});
+    }
+
+    componentDidMount(){
+        Axios.get('http://localhost:5000/api/v1/categories')
+        .then(res => this.setState({ kategorier: res.data }))
+        .catch(//TODO: ADD CATCH FOR WHEN SHIT GOES WRONG
+        )
     }
 
     lagNyArtikkel = () => {
@@ -40,7 +49,27 @@ export class NyArtikkel extends Component {
         .catch(res => console.log(res));
     }
 
+    lagNyKategori = () => {
+        let newCategory = document.getElementById("newCategory").value;
+        
+        Axios.post('http://localhost:5000/api/v1/categories', {
+            category: newCategory
+        })
+        .then(
+            document.getElementById("newCategory").value = "",
+            this.closeCategory
+        )
+        .catch(res => console.log(res));
+    }
+
     render() {
+
+        const categories = []
+
+        for (let i = 0; i < this.state.kategorier.length; i++) {
+            categories.push(<option value={this.state.kategorier[i].category}>{this.state.kategorier[i].category}</option>)
+        }
+
         return (
             <div>
                 <header><h1>Ny artikkel</h1></header>
@@ -51,9 +80,9 @@ export class NyArtikkel extends Component {
                             <span onClick={this.closeCategory}>&times;</span>
                             <label>Ny Kategori</label>
                             <br/>
-                            <Input></Input>
+                            <Input id="newCategory"></Input>
                             <br/>
-                            <Button type="button">CREATE</Button>
+                            <Button type="button" onClick={this.lagNyKategori}>CREATE</Button>
                         </Form>
                     </div>
                 </div>
@@ -73,18 +102,16 @@ export class NyArtikkel extends Component {
                         <label>Kategori</label>
                         <br/>
                         <Select id="category">
-                            <option value="Generelt">Generelt</option>
-                            <option value="Bad">Bad</option>
-                            <option value="Kjøkken">Kjøkken</option>
+                            {categories}
                         </Select>
                         <Button type="button" onClick={this.openCategory}>LAG NY KATEGORI</Button>
                         <br/>
                         <label>Forfatternavn</label>
                         <br/>
                         <Select id="author">
-                            <option value="Navn Navnesen">Navn Navnesen</option>
-                            <option value="Ola Nordmann">Ola Nordmann</option>
-                            <option value="Kari Nordmann">Kari Nordmann</option>
+                            <option value={this.state.forfattere[0]}>{this.state.forfattere[0]}</option>
+                            <option value={this.state.forfattere[1]}>{this.state.forfattere[1]}</option>
+                            <option value={this.state.forfattere[2]}>{this.state.forfattere[2]}</option>
                         </Select>
                         <br/>
                         <Button type="button" onClick={this.lagNyArtikkel}>CREATE</Button>

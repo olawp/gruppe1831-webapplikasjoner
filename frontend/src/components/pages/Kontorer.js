@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import KontorCard from '../layout/KontorCard';
-import KontorListe from '../layout/KontorListe';
+import KontorCard from '../kontor/KontorCard';
+import KontorListe from '../kontor/KontorListe';
 import {Select, Button} from '../../styled/style';
 
 export class Kontorer extends Component {

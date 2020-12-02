@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Form, Input, Button} from '../../styled/style';
+import {Form, Input, Select, Button} from '../../styled/style';
 
 export class NyArtikkel extends Component {
 
@@ -43,16 +43,25 @@ export class NyArtikkel extends Component {
                         <br/>
                         <label>Innhold</label>
                         <br/>
-                        <Input></Input>
+                        <Input type="textarea"></Input>
                         <br/>
                         <label>Kategori</label>
                         <br/>
-                        <Input></Input>
+                        <Select>
+                            <option>Generelt</option>
+                            <option>Bad</option>
+                            <option>Kjøkken</option>
+                        </Select>
                         <Button type="button" onClick={this.openCategory}>LAG NY KATEGORI</Button>
                         <br/>
                         <label>Forfatternavn</label>
                         <br/>
-                        <Input></Input>
+                        <Select>
+                            <option>For Fatter</option>
+                            <option>Navn Navnesen</option>
+                            <option>Ola Nordmann</option>
+                            <option>Kari Nordmann</option>
+                        </Select>
                         <br/>
                         <Button>CREATE</Button>
                     </Form>

@@ -62,6 +62,32 @@ export const Select = styled.select`
     border-radius: 50px;
 `
 
+export const Article = styled.article`
+    border: solid;
+    background: white;
+    margin-top: 10px;
+`
+
+export const ArticleTitle = styled.h1`
+    text-align: left;
+    float: left;
+    padding-left: 10px;
+`
+
+export const Category = styled.p`
+    text-align: right;
+    float: right;
+    font-weight: bold;
+    opacity: 0.6;
+    padding-right: 10px;
+`
+
+export const SmallContent = styled.p`
+    text-align: left;
+    clear: both;
+    padding-left: 30px;
+`
+
 const theme = {
     button: {
         backgroundColor: "grey",

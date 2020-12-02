@@ -39,16 +39,16 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.getJwtTOken = function () {
+userSchema.methods.getJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_TIME,
   });
 };
 
-userSchema.methods.comparePasswords = async function (password) {
+userSchema.methods.comparePassword = async function (password) {
   const result = argon2.verify(this.password, password);
   return result;
-}
+};
 
 // Brått en ref her??
 

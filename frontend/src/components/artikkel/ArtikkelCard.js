@@ -6,9 +6,9 @@ export class ArtikkelCard extends Component {
         return (
             <div>
                 <Article>
-                    <a href={'/artikkel/' + this.props.id}>
-                        <ArticleTitle>{this.props.tittel}</ArticleTitle>
-                        <Category>{this.props.kategori}</Category>
+                    <a href={'/artikkel/' + this.props._id}>
+                        <ArticleTitle>{this.props.title}</ArticleTitle>
+                        <Category>{this.props.category}</Category>
                         <SmallContent>{this.props.ingress}</SmallContent>
                     </a>
                 </Article>

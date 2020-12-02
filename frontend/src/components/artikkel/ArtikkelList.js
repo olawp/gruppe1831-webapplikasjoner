@@ -5,7 +5,7 @@ export class ArtikkelListe extends Component {
     render() {
         return this.props.artikkler.map((artikkel) => (
             <div>
-                <ArtikkelCard id={artikkel.id} tittel={artikkel.tittel} kategori={artikkel.kategori} ingress={artikkel.ingress}/>
+                <ArtikkelCard _id={artikkel._id} title={artikkel.title} category={artikkel.category} ingress={artikkel.ingress}/>
             </div>
         ))
     }

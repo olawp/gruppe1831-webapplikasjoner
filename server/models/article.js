@@ -16,8 +16,7 @@ const articleSchema = new Schema(
       required: true,
     },
     author: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
+      type: String,
       required: true,
     },
     category: {

@@ -20,6 +20,21 @@ export class Artikkel extends Component {
         })
     }
 
+    deleteArticle(){
+        console.log("Delete was clicked")
+        Axios.delete('http://localhost:5000/api/v1/articles/' + window.location.href.split("/")[4].toString())
+        .then(
+            window.location.href = "http://localhost:3000/fagartikler"
+        )
+        .catch(
+            //CATCH
+        )
+    }
+
+    editArticle(){
+        console.log("Edit was clicked")
+    }
+
     convertDate(){
         var date = new Date(this.state.artikkel.createdAt)
         if(date.toString() !== "Invalid Date"){
@@ -40,8 +55,8 @@ export class Artikkel extends Component {
                     <ArtikkelTekst>{this.state.artikkel.content}</ArtikkelTekst>
                     <ArtikkelKategori>{this.state.artikkel.category}</ArtikkelKategori>
                     <div>
-                        <SlettKnapp type="button">SLETT</SlettKnapp>
-                        <RedigerKnapp type="button">REDIGER</RedigerKnapp>
+                        <SlettKnapp type="button" onClick={this.deleteArticle}>SLETT</SlettKnapp>
+                        <RedigerKnapp type="button" onClick={this.editArticle}>REDIGER</RedigerKnapp>
                     </div>
                 </main>
             </div>

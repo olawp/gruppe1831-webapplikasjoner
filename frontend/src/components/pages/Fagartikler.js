@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ArtikkelList from '../artikkel/ArtikkelList';
 import {Button} from '../../styled/style';
 import Axios from 'axios';
-import { useAuthContext } from '../../context/AuthProvider';
+import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 
 export class Fagartikler extends Component {
 
@@ -24,9 +24,7 @@ export class Fagartikler extends Component {
                 <header><h1>Fagartikler</h1></header>
                 <main>
                     <div>
-                        <div>
-                            <a href="/nyartikkel" className="button">NY ARTIKKEL</a>
-                        </div>
+                        <NyArtikkelKnapp/>
                         <Button>SØK</Button>
                         <Button>FILTER</Button>
                         <div>

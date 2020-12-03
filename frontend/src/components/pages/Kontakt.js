@@ -42,7 +42,7 @@ export class Kontakt extends Component {
                         <br/>
                         <Input type="text" id="question"></Input>
                         <br/>
-                        <Button type="submit">Send</Button>
+                        <Button type="button" onClick={this.submitClicked}>Send</Button>
                     </Form>
                     <p>* = påkrevd</p>
                 </main>

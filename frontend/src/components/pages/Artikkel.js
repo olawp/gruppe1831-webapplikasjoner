@@ -35,6 +35,15 @@ export class Artikkel extends Component {
             return(date.getDate().toString() + "." + date.getMonth().toString() + "." + date.getFullYear())
         }
     }
+
+    deleteArticle(){
+        console.log("Delete was clicked")
+        Axios.delete('http://localhost:5000/api/v1/articles/' + window.location.href.split("/")[4].toString())
+        .then(
+            window.location.href = "http://localhost:3000/fagartikler"
+        )
+        .catch(error => alert("Artikklen ble ikke slettet. \n Error: " + {error}))
+    }
     
     editArticle(){
         console.log("Edit was clicked")
@@ -110,7 +119,7 @@ export class Artikkel extends Component {
                     <ArtikkelTekst>{this.state.artikkel.content}</ArtikkelTekst>
                     <ArtikkelKategori>{this.state.artikkel.category}</ArtikkelKategori>
                     <div>
-                        <DeleteEditKnapper edit={this.openEditArticle}/>
+                        <DeleteEditKnapper edit={this.openEditArticle} delete={this.deleteArticle}/>
                     </div>
                 </main>
             </div>

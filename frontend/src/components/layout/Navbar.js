@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
 import {NavStyle, Button, NavLoggInn, NavButtons, NavLoggUt} from '../../styled/style';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
+import { logout } from '../../utils/authService';
 
 let click = 0;
 
 const Navbar = () => {
 
-    const { isLoggedIn, isAdmin, setUser } = useAuthContext();
+    const { isLoggedIn, setUser } = useAuthContext();
 
     const [display, setDisplay] = useState("");
+
+    const loggut = async() => { 
+        await logout();
+        setUser(null);
+     }
 
     
 
@@ -35,7 +41,7 @@ const Navbar = () => {
                             <NavLoggInn style={{display: display}} className="loggInn" href="/logginn">LOGG INN</NavLoggInn>
                         )}
                         {isLoggedIn && (
-                            <NavLoggUt style={{display: display}}>LOGG UT</NavLoggUt>
+                            <NavLoggUt type="button" style={{display: display}} onClick={loggut}>LOGG UT</NavLoggUt>
                         )}
                         <NavButtons style={{display: display}} href="/kontakt">Kontakt</NavButtons>
                         <NavButtons style={{display: display}} href="/fagartikler">Fagartikler</NavButtons>

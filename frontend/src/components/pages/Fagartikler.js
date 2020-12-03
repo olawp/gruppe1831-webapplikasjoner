@@ -23,7 +23,9 @@ export class Fagartikler extends Component {
                 <header><h1>Fagartikler</h1></header>
                 <main>
                     <div>
-                        <a href="/nyartikkel" className="button">NY ARTIKKEL</a>
+                        <div>
+                            <a href="/nyartikkel" className="button">NY ARTIKKEL</a>
+                        </div>
                         <Button>SØK</Button>
                         <Button>FILTER</Button>
                         <div>

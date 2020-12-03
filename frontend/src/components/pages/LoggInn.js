@@ -1,27 +1,80 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Form, Input, Button} from '../../styled/style';
+import { useForm } from 'react-hook-form';
+import { useHistory, useLocation } from 'react-router-dom';
+import { login } from '../../utils/authService.js';
+import { useAuthContext } from '../../context/AuthProvider.jsx';
 
-export class LoggInn extends Component {
-    render() {
-        return (
-            <div>
-                <header><h1>Logg inn</h1></header>
-                <main>
-                    <Form>
-                        <label>E-mail:</label>
-                        <br/>
-                        <Input type="email"></Input>
-                        <br/>
-                        <label>Password</label>
-                        <br/>
-                        <Input type="password"></Input>
-                        <br/>
-                        <Button>Logg inn</Button>
-                    </Form>
-                </main>
-            </div>
-        )
-    }
-}
-
-export default LoggInn
+const LoggInn = () => {
+    const [closeBtnState, setCloseBtnState] = useState(false);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const { setUser, isLoggedIn } = useAuthContext();
+    const history = useHistory();
+    const { state } = useLocation();
+  
+    const { register, errors, handleSubmit, formState } = useForm({
+      mode: "onBlur",
+    });
+  
+    useEffect(() => {
+      if (isLoggedIn && state) {
+        history.push(state.from.pathname);
+      }
+    }, [isLoggedIn, state]);
+  
+    const onSubmit = async (credentials) => {
+      const { data } = await login(credentials);
+      if (!data.success) {
+        setCloseBtnState(true);
+        setError(data.message);
+      } else {
+        const user = data?.user;
+        const expire = JSON.parse(window.atob(data.token.split(".")[1])).exp;
+        setUser({ ...user, expire });
+        setSuccess(true);
+        history.push("/");
+      }
+    };
+  
+    return (
+      <>
+        <div>
+          <header>
+            <h1>Logg inn</h1>
+          </header>
+          <main>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <label htmlFor="email">E-mail:</label>
+              <br />
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                ref={register({
+                  required: true,
+                })}
+              />
+              <br />
+              <label htmlFor="password">Password</label>
+              <br />
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                ref={register({
+                  required: true,
+                  minLength: 3,
+                })}
+              />
+              <br />
+              <Button type="submit">Logg inn</Button>
+            </Form>
+          </main>
+        </div>
+      </>
+    );
+  };
+  
+  export default LoggInn;
+  

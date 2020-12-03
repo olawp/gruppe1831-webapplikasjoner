@@ -44,7 +44,7 @@ export class NyArtikkel extends Component {
             document.getElementById("ingress").value = "",
             document.getElementById("content").value = "",
             document.getElementById("author").value = "Navn Navnesen",
-            document.getElementById("category").value = "Generelt"
+            document.getElementById("category").value = this.state.kategorier[0].category
         )
         .catch(res => console.log(res));
     }

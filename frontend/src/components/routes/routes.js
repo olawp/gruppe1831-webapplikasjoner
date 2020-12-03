@@ -8,11 +8,14 @@ import LoggInn from '../pages/LoggInn';
 import Artikkel from '../pages/Artikkel';
 import DetaljertKontor from '../pages/DetaljertKontor';
 import NyArtikkel from '../pages/NyArtikkel';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 
 export class routes extends Component {
     render() {
         return (
             <div>
+                <Navbar/>
                 <Router>
                     <Route exact path="/" render={props => (
                         <React.Fragment>
@@ -27,6 +30,7 @@ export class routes extends Component {
                     <Route path="/kontor" component={DetaljertKontor} />
                     <Route path="/nyartikkel" component={NyArtikkel} />
                 </Router>
+                <Footer/>
             </div>
         )
     }

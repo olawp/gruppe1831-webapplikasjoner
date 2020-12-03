@@ -32,17 +32,6 @@ main.hjem{
   font-weight: bold;
 }
 
-.navigationBar a{
-  float: right;
-  display: inline;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
-}
-
 a{
   text-align: center;
   text-decoration: none;
@@ -51,11 +40,6 @@ a{
 
 a:hover{
   opacity: .9;
-}
-
-.navigationBar .loggInn{
-  background-color: #187bcd;
-  color: white;
 }
 
 .navigationBar .loggInn:hover{

@@ -149,6 +149,40 @@ export const RedigerKnapp = styled.button`
     float: left;
 `
 
+export const NavLoggInn = styled.a`
+    background-color: #187bcd;
+    color: white !important;
+    float: right;
+    display: inline;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+`
+
+export const NavLoggUt = styled.button`
+    background-color: #187bcd;
+    border: none;
+    color: white !important;
+    float: right;
+    display: inline;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+`
+
+export const NavButtons = styled.a`
+    float: right;
+    display: inline;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+`
+
 const theme = {
     button: {
         backgroundColor: "grey",

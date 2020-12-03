@@ -21,12 +21,13 @@ export class Artikkel extends Component {
                 document.getElementById("forfatter").innerHTML = "";
                 console.log("Finner ikke artikkelen")
             }
+            else{
+                alert("Noe feil skjedde under inhentingen av artiklen. \n Error: " + {error})
+            }
         })
         Axios.get('http://localhost:5000/api/v1/categories')
         .then(res => this.setState({ kategorier: res.data }))
-        .catch(
-            //TODO: ADD CATCH FOR WHEN SHIT GOES WRONG
-        )
+        .catch(error => alert("Kategorier ble ikke hentet ordentlig. \n Error: " + {error}))
     }
 
     convertDate(){

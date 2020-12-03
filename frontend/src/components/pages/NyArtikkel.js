@@ -21,8 +21,7 @@ export class NyArtikkel extends Component {
     componentDidMount(){
         Axios.get('http://localhost:5000/api/v1/categories')
         .then(res => this.setState({ kategorier: res.data }))
-        .catch(//TODO: ADD CATCH FOR WHEN SHIT GOES WRONG
-        )
+        .catch(error => alert("Artikklen ble ikke opprettet. \n Error: " + {error}))
     }
 
     lagNyArtikkel = () => {
@@ -59,7 +58,7 @@ export class NyArtikkel extends Component {
             document.getElementById("newCategory").value = "",
             this.closeCategory
         )
-        .catch(res => console.log(res));
+        .catch(error => alert("Kategorien ble ikke opprettet. \n Error: " + {error}));
     }
 
     render() {

@@ -9,11 +9,11 @@ function App() {
   return (
     <Style>
       <div className="App">
-      <AuthProvider>
         <Navbar></Navbar>
-        <Routes/>
+          <AuthProvider>
+            <Routes/>
+          </AuthProvider>
         <Footer></Footer>
-        </AuthProvider>
       </div>
     </Style>
   );

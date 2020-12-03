@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import {ForfatterNavn, Dato, ArtikkelTekst, ArtikkelKategori, SlettKnapp, RedigerKnapp, Form, Button, Input, Select} from '../../styled/style';
+import { useAuthContext } from '../../context/AuthProvider';
 
 export class Artikkel extends Component {
 

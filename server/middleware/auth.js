@@ -5,7 +5,7 @@ import catchAsyncErrors from './catchAsync.js';
 
 export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   let token;
-  if (req.cookies?.token) {
+  if (req.cookies.token) {
     token = req.cookies.token;
   }
 

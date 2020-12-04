@@ -1,10 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Form, Input, Button} from '../../styled/style';
 import Axios from 'axios';
+import { useAuthContext } from '../../context/AuthProvider.jsx';
 
-export class Kontakt extends Component {
+const Kontakt = () => {
 
-    submitClicked = () => {
+    const { user } = useAuthContext();
+    if(user !== null){
+        document.getElementById("name").value = user["name"];
+        document.getElementById("mail").value = user["email"];
+    }
+
+    function submitClicked(){
         Axios.post('http://localhost:5000/api/v1/contact', {
             name: document.getElementById("name").value,
             email: document.getElementById("mail").value,
@@ -18,7 +25,6 @@ export class Kontakt extends Component {
         .catch(res => console.log(res));
     }
 
-    render() {
         return (
             <div>
                 <header><h1>Kontakt oss</h1></header>
@@ -42,13 +48,13 @@ export class Kontakt extends Component {
                         <br/>
                         <Input type="text" id="question"></Input>
                         <br/>
-                        <Button type="button" onClick={this.submitClicked}>Send</Button>
+                        <Button type="button" onClick={submitClicked}>Send</Button>
                     </Form>
                     <p>* = påkrevd</p>
                 </main>
             </div>
         )
-    }
+    
 }
 
 export default Kontakt

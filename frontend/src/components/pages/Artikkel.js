@@ -19,7 +19,6 @@ export class Artikkel extends Component {
             if(error.toString() === "Error: Request failed with status code 500"){
                 document.getElementById("tittel").innerHTML = "Finner ikke artikkelen du ser etter";
                 document.getElementById("forfatter").innerHTML = "";
-                console.log("Finner ikke artikkelen")
             }
             else{
                 alert("Noe feil skjedde under inhentingen av artiklen. \n Error: " + {error})

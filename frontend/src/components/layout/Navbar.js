@@ -21,12 +21,10 @@ const Navbar = () => {
     function burgerMenu(){
         if(click === 0){
             setDisplay("inline");
-            console.log(display)
             click = click + 1;
         }
         else if(click === 1){
             setDisplay(" ");
-            console.log(display)
             click = click - 1;
         }
     }

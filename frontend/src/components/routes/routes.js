@@ -1,6 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, //Redirect
- } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Hjem from '../pages/Hjem';
 import Kontorer from '../pages/Kontorer';
 import Fagartikler from '../pages/Fagartikler';

@@ -74,7 +74,7 @@ export class Artikkel extends Component {
         const categories = []
 
         for (let i = 0; i < this.state.kategorier.length; i++) {
-            categories.push(<option value={this.state.kategorier[i].category}>{this.state.kategorier[i].category}</option>)
+            categories.push(<option key={this.state.kategorier[i].category} value={this.state.kategorier[i].category}>{this.state.kategorier[i].category}</option>)
         }
 
         return (

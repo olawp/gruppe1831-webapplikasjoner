@@ -11,10 +11,18 @@ const Navbar = () => {
 
     const [display, setDisplay] = useState("");
 
+    function activePage(...pages){
+        for(let i = 0; i < pages.length; i++){
+            if(pages[i] === window.location.href.split("/")[3]){
+                return "active";
+            }
+        }
+    }
+
     const loggut = async() => { 
         await logout();
         setUser(null);
-     }
+    }
 
     
 
@@ -41,10 +49,10 @@ const Navbar = () => {
                         {isLoggedIn && (
                             <NavLoggUt type="button" style={{display: display}} onClick={loggut}>LOGG UT</NavLoggUt>
                         )}
-                        <NavButtons style={{display: display}} href="/kontakt">Kontakt</NavButtons>
-                        <NavButtons style={{display: display}} href="/fagartikler">Fagartikler</NavButtons>
-                        <NavButtons style={{display: display}} href="/kontorer">Kontorer</NavButtons>
-                        <NavButtons style={{display: display}} className="active" href="/">Hjem</NavButtons>
+                        <NavButtons style={{display: display}} className={activePage("kontakt")} href="/kontakt">Kontakt</NavButtons>
+                        <NavButtons style={{display: display}} className={activePage("fagartikler", "artikkel")} href="/fagartikler">Fagartikler</NavButtons>
+                        <NavButtons style={{display: display}} className={activePage("kontorer", "kontor")} href="/kontorer">Kontorer</NavButtons>
+                        <NavButtons style={{display: display}} className={activePage("")} href="/">Hjem</NavButtons>
                     </div>
                 </NavStyle>
             </div>

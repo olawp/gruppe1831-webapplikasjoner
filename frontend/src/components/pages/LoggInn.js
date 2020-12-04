@@ -7,7 +7,7 @@ import { useAuthContext } from '../../context/AuthProvider.jsx';
 
 const LoggInn = () => {
     const [setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+    const [/*success*/, setSuccess] = useState(false);
     const { setUser, isLoggedIn } = useAuthContext();
     const history = useHistory();
     const { state } = useLocation();

@@ -18,7 +18,7 @@ export class SignUp extends Component {
                 alert("Du er nå registrert"),
                 window.location.href = "http://localhost:3000/logginn"
             )
-            .catch(res => console.log(res));
+            .catch(error => alert("Kunne ikke opprette ny bruker.\nError: " + error));
         }
         else{
             alert("Passordene stemmer ikke overens")

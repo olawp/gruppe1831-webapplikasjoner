@@ -61,7 +61,7 @@ export class NyArtikkel extends Component {
             document.getElementById("category").value = this.state.kategorier[0].category,
             document.getElementById("hiddenCheckbox").checked = false
         )
-        .catch(res => console.log(res));
+        .catch(error => alert("Kunne ikke opprette ny artikkel.\nError: " + error));
     }
 
     lagNyKategori = () => {

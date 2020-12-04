@@ -22,7 +22,7 @@ const Kontakt = () => {
             document.getElementById("mail").value = "",
             document.getElementById("question").value = ""
         )
-        .catch(res => console.log(res));
+        .catch(error => alert("Kunne ikke kontakte. \n Error: " + error));
     }
 
         return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AnsattCard from '../ansatt/AnsattCard';
 
-let lokasjon = window.location.href.split("/")[4];
+//let lokasjon = window.location.href.split("/")[4];
 let nummer= window.location.href.split("/")[5];
 
 export class DetaljertKontor extends Component {

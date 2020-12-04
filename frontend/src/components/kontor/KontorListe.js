@@ -9,9 +9,11 @@ export class KontorListe extends Component {
             liste.push(
                 <KontorListStyle>
                     <a href={"/kontor/" + this.props.lokasjon + i}>
-                        <p>{i}</p>
-                        <h4> Rørlegger {i}</h4>
-                        <p> Rørleggerveien {i} 69 99 00 00 {this.props.lokasjon}{i}@epost.no</p>
+                        <p className="kontorNummer">{i}</p>
+                        <h4 className="kontorListeTittel"> Rørlegger {i}</h4>
+                        <p className="kontorInfo">Rørleggerveien {i}</p>
+                        <p className="kontorInfo">69 99 00 00</p>
+                        <p className="kontorInfo">{this.props.lokasjon}{i}@epost.no</p>
                     </a>
                 </KontorListStyle>
             )

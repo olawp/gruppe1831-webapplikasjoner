@@ -108,8 +108,11 @@ a.hjemArtikkler{
 }
 
 .kontorTittel{
-  float: "left";
-  clear: "both";
+  float: left;
+}
+
+.kontorDiv{
+  clear:both;
 }
 
 .ansattDiv{
@@ -119,6 +122,30 @@ a.hjemArtikkler{
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   padding-bottom: 20px;
+}
+
+.kontorNummer{
+  text-align: left;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  margin: 10px;
+  padding-left : 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.kontorListeTittel{
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.kontorInfo{
+  text-align: left;
+  display: inline-block;
+  padding-left: 20px;
 }
 
 .nykategori {

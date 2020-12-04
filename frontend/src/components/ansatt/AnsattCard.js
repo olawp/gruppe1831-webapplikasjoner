@@ -5,8 +5,8 @@ export class AnsattCard extends Component {
         return (
             <div>
                 <div><p>IMAGE</p></div>
-                <p>Ansatt ´$ansattnavn´</p>
-                <p>´$stilling´</p>
+                <p>Ansatt AnsattNavn</p>
+                <p>Stilling</p>
             </div>
         )
     }

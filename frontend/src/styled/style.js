@@ -50,8 +50,9 @@ export const KontorCardStyle = styled.div`
     background: white;
 `
 export const KontorListStyle = styled.div`
-    border: solid;
-    background: white;
+    margin-bottom: 5px;
+    float: left;
+    clear: both;
 `
 
 export const Select = styled.select`

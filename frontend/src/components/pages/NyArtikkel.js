@@ -36,20 +36,30 @@ export class NyArtikkel extends Component {
         let content = document.getElementById("content").value;
         let author = document.getElementById("author").value;
         let category = document.getElementById("category").value;
+        let hidden;
+
+        if(document.getElementById("hiddenCheckbox").checked){
+            hidden = true;
+        }
+        else{
+            hidden = false;
+        }
 
         Axios.post('http://localhost:5000/api/v1/articles', {
             title,
             ingress,
             content,
             author,
-            category
+            category,
+            hidden
         })
         .then(
             document.getElementById("title").value = "",
             document.getElementById("ingress").value = "",
             document.getElementById("content").value = "",
             document.getElementById("author").value = "Navn Navnesen",
-            document.getElementById("category").value = this.state.kategorier[0].category
+            document.getElementById("category").value = this.state.kategorier[0].category,
+            document.getElementById("hiddenCheckbox").checked = false
         )
         .catch(res => console.log(res));
     }
@@ -148,6 +158,9 @@ export class NyArtikkel extends Component {
                         <label id="contentLabel" style={{color: this.state.contentIsFilled}}>Innhold*</label>
                         <br/>
                         <Input type="textarea" id="content" style={{border: "solid "+this.state.contentIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
+                        <br/>
+                        <label>Innholdet skal kun være synlig for innloggede brukere:</label>
+                        <Input style={{zoom: 1.25, transform: "scale(1.25)", width: "auto", marginLeft: "5px"}} type="checkbox" id="hiddenCheckbox" onClick={this.test}></Input>
                         <br/>
                         <p style={{color: "red", fontStyle: "italic", fontSize: "10px"}} id="filled">* må være fyllt inn</p>
                         <label>Kategori</label>

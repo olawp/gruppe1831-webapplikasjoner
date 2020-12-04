@@ -163,6 +163,9 @@ export class NyArtikkel extends Component {
                         <Input style={{zoom: 1.25, transform: "scale(1.25)", width: "auto", marginLeft: "5px"}} type="checkbox" id="hiddenCheckbox" onClick={this.test}></Input>
                         <br/>
                         <p style={{color: "red", fontStyle: "italic", fontSize: "10px"}} id="filled">* må være fyllt inn</p>
+                        <label>Last opp artikkelbilde: </label>
+                        <Input style={{width: "auto"}} type="file" id="bilde"/>
+                        <br/>
                         <label>Kategori</label>
                         <br/>
                         <Select id="category">

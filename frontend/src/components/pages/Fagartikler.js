@@ -13,9 +13,7 @@ export class Fagartikler extends Component {
     componentDidMount(){
         Axios.get('http://localhost:5000/api/v1/articles')
         .then(res => this.setState({ artikkler: res.data }))
-        .catch(
-            //TODO: ADD CATCH FOR WHEN SHIT GOES WRONG
-            )
+        .catch(error => alert("Kunne ikke hente artikler. \nError: " + error))
     }
 
     render() {

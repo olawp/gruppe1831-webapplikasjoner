@@ -14,3 +14,8 @@ export const get = catchAsyncErrors(async (req, res, next) => {
   }
   res.status(201).json(office);
 });
+
+export const create = catchAsyncErrors(async (req, res, next) => {
+  const office = await officeService.createOffice(req.body);
+  res.status(201).json(office);
+});

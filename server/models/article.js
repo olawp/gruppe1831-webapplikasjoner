@@ -23,6 +23,10 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
+    hidden: {
+      type: Boolean,
+      required: true,
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

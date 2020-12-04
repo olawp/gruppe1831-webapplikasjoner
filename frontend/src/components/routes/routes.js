@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch, //Redirect
+ } from 'react-router-dom';
 import Hjem from '../pages/Hjem';
 import Kontorer from '../pages/Kontorer';
 import Fagartikler from '../pages/Fagartikler';
@@ -12,13 +13,14 @@ import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import { useAuthContext } from '../../context/AuthProvider';
 
+/*
 const AuthenticatedRoutes = ({children, ...rest}) => {
     const { isLoggedIn, isLoading } = useAuthContext();
     return(
         <Route {...rest} render={() => isLoggedIn && !isLoading ? <div>children</div> : <Redirect to='/login'/>}/>
     )
 }
-
+*/
 const AdminRoutes = ({children, ...rest}) => {
     const { isLoggedIn, isAdmin, isLoading } = useAuthContext();
     return(

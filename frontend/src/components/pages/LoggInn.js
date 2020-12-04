@@ -6,14 +6,13 @@ import { login } from '../../utils/authService.js';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
 const LoggInn = () => {
-    const [closeBtnState, setCloseBtnState] = useState(false);
-    const [error, setError] = useState(null);
+    const [setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const { setUser, isLoggedIn } = useAuthContext();
     const history = useHistory();
     const { state } = useLocation();
   
-    const { register, errors, handleSubmit, formState } = useForm({
+    const { register,handleSubmit } = useForm({
       mode: "onBlur",
     });
   
@@ -21,12 +20,11 @@ const LoggInn = () => {
       if (isLoggedIn && state) {
         history.push(state.from.pathname);
       }
-    }, [isLoggedIn, state]);
+    }, [history, isLoggedIn, state]);
   
     const onSubmit = async (credentials) => {
       const { data } = await login(credentials);
       if (!data.success) {
-        setCloseBtnState(true);
         setError(data.message);
       } else {
         const user = data?.user;

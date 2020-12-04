@@ -38,7 +38,6 @@ export class Artikkel extends Component {
     }
 
     deleteArticle(){
-        console.log("Delete was clicked")
         Axios.delete('http://localhost:5000/api/v1/articles/' + window.location.href.split("/")[4].toString())
         .then(
             window.location.href = "http://localhost:3000/fagartikler"
@@ -47,8 +46,14 @@ export class Artikkel extends Component {
     }
     
     editArticle(){
-        console.log("Edit was clicked")
-        Axios.put('http://localhost:5000/api/v1/articles/' + window.location.href.split("/")[4].toString(), { title: document.getElementById("title").value, ingress: document.getElementById("ingress").value, content: document.getElementById("content").value, author: document.getElementById("author").value, category: document.getElementById("category").value})
+        Axios.put('http://localhost:5000/api/v1/articles/' + window.location.href.split("/")[4].toString(), {
+            title: document.getElementById("title").value,
+            ingress: document.getElementById("ingress").value,
+            content: document.getElementById("content").value,
+            author: document.getElementById("author").value,
+            category: document.getElementById("category").value,
+            hidden: document.getElementById("hiddenCheckbox").checked
+        })
         .then(
             window.location.href = 'http://localhost:3000/artikkel/' + window.location.href.split("/")[4].toString()
         )
@@ -62,6 +67,7 @@ export class Artikkel extends Component {
         document.getElementById("content").value = this.state.artikkel.content;
         document.getElementById("author").value = this.state.artikkel.author;
         document.getElementById("category").value = this.state.artikkel.category;
+        document.getElementById("hiddenCheckbox").checked = this.state.artikkel.hidden;
     }
 
     render() {
@@ -91,6 +97,9 @@ export class Artikkel extends Component {
                             <label>Innhold</label>
                             <br/>
                             <Input type="textarea" id="content"></Input>
+                            <br/>
+                            <label>Innholdet skal kun være synlig for innloggede brukere:</label>
+                            <Input style={{zoom: 1.25, transform: "scale(1.25)", width: "auto", marginLeft: "5px"}} type="checkbox" id="hiddenCheckbox" onClick={this.test}></Input>
                             <br/>
                             <label>Kategori</label>
                             <br/>

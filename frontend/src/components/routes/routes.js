@@ -6,6 +6,7 @@ import Kontorer from '../pages/Kontorer';
 import Fagartikler from '../pages/Fagartikler';
 import Kontakt from '../pages/Kontakt';
 import LoggInn from '../pages/LoggInn';
+import SignUp from '../pages/SignUp';
 import Artikkel from '../pages/Artikkel';
 import DetaljertKontor from '../pages/DetaljertKontor';
 import NyArtikkel from '../pages/NyArtikkel';
@@ -56,6 +57,9 @@ const routes = () => {
                     </Route>
                     <Route path="/kontor">
                         <DetaljertKontor/>
+                    </Route>
+                    <Route path="/registrerdeg">
+                        <SignUp/>
                     </Route>
                     <AdminRoutes path="/nyartikkel">
                         <NyArtikkel/>

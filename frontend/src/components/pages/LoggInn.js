@@ -11,6 +11,10 @@ const LoggInn = () => {
     const { setUser, isLoggedIn } = useAuthContext();
     const history = useHistory();
     const { state } = useLocation();
+
+    function signUp(){
+      window.location.href = "http://localhost:3000/registrerdeg"
+    }
   
     const { register,handleSubmit } = useForm({
       mode: "onBlur",
@@ -67,6 +71,8 @@ const LoggInn = () => {
               <br />
               <Button type="submit">Logg inn</Button>
             </Form>
+            <p>Har du ikke bruker?</p>
+            <Button type="button" onClick={signUp}>Registrer Deg</Button>
           </main>
         </div>
       </>

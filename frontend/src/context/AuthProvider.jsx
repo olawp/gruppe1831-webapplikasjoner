@@ -8,7 +8,6 @@ const { Provider } = AuthContext;
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(user);
   useEffect(() => {
     const fetchUserdata = async () => {
       if (user === null) {
@@ -24,6 +23,7 @@ const AuthProvider = ({ children }) => {
       }
     };
     fetchUserdata();
+    console.log(user)
   }, [user]);
   return (
     <Provider

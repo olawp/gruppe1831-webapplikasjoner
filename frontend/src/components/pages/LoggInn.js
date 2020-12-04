@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Form, Input, Button} from '../../styled/style';
 import { useForm } from 'react-hook-form';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { login } from '../../utils/authService.js';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
@@ -28,8 +28,7 @@ const LoggInn = () => {
         setError(data.message);
       } else {
         const user = data?.user;
-        const expire = JSON.parse(window.atob(data.token.split(".")[1])).exp;
-        setUser({ ...user, expire });
+        setUser({ ...user});
         setSuccess(true);
         history.push("/");
       }

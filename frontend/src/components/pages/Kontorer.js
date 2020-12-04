@@ -15,22 +15,26 @@ export class Kontorer extends Component {
         fredrikstad: {
             antallKontorer: 8,
             lokasjon: "fredrikstad",
-            class: "kontorGrid"
+            class: "kontorGrid",
+            officeNumbers: [1,2,3,4,5,6,7,8]
         },
         sarpsborg: {
             antallKontorer: 5,
             lokasjon: "sarpsborg",
-            class: "kontorGrid"
+            class: "kontorGrid",
+            officeNumbers: [9,10,11,12,13]
         },
         moss: {
             antallKontorer: 4,
             lokasjon: "moss",
-            class: "kontorGridTo"
+            class: "kontorGridTo",
+            officeNumbers: [14,15,16,17]
         },
         oslo: {
             antallKontorer: 4,
             lokasjon: "oslo",
-            class: "kontorGridTo"
+            class: "kontorGridTo",
+            officeNumbers: [18,19,20,21]
         },
     }
 
@@ -80,37 +84,37 @@ export class Kontorer extends Component {
                     <div style={{display: this.state.fredrikstadDisplay}}>
                         <h2 className="kontorTittel">Fredrikstad (8 kontorer)</h2>
                         <div style={{display: this.state.displayGrid}} className="kontorDiv">
-                            <KontorCard antallKontorer={this.state.fredrikstad.antallKontorer} lokasjon={this.state.fredrikstad.lokasjon} klasse={this.state.fredrikstad.class}></KontorCard>
+                            <KontorCard info={this.state.fredrikstad}/>
                         </div>
                         <div style={{display: this.state.displayList}} className="kontorDiv">
-                            <KontorListe antallKontorer={this.state.fredrikstad.antallKontorer} lokasjon={this.state.fredrikstad.lokasjon}></KontorListe>
+                            <KontorListe info={this.state.fredrikstad}/>
                         </div>
                     </div>
                     <div style={{display: this.state.sarpsborgDisplay}}>
                         <h2 className="kontorTittel">Sarpsborg (5 kontorer)</h2>
                         <div style={{display: this.state.displayGrid}} className="kontorDiv">
-                            <KontorCard antallKontorer={this.state.sarpsborg.antallKontorer} lokasjon={this.state.sarpsborg.lokasjon} klasse={this.state.sarpsborg.class}></KontorCard>
+                            <KontorCard info={this.state.sarpsborg}/>
                         </div>
                         <div style={{display: this.state.displayList}} className="kontorDiv">
-                            <KontorListe antallKontorer={this.state.sarpsborg.antallKontorer} lokasjon={this.state.sarpsborg.lokasjon}></KontorListe>
+                            <KontorListe info={this.state.sarpsborg}/>
                         </div>
                     </div>
                     <div style={{display: this.state.mossDisplay}}>
                         <h2 className="kontorTittel">Moss (4 kontorer)</h2>
                         <div style={{display: this.state.displayGrid}} className="kontorDiv">
-                            <KontorCard antallKontorer={this.state.moss.antallKontorer} lokasjon={this.state.moss.lokasjon} klasse={this.state.moss.class}></KontorCard>
+                            <KontorCard info={this.state.moss}/>
                         </div>
                         <div style={{display: this.state.displayList}} className="kontorDiv">
-                            <KontorListe antallKontorer={this.state.moss.antallKontorer} lokasjon={this.state.moss.lokasjon}></KontorListe>
+                            <KontorListe info={this.state.moss}/>
                         </div>
                     </div>
                     <div style={{display: this.state.osloDisplay}}>
                         <h2 className="kontorTittel">Oslo (4 kontorer)</h2>
                         <div style={{display: this.state.displayGrid}} className="kontorDiv">
-                            <KontorCard antallKontorer={this.state.oslo.antallKontorer} lokasjon={this.state.oslo.lokasjon} klasse={this.state.oslo.class}></KontorCard>
+                            <KontorCard info={this.state.oslo}/>
                         </div>
                         <div style={{display: this.state.displayList}} className="kontorDiv">
-                            <KontorListe antallKontorer={this.state.oslo.antallKontorer} lokasjon={this.state.oslo.lokasjon}></KontorListe>
+                            <KontorListe info={this.state.oslo}/>
                         </div>
                     </div>
                 </main>

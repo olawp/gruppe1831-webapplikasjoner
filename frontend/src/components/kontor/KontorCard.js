@@ -5,20 +5,20 @@ export class KontorCard extends Component {
     render() {
         const kort = [];
 
-        for(let i = 1; i <= this.props.antallKontorer; i++){
+        for(let i = 0; i < this.props.info.antallKontorer; i++){
             kort.push(
-                <KontorCardStyle key={this.props.lokasjon + i}>
-                    <a href={"/kontor/" + this.props.lokasjon + "/" + i}>
-                        <h4>Rørlegger {i}</h4>
-                        <p>Rørleggerveien {i}</p>
+                <KontorCardStyle key={this.props.info.lokasjon + i}>
+                    <a href={"/kontor/" + this.props.info.lokasjon + "/" + this.props.info.officeNumbers[i]}>
+                        <h4>Rørlegger {this.props.info.officeNumbers[i]}</h4>
+                        <p>Rørleggerveien {this.props.info.officeNumbers[i]}</p>
                         <p>69 99 00 00</p>
-                        <p>{this.props.lokasjon}{i}@epost.no</p>
+                        <p>{this.props.info.lokasjon}{this.props.info.officeNumbers[i]}@epost.no</p>
                     </a>
                 </KontorCardStyle>
             )
         }
         return(
-            <div className={this.props.klasse}>
+            <div className={this.props.info.class}>
                 {kort}
             </div>
         )

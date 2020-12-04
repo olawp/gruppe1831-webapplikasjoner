@@ -118,6 +118,15 @@ a.hjemArtikkler{
 .ansattDiv{
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  padding-bottom: 20px;
+}
+
+.ansattDivTo{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;

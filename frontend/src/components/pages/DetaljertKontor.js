@@ -1,11 +1,31 @@
 import React, { Component } from 'react'
 import AnsattCard from '../ansatt/AnsattCard';
 
-//let lokasjon = window.location.href.split("/")[4];
+let lokasjon = window.location.href.split("/")[4];
 let nummer= window.location.href.split("/")[5];
+let antallAnsatte = 0;
+let ansattDiv = "";
 
 export class DetaljertKontor extends Component {
     render() {
+
+        if(lokasjon === "fredrikstad"){
+            antallAnsatte = 6;
+            ansattDiv = "ansattDiv";
+        }
+        else if(lokasjon === "sarpsborg"){
+            antallAnsatte = 12;
+            ansattDiv = "ansattDivTo";
+        }
+        else if(lokasjon === "moss"){
+            antallAnsatte = 5;
+            ansattDiv = "ansattDiv";
+        }
+        else{
+            antallAnsatte = 7;
+            ansattDiv = "ansattDiv";
+        }
+
         return (
             <div>
                 <header><h1>Kontor Rørlegger {nummer}</h1></header>
@@ -18,21 +38,8 @@ export class DetaljertKontor extends Component {
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <h2 style={{textAlign: "left"}}>Våre ansatte</h2>
-                    <div className="ansattDiv">
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
-                        <AnsattCard></AnsattCard>
+                    <div className={ansattDiv}>
+                        <AnsattCard antall={antallAnsatte}></AnsattCard>
                     </div>
                     <section><h1>Kontakt oss på 69 99 00 00</h1></section>
                 </main>

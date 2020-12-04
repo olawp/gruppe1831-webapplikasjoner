@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 const officeSchema = new Schema(
   {
-    number: {
+    id: {
       type: Number,
       required: true,
     },

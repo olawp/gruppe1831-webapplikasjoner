@@ -146,7 +146,7 @@ export class NyArtikkel extends Component {
                         </Form>
                     </div>
                 </div>
-                    <Form>
+                    <Form encType="multipart/form-data">
                         <label id="titleLabel" style={{color: this.state.titleIsFilled}}>Tittel*</label>
                         <br/>
                         <Input id="title" style={{border: "solid "+this.state.titleIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
@@ -164,7 +164,7 @@ export class NyArtikkel extends Component {
                         <br/>
                         <p style={{color: "red", fontStyle: "italic", fontSize: "10px"}} id="filled">* må være fyllt inn</p>
                         <label>Last opp artikkelbilde: </label>
-                        <Input style={{width: "auto"}} type="file" id="bilde"/>
+                        <Input style={{width: "auto"}} type="file" id="bilde" accept=".jpeg,.jpg,.png" />
                         <br/>
                         <label>Kategori</label>
                         <br/>

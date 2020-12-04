@@ -7,7 +7,7 @@ export class KontorCard extends Component {
 
         for(let i = 1; i <= this.props.antallKontorer; i++){
             kort.push(
-                <KontorCardStyle>
+                <KontorCardStyle key={this.props.lokasjon + i}>
                     <a href={"/kontor/" + this.props.lokasjon + "/" + i}>
                         <h4>Rørlegger {i}</h4>
                         <p>Rørleggerveien {i}</p>

@@ -9,7 +9,6 @@ const ArtikkelCard = (props) => {
     }
     else if(isLoggedIn && props.isHidden === true){
         return (
-            <div>
                 <Article>
                     <a href={'/artikkel/' + props._id}>
                         <ArticleTitle>{props.title}</ArticleTitle>
@@ -17,12 +16,10 @@ const ArtikkelCard = (props) => {
                         <SmallContent>{props.ingress}</SmallContent>
                     </a>
                 </Article>
-            </div>
         )
     }
     else{
         return (
-            <div>
                 <Article>
                     <a href={'/artikkel/' + props._id}>
                         <ArticleTitle>{props.title}</ArticleTitle>
@@ -30,7 +27,6 @@ const ArtikkelCard = (props) => {
                         <SmallContent>{props.ingress}</SmallContent>
                     </a>
                 </Article>
-            </div>
         )
     }
 }

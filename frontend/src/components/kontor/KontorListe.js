@@ -7,7 +7,7 @@ export class KontorListe extends Component {
 
         for(let i = 1; i <= this.props.antallKontorer; i++){
             liste.push(
-                <KontorListStyle>
+                <KontorListStyle key={this.props.lokasjon + i}>
                     <a href={"/kontor/" + this.props.lokasjon + "/" + i}>
                         <p className="kontorNummer">{i}</p>
                         <h4 className="kontorListeTittel"> Rørlegger {i}</h4>

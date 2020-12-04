@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
       }
     };
     fetchUserdata();
-    console.log(user)
+    //console.log(user)
   }, [user]);
   return (
     <Provider

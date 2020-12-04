@@ -7,7 +7,13 @@ export class NyArtikkel extends Component {
     state = {
         display: "none",
         kategorier: [],
-        forfattere: ["Navn Navnesen", "Ola Nordmann", "Kari Nordmann"]
+        forfattere: ["Navn Navnesen", "Ola Nordmann", "Kari Nordmann"],
+        disabled: "true",
+        color: "grey",
+        errors: {},
+        titleIsFilled: "red",
+        ingressIsFilled: "red",
+        contentIsFilled: "red"
     }
 
     closeCategory = () => {
@@ -61,6 +67,51 @@ export class NyArtikkel extends Component {
         .catch(error => alert("Kategorien ble ikke opprettet. \n Error: " + {error}));
     }
 
+    handleValidation(){
+        let formIsValid = true;
+
+        if(!document.getElementById("title").value){
+           formIsValid = false;
+           this.setState({titleIsFilled: "red"});
+           document.getElementById("titleLabel").innerHTML = "Tittel*";
+        }
+        else{
+            this.setState({titleIsFilled: "black"});
+            document.getElementById("titleLabel").innerHTML = "Tittel";
+        }
+
+        if(!document.getElementById("ingress").value){
+            formIsValid = false;
+            this.setState({ingressIsFilled: "red"});
+            document.getElementById("ingressLabel").innerHTML = "Ingress*";
+        }
+        else{
+            this.setState({ingressIsFilled: "black"});
+            document.getElementById("ingressLabel").innerHTML = "Ingress";
+        }
+
+        if(!document.getElementById("content").value){
+            formIsValid = false;
+            this.setState({contentIsFilled: "red"});
+            document.getElementById("contentLabel").innerHTML = "Innhold*";
+        }
+        else{
+            this.setState({contentIsFilled: "black"});
+            document.getElementById("contentLabel").innerHTML = "Innhold";
+        }
+
+
+        if(formIsValid){
+            this.setState({color: "green", disabled: ""});
+            document.getElementById("filled").innerHTML = "";
+        }
+        else{
+            this.setState({color: "grey", disabled: "true"});
+            document.getElementById("filled").innerHTML = "* må være fyllt inn";
+        }
+        
+   }
+
     render() {
 
         const categories = []
@@ -86,24 +137,26 @@ export class NyArtikkel extends Component {
                     </div>
                 </div>
                     <Form>
-                        <label>Tittel</label>
+                        <label id="titleLabel" style={{color: this.state.titleIsFilled}}>Tittel*</label>
                         <br/>
-                        <Input id="title"></Input>
+                        <Input id="title" style={{border: "solid "+this.state.titleIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
                         <br/>
-                        <label>Ingress</label>
+                        <label id="ingressLabel" style={{color: this.state.ingressIsFilled}}>Ingress*</label>
                         <br/>
-                        <Input id="ingress"></Input>
+                        <Input id="ingress" style={{border: "solid "+this.state.ingressIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
                         <br/>
-                        <label>Innhold</label>
+                        <label id="contentLabel" style={{color: this.state.contentIsFilled}}>Innhold*</label>
                         <br/>
-                        <Input type="textarea" id="content"></Input>
+                        <Input type="textarea" id="content" style={{border: "solid "+this.state.contentIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
                         <br/>
+                        <p style={{color: "red", fontStyle: "italic", fontSize: "10px"}} id="filled">* må være fyllt inn</p>
                         <label>Kategori</label>
                         <br/>
                         <Select id="category">
                             {categories}
                         </Select>
-                        <Button type="button" onClick={this.openCategory}>LAG NY KATEGORI</Button>
+                        <Button type="button" style={{backgroundColor: "green"}} onClick={this.openCategory}>LAG NY KATEGORI</Button>
+                        <br/>
                         <br/>
                         <label>Forfatternavn</label>
                         <br/>
@@ -113,7 +166,8 @@ export class NyArtikkel extends Component {
                             <option value={this.state.forfattere[2]}>{this.state.forfattere[2]}</option>
                         </Select>
                         <br/>
-                        <Button type="button" onClick={this.lagNyArtikkel}>CREATE</Button>
+                        <br/>
+                        <Button disabled={this.state.disabled} style={{backgroundColor: this.state.color}} type="button" onClick={this.lagNyArtikkel}>CREATE</Button>
                     </Form>
                 </main>
             </div>

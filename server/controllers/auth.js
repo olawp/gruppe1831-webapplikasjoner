@@ -3,11 +3,6 @@ import { userService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';
 import { sendToken } from '../utils/jwtToken.js';
 
-export const register = catchAsyncErrors(async (req, res, next) => {
-  const user = await userService.createUser(req.body);
-  sendToken(user, res);
-});
-
 export const login = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {

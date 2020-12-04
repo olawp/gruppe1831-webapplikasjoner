@@ -13,14 +13,6 @@ import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import { useAuthContext } from '../../context/AuthProvider';
 
-/*
-const AuthenticatedRoutes = ({children, ...rest}) => {
-    const { isLoggedIn, isLoading } = useAuthContext();
-    return(
-        <Route {...rest} render={() => isLoggedIn && !isLoading ? <div>children</div> : <Redirect to='/login'/>}/>
-    )
-}
-*/
 const AdminRoutes = ({children, ...rest}) => {
     const { isLoggedIn, isAdmin, isLoading } = useAuthContext();
     return(

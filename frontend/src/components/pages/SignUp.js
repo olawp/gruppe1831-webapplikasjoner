@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import {Form, Input, Button} from '../../styled/style';
 import Axios from 'axios';
 
+//TODO: Add check so that email is a valid mail
+//TODO: Add check so that password is a minimum of 3 characters and one number
+//TODO: Add check so that name field != empty
+
 export class SignUp extends Component {
     submitClicked = () => {
         if(document.getElementById("password").value === document.getElementById("passwordConfirm").value){

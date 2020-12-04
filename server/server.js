@@ -19,6 +19,7 @@ import article from './routes/article.js';
 import auth from './routes/auth.js';
 import category from './routes/category.js';
 import contact from './routes/contact.js';
+import image from './routes/image.js';
 
 const app = express();
 app.use(helmet());
@@ -48,6 +49,8 @@ app.use(`${process.env.BASEURL}/articles`, article);
 app.use(`${process.env.BASEURL}/`, auth);
 app.use(`${process.env.BASEURL}/categories`, category);
 app.use(`${process.env.BASEURL}/contact`, contact);
+app.use(`${process.env.BASEURL}/`, image);
+
 
 app.use(errorMiddleware);
 

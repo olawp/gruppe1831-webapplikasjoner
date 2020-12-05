@@ -47,7 +47,7 @@ const Navbar = () => {
                             <NavLoggInn style={{display: display}} className="loggInn" href="/logginn">LOGG INN</NavLoggInn>
                         )}
                         {isLoggedIn && (
-                            <NavLoggUt type="button" style={{display: display}} onClick={loggut}>LOGG UT</NavLoggUt>
+                            <NavLoggInn style={{display: display + " !important"}} onClick={loggut}>LOGG UT</NavLoggInn> //Begge er NavLoggInn, meb det trengs ingen NavLoggUt
                         )}
                         <NavButtons style={{display: display}} className={activePage("kontakt")} href="/kontakt">Kontakt</NavButtons>
                         <NavButtons style={{display: display}} className={activePage("fagartikler", "artikkel")} href="/fagartikler">Fagartikler</NavButtons>

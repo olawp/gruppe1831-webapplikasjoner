@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { list } from '../../utils/artikkelService';
-import {Button} from '../../styled/style';
+import { Button, Input } from '../../styled/style';
 import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 import ArtikkelList from '../artikkel/ArtikkelList';
 
@@ -8,9 +8,11 @@ const NyArtikkel = ( ) => {
     const[artikkler, setArtikkler] = useState(null);
     const[error, setError] = useState(null);
 
+    const URL = `/articles`;
+
     useEffect(() => {
         const fetchData = async () => {
-            const { data, error } = await list();
+            const { data, error } = await list(URL);
             if(error){
                 setError(error);
             }
@@ -21,6 +23,34 @@ const NyArtikkel = ( ) => {
         fetchData();
     }, []);
 
+    function filter(){
+            const fetchData = async () => {
+
+                const { data, error } = await list(`${URL}?sort=category`);
+                if(error){
+                    setError(error);
+                }
+                else{
+                    setArtikkler(data);
+                }
+            };
+            fetchData();
+    }
+
+    function search(){
+        let searchTerm = document.getElementById("searchField").value;
+        const fetchData = async () => {
+            const { data, error } = await list(`%${URL}?q=${searchTerm}%`);
+            if(error){
+                setError(error);
+            }
+            else{
+                setArtikkler(data);
+            }
+        };
+        fetchData();
+    }
+
     if(artikkler !== null){
         return(
             <div>
@@ -30,10 +60,11 @@ const NyArtikkel = ( ) => {
                 <main>
                     <div>
                         <NyArtikkelKnapp/>
-                        <Button>SØK</Button>
-                        <Button>FILTER</Button>
+                        <Input style={{width: "auto"}} id="searchField" placeholder="Hva ser du etter?"/>
+                        <Button onClick={search}>SØK</Button>
+                        <Button onClick={filter}>FILTER</Button>
                         <div>
-                            <ArtikkelList artikkler={artikkler}></ArtikkelList>
+                            <ArtikkelList artikkler={artikkler.data}></ArtikkelList>
                         </div> 
                         <a href="?page=1">1</a> 
                         <a href="?page=2">2</a>

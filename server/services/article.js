@@ -1,8 +1,20 @@
 import Article from '../models/article.js';
+import { ApiFilters } from '../utils/apiFilters.js';
+import { articleService } from './index.js';
 
 export const getArticleById = async (id) => Article.findById(id);
 
-export const listArticles = async () => Article.find().populate();
+export const listArticles = async (queryStr) => {
+  const filters = new ApiFilters(Article.find(), queryStr)
+  .filter()
+  .searchByQuery();
+  //console.log(filters);
+  const articles = await filters.query.populate();
+  return {
+    results: articles.length,
+    data: articles
+  }
+};
 
 export const createArticle = async (data) => Article.create(data);
 

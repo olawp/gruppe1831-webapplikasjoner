@@ -35,6 +35,10 @@ const articleSchema = new Schema(
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
+articleSchema.index({
+  title: 'text',
+});
+
 const Article = mongoose.model('Article', articleSchema);
 
 export default Article;

@@ -1,14 +1,18 @@
 import React, { useEffect, useState} from 'react'
 import { list } from '../../utils/artikkelService';
-import { Button, Input } from '../../styled/style';
+import { list as listCategory } from '../../utils/categoryService';
+import { Button, Input, Select } from '../../styled/style';
 import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 import ArtikkelList from '../artikkel/ArtikkelList';
 
+let URL = `/articles`;
+
+let isHandled = false;
+
 const NyArtikkel = ( ) => {
     const[artikkler, setArtikkler] = useState(null);
+    const[kategorier, setKategorier] = useState(null);
     const[error, setError] = useState(null);
-
-    const URL = `/articles`;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,27 +24,32 @@ const NyArtikkel = ( ) => {
                 setArtikkler(data);
             }
         };
+        const fetchCategoryData = async () => {
+            const { data, error } = await listCategory();
+            if(error){
+                setError(error);
+            }
+            else{
+                setKategorier(data);
+            }
+        }
         fetchData();
+        fetchCategoryData();
     }, []);
 
+    //FILTER OG SEARCH GJØRE QUERIEN UNØDVENDIG LANG, MEN DEN FUNKER !!!SE ETTER FIKS!!!
+
     function filter(){
-            const fetchData = async () => {
-
-                const { data, error } = await list(`${URL}?sort=category`);
-                if(error){
-                    setError(error);
-                }
-                else{
-                    setArtikkler(data);
-                }
-            };
-            fetchData();
-    }
-
-    function search(){
-        let searchTerm = document.getElementById("searchField").value;
+        let filter = document.getElementById("filter").value;
+        if(!isHandled){
+            URL += `?category=${filter}`;
+            isHandled = true;
+        }
+        else{
+            URL += `&category=${filter}`;
+        }
         const fetchData = async () => {
-            const { data, error } = await list(`%${URL}?q=${searchTerm}%`);
+            const { data, error } = await list(`${URL}`);
             if(error){
                 setError(error);
             }
@@ -51,7 +60,38 @@ const NyArtikkel = ( ) => {
         fetchData();
     }
 
-    if(artikkler !== null){
+    function search(){
+        if(document.getElementById("searchField").value === null){
+            alert("Ikke la søkefeltet stå tomt");
+        }
+        else{
+            let searchTerm = document.getElementById("searchField").value;
+            if(!isHandled){
+                URL += `?q=${searchTerm}`;
+                isHandled = true;
+            }
+            else{
+                URL += `&q=${searchTerm}`;
+            }
+            const fetchData = async () => {
+                const { data, error } = await list(`${URL}`);
+                if(error){
+                    setError(error);
+                }
+                else{
+                    setArtikkler(data);
+                }
+            };
+            fetchData();
+        }
+    }
+
+    if(artikkler !== null && kategorier !== null){
+        const categories = []
+
+        for (let i = 0; i < kategorier.length; i++) {
+            categories.push(<option value={kategorier[i].category}>{kategorier[i].category}</option>)
+        }
         return(
             <div>
                 <header>
@@ -59,10 +99,18 @@ const NyArtikkel = ( ) => {
                 </header>
                 <main>
                     <div>
-                        <NyArtikkelKnapp/>
-                        <Input style={{width: "auto"}} id="searchField" placeholder="Hva ser du etter?"/>
-                        <Button onClick={search}>SØK</Button>
-                        <Button onClick={filter}>FILTER</Button>
+                        <div style={{float: "left"}}>
+                            <NyArtikkelKnapp />
+                        </div>
+                        <div style={{textAlign: "right"}}>
+                            <Input style={{width: "auto"}} id="searchField" placeholder="Hva ser du etter?"/>
+                            <Button onClick={search}>SØK</Button>
+                            <br/>
+                            <Select id="filter">
+                                {categories}
+                            </Select>
+                            <Button onClick={filter}>FILTRER KATEGORI</Button>
+                        </div>
                         <div>
                             <ArtikkelList artikkler={artikkler.data}></ArtikkelList>
                         </div> 

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-shadow */
@@ -8,15 +9,21 @@ import { list as listCategory } from '../../utils/categoryService';
 import { Button, Input, Select } from '../../styled/style';
 import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 import ArtikkelList from '../artikkel/ArtikkelList';
+import { useAuthContext } from '../../context/AuthProvider';
 
-let URL = `/articles`;
-
-let isHandled = false;
+let URL = ``;
 
 const NyArtikkel = () => {
+  const { isLoggedIn } = useAuthContext();
   const [artikkler, setArtikkler] = useState(null);
   const [kategorier, setKategorier] = useState(null);
   const [error, setError] = useState(null);
+
+  if (!isLoggedIn) {
+    URL = `/articles?hidden=false&limit=5`;
+  } else {
+    URL = `/articles?limit=5`;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,12 +50,7 @@ const NyArtikkel = () => {
 
   function filter() {
     const filter = document.getElementById('filter').value;
-    if (!isHandled) {
-      URL += `?category=${filter}`;
-      isHandled = true;
-    } else {
-      URL += `&category=${filter}`;
-    }
+    URL += `&category=${filter}`;
     const fetchData = async () => {
       const { data, error } = await list(`${URL}`);
       if (error) {
@@ -71,12 +73,7 @@ const NyArtikkel = () => {
       search();
     } else {
       searchTerm = document.getElementById('searchField').value;
-      if (!isHandled) {
-        URL += `?q=${searchTerm}`;
-        isHandled = true;
-      } else {
-        URL += `&q=${searchTerm}`;
-      }
+      URL += `&q=${searchTerm}`;
       const fetchData = async () => {
         const { data, error } = await list(`${URL}`);
         if (error) {
@@ -89,15 +86,36 @@ const NyArtikkel = () => {
     }
   }
 
+  function page() {
+    URL += `&page=${this}`;
+    const fetchData = async () => {
+      const { data, error } = await list(`${URL}`);
+      if (error) {
+        setError(error);
+      } else {
+        setArtikkler(data);
+      }
+    };
+    fetchData();
+  }
+
   if (artikkler !== null && kategorier !== null) {
     const categories = [];
     let tittel = '';
+    const pageButtons = [];
+
+    if (artikkler.totalPages >= 2) {
+      for (let i = 1; i <= artikkler.totalPages; i++) {
+        pageButtons.push(<button onClick={page.bind(i)}>{i}</button>);
+      }
+    }
 
     for (let i = 0; i < kategorier.length; i++) {
       categories.push(
         <option value={kategorier[i].category}>{kategorier[i].category}</option>
       );
     }
+
     if (artikkler.results === 0) {
       tittel = 'Fant ingen artikler som passet søket ditt';
     } else {
@@ -127,6 +145,7 @@ const NyArtikkel = () => {
             <div>
               <ArtikkelList artikkler={artikkler.data}></ArtikkelList>
             </div>
+            {pageButtons}
           </div>
         </main>
       </div>

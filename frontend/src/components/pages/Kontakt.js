@@ -18,11 +18,7 @@ const Kontakt = () => {
       email: document.getElementById('mail').value,
       question: document.getElementById('question').value,
     })
-      .then(
-        (document.getElementById('name').value = ''),
-        (document.getElementById('mail').value = ''),
-        (document.getElementById('question').value = '')
-      )
+      .then((document.getElementById('question').value = ''))
       .catch((error) => alert(`Kunne ikke kontakte. \n Error: ${error}`));
   }
 

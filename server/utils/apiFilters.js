@@ -4,6 +4,16 @@ export class ApiFilters {
     this.queryStr = queryStr;
   }
 
+  sort() {
+    if (this.queryStr.sort) {
+      const sortBy = this.queryStr.sort.split(',').join(' ');
+      this.query.sort(sortBy);
+    } else {
+      this.query = this.query.sort('-updated');
+    }
+    return this;
+  }
+
   filter() {
     const query = { ...this.queryStr };
     const removeFields = ['q', 'limit', 'page'];
@@ -27,7 +37,7 @@ export class ApiFilters {
 
   pagination() {
     const page = parseInt(this.queryStr.page, 10) || 1;
-    const limit = parseInt(this.queryStr.limit, 10) || 10;
+    const limit = parseInt(this.queryStr.limit, 5) || 5;
     const skipResults = (page - 1) * limit;
     this.query = this.query.skip(skipResults).limit(limit);
     return this;

@@ -79,9 +79,6 @@ const NyArtikkelForm = () => {
                     type="checkbox"
                     id="hiddenCheckbox"
                     name="hiddenCheckbox"
-                    ref={register({
-                        required: true,
-                    })}
                 />
                 <br/>
                 <p style={{color: "red", fontStyle: "italic", fontSize: "10px"}} id="filled">* må være fyllt inn</p>

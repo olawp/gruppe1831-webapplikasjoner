@@ -37,6 +37,8 @@ const NyArtikkel = ( ) => {
         fetchCategoryData();
     }, []);
 
+    //FILTER OG SEARCH GJØRE QUERIEN UNØDVENDIG LANG, MEN DEN FUNKER !!!SE ETTER FIKS!!!
+
     function filter(){
         let filter = document.getElementById("filter").value;
         if(!isHandled){
@@ -59,24 +61,29 @@ const NyArtikkel = ( ) => {
     }
 
     function search(){
-        let searchTerm = document.getElementById("searchField").value;
-        if(!isHandled){
-            URL += `?q=${searchTerm}`;
-            isHandled = true;
+        if(document.getElementById("searchField").value === null){
+            alert("Ikke la søkefeltet stå tomt");
         }
         else{
-            URL += `&q=${searchTerm}`;
-        }
-        const fetchData = async () => {
-            const { data, error } = await list(`${URL}`);
-            if(error){
-                setError(error);
+            let searchTerm = document.getElementById("searchField").value;
+            if(!isHandled){
+                URL += `?q=${searchTerm}`;
+                isHandled = true;
             }
             else{
-                setArtikkler(data);
+                URL += `&q=${searchTerm}`;
             }
-        };
-        fetchData();
+            const fetchData = async () => {
+                const { data, error } = await list(`${URL}`);
+                if(error){
+                    setError(error);
+                }
+                else{
+                    setArtikkler(data);
+                }
+            };
+            fetchData();
+        }
     }
 
     if(artikkler !== null && kategorier !== null){

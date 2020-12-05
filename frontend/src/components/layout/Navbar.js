@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {NavStyle, Button, NavLoggInn, NavButtons, NavLoggUt} from '../../styled/style';
+import { NavStyle, Button, NavLoggInn, NavButtons } from '../../styled/style';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 import { logout } from '../../utils/authService';
 

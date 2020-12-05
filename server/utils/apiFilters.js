@@ -13,7 +13,6 @@ export class ApiFilters {
       /\b(gt|gte|lt|lte|in)\b/g,
       (match) => `$${match}`
     );
-    
     this.query.find(query);
     return this;
   }

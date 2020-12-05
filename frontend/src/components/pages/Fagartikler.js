@@ -60,12 +60,15 @@ const NyArtikkel = ( ) => {
         fetchData();
     }
 
+    let searchTerm = "";
+
     function search(){
-        if(document.getElementById("searchField").value === null){
-            alert("Ikke la søkefeltet stå tomt");
+        if(!document.getElementById("searchField").value.replace(/\s/g, '').length && searchTerm === ""){
+            searchTerm = null;
+            search();
         }
         else{
-            let searchTerm = document.getElementById("searchField").value;
+            searchTerm = document.getElementById("searchField").value;
             if(!isHandled){
                 URL += `?q=${searchTerm}`;
                 isHandled = true;
@@ -87,15 +90,22 @@ const NyArtikkel = ( ) => {
     }
 
     if(artikkler !== null && kategorier !== null){
-        const categories = []
+        const categories = [];
+        let tittel = "";
 
         for (let i = 0; i < kategorier.length; i++) {
             categories.push(<option value={kategorier[i].category}>{kategorier[i].category}</option>)
         }
+        if(artikkler.results === 0){
+            tittel = "Fant ingen artikler som passet søket ditt"
+        }
+        else{
+            tittel = "Fagartikler"
+        }
         return(
             <div>
                 <header>
-                    <h1>Fagartikler</h1>
+                    <h1>{tittel}</h1>
                 </header>
                 <main>
                     <div>
@@ -114,9 +124,6 @@ const NyArtikkel = ( ) => {
                         <div>
                             <ArtikkelList artikkler={artikkler.data}></ArtikkelList>
                         </div> 
-                        <a href="?page=1">1</a> 
-                        <a href="?page=2">2</a>
-                        <a href="?page=3">3</a>
                     </div>
                 </main>
             </div>
@@ -139,53 +146,3 @@ const NyArtikkel = ( ) => {
 }
 
 export default NyArtikkel;
-
-
-/*import React, { Component } from 'react'
-import ArtikkelList from '../artikkel/ArtikkelList';
-import Axios from 'axios';
-
-export class Fagartikler extends Component {
-
-    state = {
-        artikkler: []
-    }
-
-    componentDidMount(){
-        Axios.get('http://localhost:5000/api/v1/articles')
-        .then(res => this.setState({ artikkler: res.data }))
-        .catch(error => alert("Kunne ikke hente artikler. \nError: " + error))
-    }
-
-    searchFunc(){
-        console.log("Søk klikket")
-    }
-
-    filterFunc(){
-        console.log("Filter klikket")
-    }
-
-    render() {
-        return (
-            <div>
-                <header><h1>Fagartikler</h1></header>
-                <main>
-                    <div>
-                        <NyArtikkelKnapp/>
-                        <Button>SØK</Button>
-                        <Button>FILTER</Button>
-                        <div>
-                            <ArtikkelList artikkler={this.state.artikkler}></ArtikkelList>
-                        </div> 
-                        <a href="?page=1">1</a> 
-                        <a href="?page=2">2</a>
-                        <a href="?page=3">3</a>
-                    </div>
-                </main>
-            </div>
-        )
-    }
-}
-
-export default Fagartikler
-*/

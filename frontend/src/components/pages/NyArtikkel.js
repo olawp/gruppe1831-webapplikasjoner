@@ -1,10 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
+import NyArtikkelForm from '../artikkel/NyArtikkelForm';
+
+const NyArtikkel = ( ) => {
+    return(
+        <div>
+            <header>
+                <h1>Ny artikkel</h1>
+            </header>
+            <main>
+                <NyArtikkelForm/>
+            </main>
+        </div>
+    )
+};
+
+export default NyArtikkel
+
+
+
+
+
+
+
+
+
+
+/*import React from 'react'
 import {Form, Input, Select, Button} from '../../styled/style';
 import Axios from 'axios';
 
-export class NyArtikkel extends Component {
+const NyArtikkel = () => {
 
-    state = {
+    const state = {
         display: "none",
         kategorier: [],
         forfattere: ["Navn Navnesen", "Ola Nordmann", "Kari Nordmann"],
@@ -16,21 +43,23 @@ export class NyArtikkel extends Component {
         contentIsFilled: "red"
     }
 
-    closeCategory = () => {
-        this.setState({display: "none"});
+    function closeCategory(){
+        state.display("none");
     }
 
-    openCategory = () => {
-        this.setState({display: ""});
+    function openCategory(){
+        state.display("none");
     }
 
-    componentDidMount(){
+    function componentDidMount(){
         Axios.get('http://localhost:5000/api/v1/categories')
-        .then(res => this.setState({ kategorier: res.data }))
+        .then(res => state.kategorier(res.data))
         .catch(error => alert("Artikklen ble ikke opprettet. \n Error: " + {error}))
     }
 
-    lagNyArtikkel = () => {
+    window.onload = componentDidMount;
+
+    function lagNyArtikkel(){
         let title = document.getElementById("title").value;
         let ingress = document.getElementById("ingress").value;
         let content = document.getElementById("content").value;
@@ -58,13 +87,13 @@ export class NyArtikkel extends Component {
             document.getElementById("ingress").value = "",
             document.getElementById("content").value = "",
             document.getElementById("author").value = "Navn Navnesen",
-            document.getElementById("category").value = this.state.kategorier[0].category,
+            document.getElementById("category").value = state.kategorier[0].category,
             document.getElementById("hiddenCheckbox").checked = false
         )
         .catch(error => alert("Kunne ikke opprette ny artikkel.\nError: " + error));
     }
 
-    lagNyKategori = () => {
+    function lagNyKategori(){
         let newCategory = document.getElementById("newCategory").value;
         
         Axios.post('http://localhost:5000/api/v1/categories', {
@@ -72,17 +101,17 @@ export class NyArtikkel extends Component {
         })
         .then(
             document.getElementById("newCategory").value = "",
-            this.closeCategory
+            closeCategory
         )
         .catch(error => alert("Kategorien ble ikke opprettet. \n Error: " + {error}));
     }
 
-    handleValidation(){
+    function handleValidation(){
         let formIsValid = true;
 
         if(!document.getElementById("title").value){
            formIsValid = false;
-           this.setState({titleIsFilled: "red"});
+           state.titleIsFilled("red")
            document.getElementById("titleLabel").innerHTML = "Tittel*";
         }
         else{
@@ -122,45 +151,43 @@ export class NyArtikkel extends Component {
         
    }
 
-    render() {
-
         const categories = []
 
-        for (let i = 0; i < this.state.kategorier.length; i++) {
-            categories.push(<option value={this.state.kategorier[i].category}>{this.state.kategorier[i].category}</option>)
+        for (let i = 0; i < state.kategorier.length; i++) {
+            categories.push(<option value={state.kategorier[i].category}>{state.kategorier[i].category}</option>)
         }
 
         return (
             <div>
                 <header><h1>Ny artikkel</h1></header>
                 <main>
-                <div style={{display: this.state.display}} className="nykategori">
+                <div style={state.display} className="nykategori">
                     <div className="nykategori-innhold">
                         <Form>
-                            <span onClick={this.closeCategory}>&times;</span>
+                            <span onClick={closeCategory}>&times;</span>
                             <label>Ny Kategori</label>
                             <br/>
                             <Input id="newCategory"></Input>
                             <br/>
-                            <Button type="button" onClick={this.lagNyKategori}>CREATE</Button>
+                            <Button type="button" onClick={lagNyKategori}>CREATE</Button>
                         </Form>
                     </div>
                 </div>
                     <Form encType="multipart/form-data">
-                        <label id="titleLabel" style={{color: this.state.titleIsFilled}}>Tittel*</label>
+                        <label id="titleLabel" style={state.titleIsFilled}>Tittel*</label>
                         <br/>
-                        <Input id="title" style={{border: "solid "+this.state.titleIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
+                        <Input id="title" style={{border: "solid "+state.titleIsFilled+" 1px"}} onChange={handleValidation.bind(this)} ></Input>
                         <br/>
-                        <label id="ingressLabel" style={{color: this.state.ingressIsFilled}}>Ingress*</label>
+                        <label id="ingressLabel" style={{color: state.ingressIsFilled}}>Ingress*</label>
                         <br/>
-                        <Input id="ingress" style={{border: "solid "+this.state.ingressIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
+                        <Input id="ingress" style={{border: "solid "+state.ingressIsFilled+" 1px"}} onChange={handleValidation.bind(this)} ></Input>
                         <br/>
-                        <label id="contentLabel" style={{color: this.state.contentIsFilled}}>Innhold*</label>
+                        <label id="contentLabel" style={{color: state.contentIsFilled}}>Innhold*</label>
                         <br/>
-                        <Input type="textarea" id="content" style={{border: "solid "+this.state.contentIsFilled+" 1px"}} onChange={this.handleValidation.bind(this)} ></Input>
+                        <Input type="textarea" id="content" style={{border: "solid "+state.contentIsFilled+" 1px"}} onChange={handleValidation.bind(this)} ></Input>
                         <br/>
                         <label>Innholdet skal kun være synlig for innloggede brukere:</label>
-                        <Input style={{zoom: 1.25, transform: "scale(1.25)", width: "auto", marginLeft: "5px"}} type="checkbox" id="hiddenCheckbox" onClick={this.test}></Input>
+                        <Input style={{zoom: 1.25, transform: "scale(1.25)", width: "auto", marginLeft: "5px"}} type="checkbox" id="hiddenCheckbox"></Input>
                         <br/>
                         <p style={{color: "red", fontStyle: "italic", fontSize: "10px"}} id="filled">* må være fyllt inn</p>
                         <label>Last opp artikkelbilde: </label>
@@ -171,24 +198,24 @@ export class NyArtikkel extends Component {
                         <Select id="category">
                             {categories}
                         </Select>
-                        <Button type="button" style={{backgroundColor: "green"}} onClick={this.openCategory}>LAG NY KATEGORI</Button>
+                        <Button type="button" style={{backgroundColor: "green"}} onClick={openCategory}>LAG NY KATEGORI</Button>
                         <br/>
                         <br/>
                         <label>Forfatternavn</label>
                         <br/>
                         <Select id="author">
-                            <option value={this.state.forfattere[0]}>{this.state.forfattere[0]}</option>
-                            <option value={this.state.forfattere[1]}>{this.state.forfattere[1]}</option>
-                            <option value={this.state.forfattere[2]}>{this.state.forfattere[2]}</option>
+                            <option value={state.forfattere[0]}>{state.forfattere[0]}</option>
+                            <option value={state.forfattere[1]}>{state.forfattere[1]}</option>
+                            <option value={state.forfattere[2]}>{state.forfattere[2]}</option>
                         </Select>
                         <br/>
                         <br/>
-                        <Button disabled={this.state.disabled} style={{backgroundColor: this.state.color}} type="button" onClick={this.lagNyArtikkel}>CREATE</Button>
+                        <Button disabled={state.disabled} style={{backgroundColor: state.color}} type="button" onClick={lagNyArtikkel}>CREATE</Button>
                     </Form>
                 </main>
             </div>
         )
-    }
 }
 
 export default NyArtikkel
+*/

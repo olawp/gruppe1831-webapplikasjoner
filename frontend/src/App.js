@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './App.css';
 import Routes from './components/routes/routes';
 import Style from './styled/style';
@@ -7,9 +8,9 @@ function App() {
   return (
     <Style>
       <div className="App">
-          <AuthProvider>
-            <Routes/>
-          </AuthProvider>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
       </div>
     </Style>
   );

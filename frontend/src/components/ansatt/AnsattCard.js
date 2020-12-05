@@ -1,20 +1,24 @@
-import React, { Component } from 'react'
+// eslint-disable-next-line no-unused-vars
+import React, { Component } from 'react';
 
 export class AnsattCard extends Component {
-    render() {
-        const kort = [];
+  render() {
+    const kort = [];
 
-        for(let i = 0; i < this.props.antall; i++){
-            kort.push(
-                <div>
-                    <div><p>IMAGE</p></div>
-                        <p>Ansatt AnsattNavn</p>
-                    <p>Stilling</p>
-                </div>
-            )
-        }
-        return(kort)
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < this.props.antall; i++) {
+      kort.push(
+        <div>
+          <div>
+            <p>IMAGE</p>
+          </div>
+          <p>Ansatt AnsattNavn</p>
+          <p>Stilling</p>
+        </div>
+      );
     }
+    return kort;
+  }
 }
 
-export default AnsattCard
+export default AnsattCard;

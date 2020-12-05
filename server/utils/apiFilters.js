@@ -8,12 +8,12 @@ export class ApiFilters {
     const query = { ...this.queryStr };
     const removeFields = ['q'];
     removeFields.forEach((el) => delete query[el]);
-
     let queryStr = JSON.stringify(query);
     queryStr = queryStr.replace(
-      /\b
+      /\b(gt|gte|lt|lte|in)\b/g,
+      (match) => `$${match}`
     );
-
+    
     this.query.find(query);
     return this;
   }

@@ -16,4 +16,11 @@ const imageSchema = new Schema(
   { timestamps: true }
 );
 
+imageSchema.virtual('articles', {
+  ref: 'Article',
+  localField: '_id',
+  foreignField: 'image',
+  justOne: true,
+});
+
 export default mongoose.model('Image', imageSchema);

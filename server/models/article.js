@@ -20,7 +20,8 @@ const articleSchema = new Schema(
       required: true,
     },
     category: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
+      ref: 'Category',
       required: true,
     },
     hidden: {
@@ -31,6 +32,11 @@ const articleSchema = new Schema(
     image: {
       type: mongoose.Schema.ObjectId,
       ref: 'Image',
+    },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      re: 'User',
+      required: true,
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }

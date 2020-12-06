@@ -52,7 +52,7 @@ const NyArtikkel = () => {
     const filter = document.getElementById('filter').value;
     URL += `&category=${filter}`;
     const fetchData = async () => {
-      const { data, error } = await listURL(`${URL}`);
+      const { data, error } = await list(URL);
       if (error) {
         setError(error);
       } else {
@@ -75,7 +75,8 @@ const NyArtikkel = () => {
       searchTerm = document.getElementById('searchField').value;
       URL += `&q=${searchTerm}`;
       const fetchData = async () => {
-        const { data, error } = await listURL(`${URL}`);
+        console.log(URL);
+        const { data, error } = await list(URL);
         if (error) {
           setError(error);
         } else {
@@ -89,7 +90,8 @@ const NyArtikkel = () => {
   function page() {
     URL += `&page=${this}`;
     const fetchData = async () => {
-      const { data, error } = await listURL(`${URL}`);
+      console.log(URL);
+      const { data, error } = await list(URL);
       if (error) {
         setError(error);
       } else {
@@ -121,6 +123,7 @@ const NyArtikkel = () => {
     } else {
       tittel = 'Fagartikler';
     }
+    console.log(categories);
     return (
       <div>
         <header>

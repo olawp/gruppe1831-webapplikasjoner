@@ -8,7 +8,7 @@ export const get = catchAsyncErrors(async (req, res, next) => {
   if (!contact) {
     return next(new ErrorHandler('Finner ikke kontakskjema', 404));
   }
-  res.status(201).json({success: true, data: contact });
+  res.status(201).json(contact);
 });
 
 export const create = catchAsyncErrors(async (req, res, next) => {
@@ -27,7 +27,7 @@ export const create = catchAsyncErrors(async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-  res.status(201).json({ success: true, data: contact });
+  res.status(201).json(contact);
 });
 
 export const remove = catchAsyncErrors(async (req, res, next) => {

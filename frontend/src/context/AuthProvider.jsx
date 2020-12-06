@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getUserInfo } from '../utils/authService.js';
 
@@ -23,7 +24,7 @@ const AuthProvider = ({ children }) => {
       }
     };
     fetchUserdata();
-    //console.log(user)
+    // console.log(user)
   }, [user]);
   return (
     <Provider

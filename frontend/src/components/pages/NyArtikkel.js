@@ -1,31 +1,21 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import NyArtikkelForm from '../artikkel/NyArtikkelForm';
 
-const NyArtikkel = ( ) => {
-    return(
-        <div>
-            <header>
-                <h1>Ny artikkel</h1>
-            </header>
-            <main>
-                <NyArtikkelForm/>
-            </main>
-        </div>
-    )
-};
+const NyArtikkel = () => (
+  <div>
+    <header>
+      <h1>Ny artikkel</h1>
+    </header>
+    <main>
+      <NyArtikkelForm />
+    </main>
+  </div>
+);
 
-export default NyArtikkel
+export default NyArtikkel;
 
-
-
-
-
-
-
-
-
-
-/*import React from 'react'
+/* import React from 'react'
 import {Form, Input, Select, Button} from '../../styled/style';
 import Axios from 'axios';
 

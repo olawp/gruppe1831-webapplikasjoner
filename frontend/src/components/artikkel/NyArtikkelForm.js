@@ -18,11 +18,9 @@ const NyArtikkelForm = () => {
   });
 
   const onSubmit = async (credentials) => {
-    console.log(credentials);
     const { data } = await create(credentials);
     if (!data.success) {
       setError(data.message);
-      console.log(error);
     } else {
       const artikkel = data?.user;
       setSuccess(true);

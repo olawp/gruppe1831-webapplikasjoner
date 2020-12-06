@@ -8,8 +8,10 @@ import { useForm } from 'react-hook-form';
 import { create } from '../../utils/artikkelService';
 import { list } from '../../utils/categoryService';
 import CategoryModal from './CategoryModal';
+import { useAuthContext } from '../../context/AuthProvider.jsx';
 
 const NyArtikkelForm = () => {
+  const { user } = useAuthContext();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [categories, setCategories] = useState(null);

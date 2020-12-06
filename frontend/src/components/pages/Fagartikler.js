@@ -27,7 +27,7 @@ const NyArtikkel = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await listURL(URL);
+      const { data, error } = await list(URL);
       if (error) {
         setError(error);
       } else {
@@ -122,6 +122,7 @@ const NyArtikkel = () => {
     } else {
       tittel = 'Fagartikler';
     }
+    console.log(artikkler);
     return (
       <div>
         <header>

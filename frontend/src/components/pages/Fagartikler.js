@@ -5,7 +5,7 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import { list } from '../../utils/artikkelService';
-import { list as listCategory } from '../../utils/categoryService';
+import { list as listCategory, listURL } from '../../utils/categoryService';
 import { Button, Input, Select } from '../../styled/style';
 import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 import ArtikkelList from '../artikkel/ArtikkelList';
@@ -27,7 +27,7 @@ const NyArtikkel = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await list(URL);
+      const { data, error } = await listURL(URL);
       if (error) {
         setError(error);
       } else {
@@ -53,7 +53,7 @@ const NyArtikkel = () => {
     const filter = document.getElementById('filter').value;
     URL += `&category=${filter}`;
     const fetchData = async () => {
-      const { data, error } = await list(`${URL}`);
+      const { data, error } = await listURL(`${URL}`);
       if (error) {
         setError(error);
       } else {
@@ -76,7 +76,7 @@ const NyArtikkel = () => {
       searchTerm = document.getElementById('searchField').value;
       URL += `&q=${searchTerm}`;
       const fetchData = async () => {
-        const { data, error } = await list(`${URL}`);
+        const { data, error } = await listURL(`${URL}`);
         if (error) {
           setError(error);
         } else {
@@ -90,7 +90,7 @@ const NyArtikkel = () => {
   function page() {
     URL += `&page=${this}`;
     const fetchData = async () => {
-      const { data, error } = await list(`${URL}`);
+      const { data, error } = await listURL(`${URL}`);
       if (error) {
         setError(error);
       } else {

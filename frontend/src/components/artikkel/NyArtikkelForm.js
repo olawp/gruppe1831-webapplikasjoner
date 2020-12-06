@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable spaced-comment */
 /* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
@@ -17,6 +18,7 @@ const NyArtikkelForm = () => {
   });
 
   const onSubmit = async (credentials) => {
+    console.log(credentials);
     const { data } = await create(credentials);
     if (!data.success) {
       setError(data.message);
@@ -77,24 +79,21 @@ const NyArtikkelForm = () => {
           type="textarea"
           name="content"
           ref={register({
-            required: true,
+            required: `${true} Dette feltet er påkrevd`,
           })}
         />
         <br />
-        <label htmlFor="hiddenCheckbox">
-          Innholdet skal kun være synlig for innloggede brukere:
-        </label>
-        <Input
-          style={{
-            zoom: 1.25,
-            transform: 'scale(1.25)',
-            width: 'auto',
-            marginLeft: '5px',
-          }}
-          type="checkbox"
-          id="hiddenCheckbox"
-          name="hiddenCheckbox"
-        />
+        <label htmlFor="hidden">Kun være synlig for innloggede brukere:</label>
+        <Select
+          id="hidden"
+          name="hidden"
+          ref={register({
+            required: true,
+          })}
+        >
+          <option value="false">Nei</option>
+          <option value="true">Ja</option>
+        </Select>
         <br />
         <p
           style={{ color: 'red', fontStyle: 'italic', fontSize: '10px' }}
@@ -151,3 +150,72 @@ const NyArtikkelForm = () => {
 };
 
 export default NyArtikkelForm;
+
+/*
+    function closeCategory(){
+        state.display("none");
+    }
+
+    function openCategory(){
+        state.display("none");
+    }
+
+
+    function lagNyKategori(){
+        let newCategory = document.getElementById("newCategory").value;
+        
+        Axios.post('http://localhost:5000/api/v1/categories', {
+            category: newCategory
+        })
+        .then(
+            document.getElementById("newCategory").value = "",
+            closeCategory
+        )
+        .catch(error => alert("Kategorien ble ikke opprettet. \n Error: " + {error}));
+    }
+
+    function handleValidation(){
+        let formIsValid = true;
+
+        if(!document.getElementById("title").value){
+           formIsValid = false;
+           state.titleIsFilled("red")
+           document.getElementById("titleLabel").innerHTML = "Tittel*";
+        }
+        else{
+            this.setState({titleIsFilled: "black"});
+            document.getElementById("titleLabel").innerHTML = "Tittel";
+        }
+
+        if(!document.getElementById("ingress").value){
+            formIsValid = false;
+            this.setState({ingressIsFilled: "red"});
+            document.getElementById("ingressLabel").innerHTML = "Ingress*";
+        }
+        else{
+            this.setState({ingressIsFilled: "black"});
+            document.getElementById("ingressLabel").innerHTML = "Ingress";
+        }
+
+        if(!document.getElementById("content").value){
+            formIsValid = false;
+            this.setState({contentIsFilled: "red"});
+            document.getElementById("contentLabel").innerHTML = "Innhold*";
+        }
+        else{
+            this.setState({contentIsFilled: "black"});
+            document.getElementById("contentLabel").innerHTML = "Innhold";
+        }
+
+
+        if(formIsValid){
+            this.setState({color: "green", disabled: ""});
+            document.getElementById("filled").innerHTML = "";
+        }
+        else{
+            this.setState({color: "grey", disabled: "true"});
+            document.getElementById("filled").innerHTML = "* må være fyllt inn";
+        }
+        
+   }
+*/

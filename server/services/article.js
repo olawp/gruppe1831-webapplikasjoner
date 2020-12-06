@@ -11,7 +11,7 @@ export const listArticles = async (queryStr) => {
     .filter()
     .searchByQuery();
   const articles = await filters.query;
-  const paginated = await filters.pagination().query.populate();
+  const paginated = await filters.pagination().query.populate('category');
   return {
     results: articles.length,
     totalPages: Math.ceil(articles.length / limit) || 1,

@@ -10,7 +10,7 @@ export class ArtikkelListe extends Component {
         key={artikkel._id}
         _id={artikkel._id}
         title={artikkel.title}
-        category={artikkel.category}
+        category={artikkel.category.category}
         ingress={artikkel.ingress}
         isHidden={artikkel.hidden}
       />

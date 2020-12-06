@@ -24,6 +24,10 @@ const articleSchema = new Schema(
       ref: 'Category',
       required: true,
     },
+    categoryname: {
+      type: String,
+      required: true,
+    },
     hidden: {
       type: Boolean,
       select: false,
@@ -49,5 +53,3 @@ articleSchema.index({
 const Article = mongoose.model('Article', articleSchema);
 
 export default Article;
-
-// Tittel, forfatter, innhold, dato og undertittel

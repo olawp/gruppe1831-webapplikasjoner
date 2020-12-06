@@ -9,23 +9,68 @@ import { useForm } from 'react-hook-form';
 import { create } from '../../utils/artikkelService';
 
 const NyArtikkelForm = () => {
-  const [closeBtnState, setCloseBtnState] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [titleIsFilled, setTitleIsFilled] = useState('red');
+  const [ingressIsFilled, setIngressIsFilled] = useState('red');
+  const [contentIsFilled, setContentIsFilled] = useState('red');
+  const [submitButtonActive, setSubmitButtonActive] = useState(false);
+  const [submitButtonColor, setSubmitButtonColor] = useState('grey');
 
   const { register, handleSubmit, formState } = useForm({
     mode: 'onBlur',
   });
 
   const onSubmit = async (credentials) => {
+    console.log(credentials);
     const { data } = await create(credentials);
     if (!data.success) {
       setError(data.message);
     } else {
-      const artikkel = data?.user;
       setSuccess(true);
     }
   };
+
+  function handleValidation() {
+    let isValid = true;
+
+    if (!document.getElementById('title').value) {
+      isValid = false;
+      setTitleIsFilled('red');
+      document.getElementById('titleLabel').innerHTML = 'Tittel*';
+    } else {
+      setTitleIsFilled('black');
+      document.getElementById('titleLabel').innerHTML = 'Tittel';
+    }
+
+    if (!document.getElementById('ingress').value) {
+      isValid = false;
+      setIngressIsFilled('red');
+      document.getElementById('ingressLabel').innerHTML = 'Ingress*';
+    } else {
+      setIngressIsFilled('black');
+      document.getElementById('ingressLabel').innerHTML = 'Ingress';
+    }
+
+    if (!document.getElementById('content').value) {
+      isValid = false;
+      setContentIsFilled('red');
+      document.getElementById('contentLabel').innerHTML = 'Innhold*';
+    } else {
+      setContentIsFilled('black');
+      document.getElementById('contentLabel').innerHTML = 'Innhold';
+    }
+
+    if (isValid) {
+      setSubmitButtonColor('green');
+      setSubmitButtonActive(false);
+      document.getElementById('filled').innerHTML = '';
+    } else {
+      setSubmitButtonColor('grey');
+      setSubmitButtonActive(true);
+      document.getElementById('filled').innerHTML = '* må være fyllt inn';
+    }
+  }
 
   return (
     <div>
@@ -42,7 +87,7 @@ const NyArtikkelForm = () => {
                 </div>
             </div>*/}
       <Form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
-        <label id="titleLabel" htmlFor="title">
+        <label id="titleLabel" htmlFor="title" style={{ color: titleIsFilled }}>
           Tittel*
         </label>
         <br />
@@ -53,9 +98,15 @@ const NyArtikkelForm = () => {
           ref={register({
             required: true,
           })}
+          onChange={handleValidation}
+          style={{ borderColor: titleIsFilled }}
         />
         <br />
-        <label id="ingressLabel" htmlFor="ingress">
+        <label
+          id="ingressLabel"
+          htmlFor="ingress"
+          style={{ color: ingressIsFilled }}
+        >
           Ingress*
         </label>
         <br />
@@ -66,9 +117,15 @@ const NyArtikkelForm = () => {
           ref={register({
             required: true,
           })}
+          onChange={handleValidation}
+          style={{ borderColor: ingressIsFilled }}
         />
         <br />
-        <label id="contentLabel" htmlFor="content">
+        <label
+          id="contentLabel"
+          htmlFor="content"
+          style={{ color: contentIsFilled }}
+        >
           Innhold*
         </label>
         <br />
@@ -79,6 +136,8 @@ const NyArtikkelForm = () => {
           ref={register({
             required: `${true} Dette feltet er påkrevd`,
           })}
+          onChange={handleValidation}
+          style={{ borderColor: contentIsFilled }}
         />
         <br />
         <label htmlFor="hidden">Kun være synlig for innloggede brukere:</label>
@@ -139,7 +198,12 @@ const NyArtikkelForm = () => {
         </Select>
         <br />
         <br />
-        <Button isLoading={formState.isSubmitting} type="submit">
+        <Button
+          style={{ backgroundColor: submitButtonColor }}
+          disabled={submitButtonActive}
+          isLoading={formState.isSubmitting}
+          type="submit"
+        >
           CREATE
         </Button>
       </Form>
@@ -172,48 +236,5 @@ export default NyArtikkelForm;
         .catch(error => alert("Kategorien ble ikke opprettet. \n Error: " + {error}));
     }
 
-    function handleValidation(){
-        let formIsValid = true;
-
-        if(!document.getElementById("title").value){
-           formIsValid = false;
-           state.titleIsFilled("red")
-           document.getElementById("titleLabel").innerHTML = "Tittel*";
-        }
-        else{
-            this.setState({titleIsFilled: "black"});
-            document.getElementById("titleLabel").innerHTML = "Tittel";
-        }
-
-        if(!document.getElementById("ingress").value){
-            formIsValid = false;
-            this.setState({ingressIsFilled: "red"});
-            document.getElementById("ingressLabel").innerHTML = "Ingress*";
-        }
-        else{
-            this.setState({ingressIsFilled: "black"});
-            document.getElementById("ingressLabel").innerHTML = "Ingress";
-        }
-
-        if(!document.getElementById("content").value){
-            formIsValid = false;
-            this.setState({contentIsFilled: "red"});
-            document.getElementById("contentLabel").innerHTML = "Innhold*";
-        }
-        else{
-            this.setState({contentIsFilled: "black"});
-            document.getElementById("contentLabel").innerHTML = "Innhold";
-        }
-
-
-        if(formIsValid){
-            this.setState({color: "green", disabled: ""});
-            document.getElementById("filled").innerHTML = "";
-        }
-        else{
-            this.setState({color: "grey", disabled: "true"});
-            document.getElementById("filled").innerHTML = "* må være fyllt inn";
-        }
-        
-   }
+    
 */

@@ -5,9 +5,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Button } from '../../styled/style';
 import { useForm } from 'react-hook-form';
-//import {useHistory} from 'react-router-dom';
 import { create } from '../../utils/artikkelService';
 import { list } from '../../utils/categoryService';
+import CategoryModal from './CategoryModal';
 
 const NyArtikkelForm = () => {
   const [error, setError] = useState(null);
@@ -18,13 +18,13 @@ const NyArtikkelForm = () => {
   const [contentIsFilled, setContentIsFilled] = useState('red');
   const [submitButtonActive, setSubmitButtonActive] = useState(false);
   const [submitButtonColor, setSubmitButtonColor] = useState('grey');
+  const [categoryModal, setCategoryModal] = useState('none');
 
   const { register, handleSubmit, formState } = useForm({
     mode: 'onBlur',
   });
 
   const onSubmit = async (credentials) => {
-    console.log(credentials);
     const { data } = await create(credentials);
     if (!data.success) {
       setError(data.message);
@@ -41,11 +41,24 @@ const NyArtikkelForm = () => {
       } else {
         setCategories(data.data);
         setError(null);
-        console.log(data);
       }
     };
     fetchData();
   }, []);
+
+  function updateCategory() {
+    const fetchData = async () => {
+      const { data } = await list('/categories'); // Endre url senere
+      if (!data.success) {
+        setError(error);
+      } else {
+        setCategories(data.data);
+        setError(null);
+      }
+    };
+    fetchData();
+  }
+
   function handleValidation() {
     let isValid = true;
 
@@ -87,20 +100,19 @@ const NyArtikkelForm = () => {
     }
   }
 
+  function closeCategory() {
+    setCategoryModal('none');
+  }
+
+  function openCategory() {
+    setCategoryModal('');
+  }
+
   return (
     <div>
-      {/*<div className="nykategori">
-                <div className="nykategori-innhold">
-                    <Form>
-                        <span >&times;</span>
-                        <label>Ny Kategori</label>
-                        <br/>
-                        <Input id="newCategory"></Input>
-                        <br/>
-                        <Button type="button" >CREATE</Button>
-                    </Form>
-                </div>
-            </div>*/}
+      <div className="nykategori" style={{ display: categoryModal }}>
+        <CategoryModal close={closeCategory} updateCategory={updateCategory} />
+      </div>
       <Form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
         <label id="titleLabel" htmlFor="title" style={{ color: titleIsFilled }}>
           Tittel*
@@ -195,7 +207,11 @@ const NyArtikkelForm = () => {
               <option value={category._id}>{category.category}</option>
             ))}
         </Select>
-        <Button type="button" style={{ backgroundColor: 'green' }}>
+        <Button
+          type="button"
+          style={{ backgroundColor: 'green' }}
+          onClick={openCategory}
+        >
           LAG NY KATEGORI
         </Button>
         <br />
@@ -229,29 +245,3 @@ const NyArtikkelForm = () => {
 };
 
 export default NyArtikkelForm;
-
-/*
-    function closeCategory(){
-        state.display("none");
-    }
-
-    function openCategory(){
-        state.display("none");
-    }
-
-
-    function lagNyKategori(){
-        let newCategory = document.getElementById("newCategory").value;
-        
-        Axios.post('http://localhost:5000/api/v1/categories', {
-            category: newCategory
-        })
-        .then(
-            document.getElementById("newCategory").value = "",
-            closeCategory
-        )
-        .catch(error => alert("Kategorien ble ikke opprettet. \n Error: " + {error}));
-    }
-
-    
-*/

@@ -1,4 +1,5 @@
 import express from 'express';
+// eslint-disable-next-line import/named
 import { authController } from '../controllers/index.js';
 import { isAuthenticated } from '../middleware/auth.js';
 

@@ -1,4 +1,4 @@
-import ErrorHandler from "../utils/errorHandler.js";
+import ErrorHandler from '../utils/errorHandler.js';
 
 export default (err, res) => {
   res.status(err.statuscode).json({

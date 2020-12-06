@@ -55,9 +55,8 @@ userSchema.virtual('articles', {
   ref: 'Article',
   localField: '_id',
   foreignField: 'user',
-  justOne: true,
+  justOne: false,
 });
-
 
 const User = mongoose.model('User', userSchema);
 

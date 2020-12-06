@@ -1,6 +1,6 @@
 import http from './http';
 
-const API_URL = '/articles?sort=category';
+const API_URL = '/articles';
 
 export const list = async (url) => {
   try {

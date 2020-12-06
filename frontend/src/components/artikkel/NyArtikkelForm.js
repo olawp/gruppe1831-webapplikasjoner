@@ -35,7 +35,7 @@ const NyArtikkelForm = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await list('/categories'); // Endre url senere
+      const { data } = await list(); // Endre url senere
       if (!data.success) {
         setError(error);
       } else {

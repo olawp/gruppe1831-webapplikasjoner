@@ -2,16 +2,17 @@
 /* eslint-disable spaced-comment */
 /* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Button } from '../../styled/style';
 import { useForm } from 'react-hook-form';
 //import {useHistory} from 'react-router-dom';
-import { create } from '../../utils/artikkelService';
+import { create, list } from '../../utils/artikkelService';
 
 const NyArtikkelForm = () => {
   const [closeBtnState, setCloseBtnState] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [categories, setCategories] = useState(null);
 
   const { register, handleSubmit, formState } = useForm({
     mode: 'onBlur',
@@ -26,6 +27,19 @@ const NyArtikkelForm = () => {
       setSuccess(true);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await list('/articles'); // Endre url senere
+      if (!data.success) {
+        setError(error);
+      } else {
+        setCategories(data.data);
+        setError(null);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>

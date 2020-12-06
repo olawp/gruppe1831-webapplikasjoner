@@ -50,7 +50,14 @@ userSchema.methods.comparePassword = async function (password) {
   return result;
 };
 
-// Brått en ref her??
+
+userSchema.virtual('articles', {
+  ref: 'Article',
+  localField: '_id',
+  foreignField: 'user',
+  justOne: true,
+});
+
 
 const User = mongoose.model('User', userSchema);
 

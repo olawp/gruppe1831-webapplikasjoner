@@ -1,5 +1,6 @@
 import express from 'express';
-import  { imageController } from '../controllers/index.js';
+// eslint-disable-next-line import/named
+import { imageController } from '../controllers/index.js';
 import { upload } from '../middleware/image.js';
 
 const router = express.Router();

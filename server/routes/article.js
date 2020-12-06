@@ -1,4 +1,5 @@
 import express from 'express';
+// eslint-disable-next-line import/named
 import { articleController } from '../controllers/index.js';
 
 const router = express.Router();

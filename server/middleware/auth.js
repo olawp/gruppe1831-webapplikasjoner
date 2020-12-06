@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+// eslint-disable-next-line import/named
 import { userService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from './catchAsync.js';

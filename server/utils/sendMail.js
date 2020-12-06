@@ -18,5 +18,4 @@ export const sendMail = async (options) => {
   };
 
   await transporter.sendMail(message);
-
 };

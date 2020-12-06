@@ -50,7 +50,6 @@ userSchema.methods.comparePassword = async function (password) {
   return result;
 };
 
-
 userSchema.virtual('articles', {
   ref: 'Article',
   localField: '_id',

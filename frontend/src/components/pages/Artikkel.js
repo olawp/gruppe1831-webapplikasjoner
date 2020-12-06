@@ -66,7 +66,10 @@ export class Artikkel extends Component {
         .split('/')[4]
         .toString()}`
     )
-      .then((window.location.href = 'http://localhost:3000/fagartikler'))
+      .then(
+        alert('Artikklen ble slettet'),
+        (window.location.href = 'http://localhost:3000/fagartikler')
+      )
       .catch((error) =>
         alert(`Artikklen ble ikke slettet. \n Error: ${{ error }}`)
       );

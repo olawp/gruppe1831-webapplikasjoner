@@ -133,9 +133,9 @@ const NyArtikkelForm = () => {
             required: true,
           })}
         >
-          <option value="Navn Navnesen">Navn Navnesen</option>
-          <option value="Ola Nordmann">Ola Nordmann</option>
-          <option value="Kari Nordmann">Kari Nordmann</option>
+          <option value="Lars Larsen">Lars Larsen</option>
+          <option value="Gunn Gundersen">Gunn Gundersen</option>
+          <option value="Simen Simensen">Simen Simensen</option>
         </Select>
         <br />
         <br />

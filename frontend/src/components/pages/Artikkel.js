@@ -20,7 +20,7 @@ export class Artikkel extends Component {
   state = {
     artikkel: [],
     kategorier: [],
-    forfattere: ['Navn Navnesen', 'Ola Nordmann', 'Kari Nordmann'],
+    forfattere: ['Lars Larsen', 'Gunn Gundersen', 'Simen Simensen'],
     display: 'none',
   };
 

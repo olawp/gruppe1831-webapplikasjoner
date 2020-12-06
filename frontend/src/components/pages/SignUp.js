@@ -1,69 +1,103 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
-import Axios from 'axios';
+/* eslint-disable no-undef */
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Form, Input, Button } from '../../styled/style';
+import { signup } from '../../utils/signUpService.js';
+import { useAuthContext } from '../../context/AuthProvider.jsx';
 
-// TODO: Add check so that email is a valid mail
-// TODO: Add check so that password is a minimum of 3 characters and one number
-// TODO: Add check so that name field != empty
+const SignUp = () => {
+  const [/* error, */ setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const { setUser, isLoggedIn } = useAuthContext();
+  const history = useHistory();
+  const { state } = useLocation();
 
-export class SignUp extends Component {
-  submitClicked = () => {
+  const { register, handleSubmit } = useForm({
+    mode: 'onBlur',
+  });
+
+  useEffect(() => {
+    if (isLoggedIn && state) {
+      history.push(state.from.pathname);
+    }
+  }, [history, isLoggedIn, state]);
+
+  const onSubmit = async (credentials) => {
     if (
       document.getElementById('password').value ===
-      document.getElementById('passwordConfirm').value
+      document.getElementById('confirmPassword').value
     ) {
-      Axios.post('http://localhost:5000/api/v1/users', {
-        name: document.getElementById('name').value,
-        email: document.getElementById('mail').value,
-        password: document.getElementById('password').value,
-      })
-        .then(
-          alert('Du er nå registrert'),
-          (window.location.href = 'http://localhost:3000/logginn')
-        )
-        .catch((error) =>
-          alert(`Kunne ikke opprette ny bruker.\nError: ${error}`)
-        );
+      const { data } = await signup(credentials);
+      if (data.success) {
+        setError(data.message);
+      } else {
+        setSuccess(true);
+        alert('Du er nå registrert, vennligst logg inn');
+        history.push('/');
+      }
     } else {
       alert('Passordene stemmer ikke overens');
     }
   };
 
-  render() {
-    return (
+  return (
+    <>
       <div>
         <header>
           <h1>Registrer Deg</h1>
         </header>
         <main>
-          <Form>
-            <label>Ditt navn*:</label>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="name">Name*:</label>
             <br />
-            <Input type="text" id="name"></Input>
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              ref={register({
+                required: true,
+              })}
+            />
             <br />
-            <label>Din E-post*:</label>
+            <label htmlFor="email">E-mail*:</label>
             <br />
-            <Input type="email" id="mail"></Input>
+            <Input
+              type="email"
+              id="email"
+              name="email"
+              ref={register({
+                required: true,
+              })}
+            />
             <br />
-            <label>Ditt Passord*:</label>
+            <label htmlFor="password">Passord*:</label>
             <br />
-            <Input type="password" id="password"></Input>
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              ref={register({
+                required: true,
+                minLength: 3,
+              })}
+            />
             <br />
-            <label>Bekreft Passord*:</label>
+            <label htmlFor="confirmPassword">Bekreft Passord:</label>
             <br />
-            <Input type="password" id="passwordConfirm"></Input>
+            <Input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
             <br />
-            <Button type="button" onClick={this.submitClicked}>
-              Send
-            </Button>
+            <Button type="submit">Registrer Deg</Button>
           </Form>
-          <p>* = påkrevd</p>
         </main>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default SignUp;

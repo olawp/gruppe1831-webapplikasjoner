@@ -8,7 +8,7 @@ import { login } from '../../utils/authService.js';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
 const LoggInn = () => {
-  const [/* error, */ setError] = useState(null);
+  const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const { setUser, isLoggedIn } = useAuthContext();
   const history = useHistory();

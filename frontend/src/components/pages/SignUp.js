@@ -40,9 +40,6 @@ const SignUp = () => {
     ) {
       alert('Passord må minst ha 3 bokstaver og ett tall');
     } else if (!isEmail.test(email)) {
-      console.log(email);
-      console.log(isEmail);
-      console.log(isEmail.test(email));
       alert('Epost må være gyldig');
     } else if (
       document.getElementById('password').value ===

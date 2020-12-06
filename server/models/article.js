@@ -25,7 +25,8 @@ const articleSchema = new Schema(
     },
     hidden: {
       type: Boolean,
-      required: true,
+      select: false,
+      default: false,
     },
     image: {
       type: mongoose.Schema.ObjectId,

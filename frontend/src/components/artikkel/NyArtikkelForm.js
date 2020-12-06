@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable spaced-comment */
 /* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
@@ -17,6 +18,7 @@ const NyArtikkelForm = () => {
   });
 
   const onSubmit = async (credentials) => {
+    console.log(credentials);
     const { data } = await create(credentials);
     if (!data.success) {
       setError(data.message);
@@ -77,24 +79,21 @@ const NyArtikkelForm = () => {
           type="textarea"
           name="content"
           ref={register({
-            required: true,
+            required: `${true} Dette feltet er påkrevd`,
           })}
         />
         <br />
-        <label htmlFor="hiddenCheckbox">
-          Innholdet skal kun være synlig for innloggede brukere:
-        </label>
-        <Input
-          style={{
-            zoom: 1.25,
-            transform: 'scale(1.25)',
-            width: 'auto',
-            marginLeft: '5px',
-          }}
-          type="checkbox"
-          id="hiddenCheckbox"
-          name="hiddenCheckbox"
-        />
+        <label htmlFor="hidden">Kun være synlig for innloggede brukere:</label>
+        <Select
+          id="hidden"
+          name="hidden"
+          ref={register({
+            required: true,
+          })}
+        >
+          <option value="false">Nei</option>
+          <option value="true">Ja</option>
+        </Select>
         <br />
         <p
           style={{ color: 'red', fontStyle: 'italic', fontSize: '10px' }}

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
@@ -25,7 +26,25 @@ const SignUp = () => {
   }, [history, isLoggedIn, state]);
 
   const onSubmit = async (credentials) => {
+    // eslint-disable-next-line no-constant-condition
+    const hasNumber = new RegExp('/[0-9]/g');
+    // eslint-disable-next-line no-invalid-regexp
+    const isEmail = new RegExp(
+      '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
+    );
+    const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
     if (
+      !hasNumber.test(password) &&
+      password.replace(hasNumber, '').length === 3
+    ) {
+      alert('Passord må minst ha 3 bokstaver og ett tall');
+    } else if (!isEmail.test(email)) {
+      console.log(email);
+      console.log(isEmail);
+      console.log(isEmail.test(email));
+      alert('Epost må være gyldig');
+    } else if (
       document.getElementById('password').value ===
       document.getElementById('confirmPassword').value
     ) {

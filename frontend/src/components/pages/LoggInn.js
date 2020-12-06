@@ -8,8 +8,8 @@ import { login } from '../../utils/authService.js';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
 const LoggInn = () => {
-  const [setError] = useState(null);
-  const [, /* success */ setSuccess] = useState(false);
+  const [/* error, */ setError] = useState(null);
+  const [success, setSuccess] = useState(false);
   const { setUser, isLoggedIn } = useAuthContext();
   const history = useHistory();
   const { state } = useLocation();
@@ -48,7 +48,7 @@ const LoggInn = () => {
         </header>
         <main>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="email">E-mail:</label>
+            <label htmlFor="email">E-mail*:</label>
             <br />
             <Input
               type="email"
@@ -59,7 +59,7 @@ const LoggInn = () => {
               })}
             />
             <br />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Passord*:</label>
             <br />
             <Input
               type="password"

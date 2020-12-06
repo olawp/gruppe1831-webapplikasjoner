@@ -39,8 +39,7 @@ const NyArtikkel = () => {
       if (error) {
         setError(error);
       } else {
-        setKategorier(data);
-        console.log(data);
+        setKategorier(data.data);
       }
     };
     fetchData();
@@ -122,7 +121,6 @@ const NyArtikkel = () => {
     } else {
       tittel = 'Fagartikler';
     }
-    console.log(artikkler);
     return (
       <div>
         <header>
@@ -141,7 +139,14 @@ const NyArtikkel = () => {
               />
               <Button onClick={search}>SØK</Button>
               <br />
-              <Select id="filter">{categories}</Select>
+              <Select id="filter">
+                {kategorier &&
+                  kategorier.map((kategori) => (
+                    <option value={kategori.category}>
+                      {kategori.category}
+                    </option>
+                  ))}
+              </Select>
               <Button onClick={filter}>FILTRER KATEGORI</Button>
             </div>
             <div>

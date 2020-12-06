@@ -40,6 +40,7 @@ const NyArtikkel = () => {
         setError(error);
       } else {
         setKategorier(data);
+        console.log(data);
       }
     };
     fetchData();

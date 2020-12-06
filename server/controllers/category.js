@@ -7,15 +7,15 @@ export const get = catchAsyncErrors(async (req, res, next) => {
   if (!category) {
     return next(new ErrorHandler('Finner ikke artikkel', 404));
   }
-  res.status(201).json(category);
+  res.status(201).json({ success: true, data: category });
 });
 
 export const list = catchAsyncErrors(async (req, res, next) => {
   const category = await categoryService.listCategories();
-  res.status(200).json(category);
+  res.status(200).json({ success: true, data: category });
 });
 
 export const create = catchAsyncErrors(async (req, res, next) => {
   const category = await categoryService.createCategory(req.body);
-  res.status(201).json(category);
+  res.status(201).json({ success: true, data: category });
 });

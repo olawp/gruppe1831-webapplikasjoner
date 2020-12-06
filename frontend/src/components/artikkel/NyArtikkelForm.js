@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Button } from '../../styled/style';
 import { useForm } from 'react-hook-form';
 //import {useHistory} from 'react-router-dom';
-import { create, list } from '../../utils/artikkelService';
+import { create } from '../../utils/artikkelService';
+import { list } from '../../utils/categoryService';
 
 const NyArtikkelForm = () => {
   const [error, setError] = useState(null);
@@ -34,12 +35,13 @@ const NyArtikkelForm = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await list('/articles'); // Endre url senere
+      const { data } = await list('/categories'); // Endre url senere
       if (!data.success) {
         setError(error);
       } else {
         setCategories(data.data);
         setError(null);
+        console.log(data);
       }
     };
     fetchData();
@@ -188,8 +190,10 @@ const NyArtikkelForm = () => {
             required: true,
           })}
         >
-          <option value="Bad">Bad</option>
-          <option value="Kjøkken">Kjøkken</option>
+          {categories &&
+            categories.map((category) => (
+              <option value={category._id}>{category.category}</option>
+            ))}
         </Select>
         <Button type="button" style={{ backgroundColor: 'green' }}>
           LAG NY KATEGORI

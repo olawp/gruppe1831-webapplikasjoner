@@ -4,16 +4,6 @@ export class ApiFilters {
     this.queryStr = queryStr;
   }
 
-  sort() {
-    if (this.queryStr.sort) {
-      const sortBy = this.queryStr.sort.split(',').join(' ');
-      this.query.sort(sortBy);
-    } else {
-      this.query = this.query.sort('-updated');
-    }
-    return this;
-  }
-
   filter() {
     const query = { ...this.queryStr };
     const removeFields = ['q', 'limit', 'page'];

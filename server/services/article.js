@@ -8,7 +8,6 @@ export const getArticleById = async (id) => Article.findById(id);
 export const listArticles = async (queryStr) => {
   const { page, limit } = queryStr;
   const filters = new ApiFilters(Article.find(), queryStr)
-    .sort()
     .filter()
     .searchByQuery();
   const articles = await filters.query;

@@ -13,6 +13,8 @@ export class ApiFilters {
       /\b(gt|gte|lt|lte|in)\b/g,
       (match) => `$${match}`
     );
+    // eslint-disable-next-line no-undef
+    console.log(query);
     this.query.find(query);
     return this;
   }

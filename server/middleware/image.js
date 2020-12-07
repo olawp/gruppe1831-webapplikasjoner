@@ -2,12 +2,12 @@ import multer from 'multer';
 import ErrorHandler from '../utils/errorHandler.js';
 
 // Bestemmer hvilke filtyper som er lovlig å laste opp
-function allowedFileTypes(req, file, cb) {
-  const fileTypes = /\.(jpeg|jpg|png)$/;
-  if (!file.originalname.match(fileTypes)) {
+function fileFilter(req, file, cb) {
+  const filetypes = /\.(jpeg|jpg|png)$/;
+  if (!file.originalname.match(filetypes)) {
     return cb(
       new ErrorHandler(
-        'Kan kun laste opp bildefiler av typen jpeg, jpg eller png',
+        'Kun bildefiler av typen jpeg, jpg, og png er tilatt',
         400
       )
     );
@@ -17,6 +17,9 @@ function allowedFileTypes(req, file, cb) {
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
+    cb(null, './public/images');
+  },
+  filename(req, file, cb) {
     cb(null, `custom_value_${file.originalname}`);
   },
 });
@@ -25,5 +28,5 @@ const storage = multer.diskStorage({
 export const upload = multer({
   storage,
   limits: { fileSize: 5000000 },
-  allowedFileTypes,
+  fileFilter,
 }).single('image');

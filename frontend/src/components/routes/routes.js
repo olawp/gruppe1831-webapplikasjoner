@@ -15,6 +15,7 @@ import NyArtikkel from '../pages/NyArtikkel';
 import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import { useAuthContext } from '../../context/AuthProvider';
+import NoMatch from '../NoMatch';
 
 const AdminRoutes = ({ children, ...rest }) => {
   const { isLoggedIn, isAdmin, isLoading } = useAuthContext();
@@ -64,6 +65,9 @@ const routes = () => (
         <AdminRoutes path="/nyartikkel">
           <NyArtikkel />
         </AdminRoutes>
+        <Route path="*">
+          <NoMatch />
+        </Route>
       </Switch>
     </Router>
     <Footer />

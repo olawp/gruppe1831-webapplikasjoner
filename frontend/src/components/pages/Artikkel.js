@@ -27,6 +27,7 @@ export class Artikkel extends Component {
     kategoriID: '',
     categoryModal: 'none',
     image: '',
+    loadedOnce: false,
   };
 
   componentDidMount() {
@@ -180,9 +181,12 @@ export class Artikkel extends Component {
       });
     }
 
-    console.log(this.state.image.data);
-
-    // this.getImage(); COMMENT THIS OUT AND SHIT WILL HIT THE FAN
+    if (this.state.artikkel.image !== undefined) {
+      if (!this.state.loadedOnce) {
+        this.getImage();
+        this.setState({ loadedOnce: true });
+      }
+    }
 
     // console.log(this.state.image);
 
@@ -190,8 +194,6 @@ export class Artikkel extends Component {
       const string = this.state.image.data.image.file_path.split('\\')[2];
       this.setState({ image: string });
     }
-
-    console.log(this.state.artikkel.image);
 
     return (
       <div>

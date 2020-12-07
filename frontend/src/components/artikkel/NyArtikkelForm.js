@@ -10,6 +10,7 @@ import { list } from '../../utils/categoryService';
 import CategoryModal from './CategoryModal';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 import { useHistory, useLocation } from 'react-router-dom';
+import { upload } from '../../utils/imageService';
 
 const NyArtikkelForm = () => {
   const { user } = useAuthContext();
@@ -24,10 +25,29 @@ const NyArtikkelForm = () => {
   const [categoryModal, setCategoryModal] = useState('none');
   const history = useHistory();
   const { state } = useLocation();
+  const [file, setFile] = useState();
+  const [src, setSrc] = useState();
+  const [imageId, setImageId] = useState(null);
+  // let imageId;
 
   const { register, handleSubmit, formState } = useForm({
     mode: 'onBlur',
   });
+
+  const handleImageSubmit = async (image) => {
+    console.log(image);
+
+    const { data } = await upload(image);
+    console.log(data);
+    if (!data.success) {
+      setError(data.message);
+    } else {
+      setImageId(data?.data?._id);
+      setSuccess(true);
+      setError(null);
+    }
+    console.log(imageId);
+  };
 
   useEffect(() => {
     if (state) {
@@ -36,16 +56,32 @@ const NyArtikkelForm = () => {
   }, [history, state]);
 
   const onSubmit = async (credentials) => {
-    let data = {
-      title: credentials.title,
-      hidden: credentials.hidden,
-      ingress: credentials.ingress,
-      content: credentials.content,
-      category: credentials.category,
-      author: credentials.author,
-      user: credentials.user,
-      categoryid: credentials.category,
-    };
+    let data;
+
+    if (imageId === null) {
+      data = {
+        title: credentials.title,
+        hidden: credentials.hidden,
+        ingress: credentials.ingress,
+        content: credentials.content,
+        category: credentials.category,
+        author: credentials.author,
+        user: credentials.user,
+        categoryid: credentials.category,
+      };
+    } else {
+      data = {
+        title: credentials.title,
+        hidden: credentials.hidden,
+        ingress: credentials.ingress,
+        content: credentials.content,
+        category: credentials.category,
+        author: credentials.author,
+        user: credentials.user,
+        categoryid: credentials.category,
+        image: imageId,
+      };
+    }
     data = await create(data);
     if (!data.success) {
       setError(data.message);
@@ -135,7 +171,7 @@ const NyArtikkelForm = () => {
       <div className="nykategori" style={{ display: categoryModal }}>
         <CategoryModal close={closeCategory} updateCategory={updateCategory} />
       </div>
-      <Form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <label id="titleLabel" htmlFor="title" style={{ color: titleIsFilled }}>
           Tittel*
         </label>
@@ -207,13 +243,20 @@ const NyArtikkelForm = () => {
         >
           * må være fyllt inn
         </p>
-        <label>Last opp artikkelbilde: </label>
+        <label htmlFor="image">Last opp artikkelbilde: </label>
         <Input
           style={{ width: 'auto' }}
           type="file"
-          id="bilde"
+          id="image"
+          name="image"
           accept=".jpeg,.jpg,.png"
+          onChange={(event) => {
+            console.log(event);
+            const imageFile = event.target.files[0];
+            handleImageSubmit(imageFile);
+          }}
         />
+
         <br />
         <label htmlFor="category">Kategori</label>
         <br />

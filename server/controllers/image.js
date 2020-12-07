@@ -1,4 +1,3 @@
-import path from 'path';
 // eslint-disable-next-line import/named
 import { imageService } from '../services/index.js';
 import catchAsyncErrors from '../middleware/catchAsync.js';

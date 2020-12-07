@@ -54,17 +54,11 @@ export class Artikkel extends Component {
       .catch((error) =>
         alert(`Kategorier ble ikke hentet ordentlig. \n Error: ${error}`)
       );
-    this.getImage();
-  }
-
-  getImage() {
-    if (this.state.artikkel.image !== undefined) {
+    if (this.state.artikkel.image === undefined) {
       Axios.get(
         `http://localhost:5000/api/v1/download/${this.state.artikkel.image}`
       )
-        .then((res) => {
-          this.setState({ image: res });
-        })
+        .then((res) => this.setState({ image: res.data }))
         .catch((error) => console.log(error));
     }
   }
@@ -183,7 +177,12 @@ export class Artikkel extends Component {
       });
     }
 
-    console.log(this.state.image);
+    if (this.state.image.data !== undefined) {
+      const string = this.state.image.data.image.file_path.split('\\')[2];
+      this.setState({ image: string });
+    }
+
+    console.log(this.state.artikkel.image);
 
     return (
       <div>
@@ -269,7 +268,7 @@ export class Artikkel extends Component {
         </div>
         <header
           style={{
-            backgroundImage: `url()`,
+            backgroundImage: `url(http://localhost:5000/images/${this.state.image})`,
           }}
         >
           <h1 id="tittel">{this.state.artikkel.title}</h1>

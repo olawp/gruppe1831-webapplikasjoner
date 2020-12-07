@@ -10,6 +10,10 @@ import {
 import { useAuthContext } from '../../context/AuthProvider';
 
 const ArtikkelCard = (props) => {
+  const limitedIngress = props.ingress
+    .substring(0, 150)
+    .concat('... (klikk for å lese mer) ');
+  console.log(limitedIngress);
   const { isLoggedIn } = useAuthContext();
   if (!isLoggedIn && props.isHidden === true) {
     return null;
@@ -20,7 +24,7 @@ const ArtikkelCard = (props) => {
         <a href={`/artikkel/${props._id}`}>
           <ArticleTitle>{props.title}</ArticleTitle>
           <Category>{props.category}</Category>
-          <SmallContent>{props.ingress}</SmallContent>
+          <SmallContent>{limitedIngress}</SmallContent>
         </a>
       </Article>
     );
@@ -30,7 +34,7 @@ const ArtikkelCard = (props) => {
         <a href={`/artikkel/${props._id}`}>
           <ArticleTitle>{props.title}</ArticleTitle>
           <Category>{props.category}</Category>
-          <SmallContent>{props.ingress}</SmallContent>
+          <SmallContent>{limitedIngress}</SmallContent>
         </a>
       </Article>
     );

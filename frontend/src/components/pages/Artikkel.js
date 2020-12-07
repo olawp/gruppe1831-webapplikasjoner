@@ -91,6 +91,7 @@ export class Artikkel extends Component {
         category: document.getElementById('category').value,
         author: document.getElementById('author').value,
         hidden: document.getElementById('hiddenCheckbox').checked,
+        categoryid: document.getElementById('category').value,
       }
     )
       .then(

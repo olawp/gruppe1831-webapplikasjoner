@@ -54,7 +54,10 @@ export class Artikkel extends Component {
       .catch((error) =>
         alert(`Kategorier ble ikke hentet ordentlig. \n Error: ${error}`)
       );
-    if (this.state.artikkel.image === undefined) {
+  }
+
+  getImage() {
+    if (this.state.artikkel.image !== undefined) {
       Axios.get(
         `http://localhost:5000/api/v1/download/${this.state.artikkel.image}`
       )
@@ -176,6 +179,12 @@ export class Artikkel extends Component {
         }
       });
     }
+
+    console.log(this.state.image.data);
+
+    // this.getImage(); COMMENT THIS OUT AND SHIT WILL HIT THE FAN
+
+    // console.log(this.state.image);
 
     if (this.state.image.data !== undefined) {
       const string = this.state.image.data.image.file_path.split('\\')[2];

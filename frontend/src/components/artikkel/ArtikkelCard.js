@@ -13,7 +13,6 @@ const ArtikkelCard = (props) => {
   const limitedIngress = props.ingress
     .substring(0, 150)
     .concat('... (klikk for å lese mer) ');
-  console.log(limitedIngress);
   const { isLoggedIn } = useAuthContext();
   if (!isLoggedIn && props.isHidden === true) {
     return null;

@@ -27,7 +27,18 @@ const NyArtikkelForm = () => {
   });
 
   const onSubmit = async (credentials) => {
-    const { data } = await create(credentials);
+    let data = {
+      title: credentials.title,
+      hidden: credentials.hidden,
+      ingress: credentials.ingress,
+      content: credentials.content,
+      category: credentials.category,
+      author: credentials.author,
+      user: credentials.user,
+      categoryid: credentials.category,
+    };
+    data = await create(data);
+    console.log(data);
     if (!data.success) {
       setError(data.message);
     } else {
@@ -206,7 +217,9 @@ const NyArtikkelForm = () => {
         >
           {categories &&
             categories.map((category) => (
-              <option value={category._id}>{category.category}</option>
+              <option key={category.id} value={category._id}>
+                {category.category}
+              </option>
             ))}
         </Select>
         <Button

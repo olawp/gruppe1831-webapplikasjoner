@@ -24,7 +24,7 @@ const articleSchema = new Schema(
       ref: 'Category',
       required: true,
     },
-    categoryname: {
+    categoryid: {
       type: String,
       required: true,
     },

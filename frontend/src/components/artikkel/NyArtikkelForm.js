@@ -9,6 +9,7 @@ import { create } from '../../utils/artikkelService';
 import { list } from '../../utils/categoryService';
 import CategoryModal from './CategoryModal';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const NyArtikkelForm = () => {
   const { user } = useAuthContext();
@@ -21,10 +22,18 @@ const NyArtikkelForm = () => {
   const [submitButtonActive, setSubmitButtonActive] = useState(false);
   const [submitButtonColor, setSubmitButtonColor] = useState('grey');
   const [categoryModal, setCategoryModal] = useState('none');
+  const history = useHistory();
+  const { state } = useLocation();
 
   const { register, handleSubmit, formState } = useForm({
     mode: 'onBlur',
   });
+
+  useEffect(() => {
+    if (state) {
+      history.push(state.from.pathname);
+    }
+  }, [history, state]);
 
   const onSubmit = async (credentials) => {
     let data = {
@@ -38,12 +47,12 @@ const NyArtikkelForm = () => {
       categoryid: credentials.category,
     };
     data = await create(data);
-    console.log(data);
     if (!data.success) {
       setError(data.message);
     } else {
       setSuccess(true);
     }
+    history.push('/fagartikler'); // Denne må kanskje flyttes, vil redirecte uansett outcome
   };
 
   useEffect(() => {

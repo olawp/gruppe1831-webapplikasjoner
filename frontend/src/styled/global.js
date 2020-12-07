@@ -49,7 +49,16 @@ a:hover{
 
 .navigationBar a:hover{
   background-color: #555;
-  color: white !important;
+  color: white;
+}
+.navigationBar .active:hover{
+  background-color: #555;
+  color: white;
+}
+
+.navigationBar .logoHome:hover{
+  color: black;
+  opacity: .8;
 }
 
 .navigationBar a.active{

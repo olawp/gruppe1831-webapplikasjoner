@@ -39,7 +39,9 @@ const Navbar = () => {
   return (
     <div>
       <NavStyle className="navigationBar">
-        <h3>FG</h3>
+        <a href="/" className="logoHome">
+          <h3>FG</h3>
+        </a>
         <Button className="mobileMenu" onClick={burgerMenu}>
           Menu
         </Button>

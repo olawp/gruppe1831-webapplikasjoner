@@ -282,7 +282,15 @@ export class Artikkel extends Component {
             backgroundImage: `url(http://localhost:5000/images/${this.state.image})`,
           }}
         >
-          <h1 id="tittel">{this.state.artikkel.title}</h1>
+          <h1
+            id="tittel"
+            style={{
+              textShadow:
+                '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white',
+            }}
+          >
+            {this.state.artikkel.title}
+          </h1>
         </header>
         <main>
           <div>

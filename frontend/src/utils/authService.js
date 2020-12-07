@@ -11,6 +11,7 @@ export const getCsrfToken = async () => {
 
 export const getUserInfo = async () => {
   try {
+    // await getCsrfToken();
     return await http.get('/me');
   } catch (err) {
     return err.response;

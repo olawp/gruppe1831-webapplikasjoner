@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import mongoSanitizer from 'express-mongo-sanitize';
 import xssClean from 'xss-clean';
 import hpp from 'hpp';
+import csrf from 'csurf';
 
 import { PORT } from './constants/index.js';
 import 'dotenv/config.js';
@@ -36,12 +37,24 @@ app.use(express.static(`./public`));
 app.use(
   cors({
     origin: 'http://localhost:3000',
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
     credentials: true,
   })
 );
 
 app.use(cookieParser());
+
+/* Planen var å implementere CSRF, men det innebærer STORE endringer på frontenden. 
+Eneste implementasjonen som mangler er å hente ut CSRF token api calls man må være autorisert for.
+
+*/
+// app.use(csrf({ cookie: true }));
+
+/*
+app.get(`${process.env.BASEURL}/csrf-token`, (req, res) => {
+  res.status(200).json({ data: req.csrfToken() });
+}); 
+*/
 
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/articles`, article);

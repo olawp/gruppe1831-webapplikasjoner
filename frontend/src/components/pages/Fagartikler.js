@@ -11,19 +11,14 @@ import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 import ArtikkelList from '../artikkel/ArtikkelList';
 import { useAuthContext } from '../../context/AuthProvider';
 
-let URL = ``;
-
 const NyArtikkel = () => {
   const { isLoggedIn } = useAuthContext();
   const [artikkler, setArtikkler] = useState(null);
   const [kategorier, setKategorier] = useState(null);
   const [error, setError] = useState(null);
-
-  if (!isLoggedIn) {
-    URL = `/articles?hidden=false&limit=5`;
-  } else {
-    URL = `/articles?limit=5`;
-  }
+  const [firstLoadOfArticles, setFirstLoadOfArticles] = useState(true);
+  const [ignoreFirstLoad, setIgnoreFirstLoad] = useState(true);
+  const [URL, setURL] = useState('/articles?limit=5&hidden=false');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,12 +41,7 @@ const NyArtikkel = () => {
     fetchCategoryData();
   }, []);
 
-  // FILTER OG SEARCH GJØRE QUERIEN UNØDVENDIG LANG, MEN DEN FUNKER !!!SE ETTER FIKS!!!
-
-  function filter() {
-    const filter = document.getElementById('filter').value;
-    console.log(filter);
-    URL += `&categoryname=${filter}`;
+  function updateArtikkler(URL) {
     const fetchData = async () => {
       const { data, error } = await list(URL);
       if (error) {
@@ -61,6 +51,14 @@ const NyArtikkel = () => {
       }
     };
     fetchData();
+  }
+
+  // FILTER OG SEARCH GJØRE QUERIEN UNØDVENDIG LANG, MEN DEN FUNKER !!!SE ETTER FIKS!!!
+
+  function filter() {
+    const filter = document.getElementById('filter').value;
+    setURL(`${URL}&categoryid=${filter}&page=1`);
+    updateArtikkler(`${URL}&categoryid=${filter}&page=1`);
   }
 
   let searchTerm = '';
@@ -74,32 +72,14 @@ const NyArtikkel = () => {
       search();
     } else {
       searchTerm = document.getElementById('searchField').value;
-      URL += `&q=${searchTerm}`;
-      const fetchData = async () => {
-        console.log(URL);
-        const { data, error } = await list(URL);
-        if (error) {
-          setError(error);
-        } else {
-          setArtikkler(data);
-        }
-      };
-      fetchData();
+      setURL(`${URL}&q=${searchTerm}&page=1`);
+      updateArtikkler(`${URL}&q=${searchTerm}&page=1`);
     }
   }
 
   function page() {
-    URL += `&page=${this}`;
-    const fetchData = async () => {
-      console.log(URL);
-      const { data, error } = await list(URL);
-      if (error) {
-        setError(error);
-      } else {
-        setArtikkler(data);
-      }
-    };
-    fetchData();
+    setURL(`${URL}&page=${this}`);
+    updateArtikkler(`${URL}&page=${this}`);
   }
 
   if (artikkler !== null && kategorier !== null) {
@@ -116,6 +96,19 @@ const NyArtikkel = () => {
       tittel = 'Fant ingen artikler som passet søket ditt';
     } else {
       tittel = 'Fagartikler';
+    }
+
+    if (isLoggedIn && firstLoadOfArticles === true) {
+      setURL('/articles?limit=5');
+      updateArtikkler('/articles?limit=5');
+      setFirstLoadOfArticles(false);
+      setIgnoreFirstLoad(false);
+    } else if (
+      !isLoggedIn &&
+      firstLoadOfArticles === true &&
+      !ignoreFirstLoad
+    ) {
+      setFirstLoadOfArticles(false);
     }
     return (
       <div>
@@ -138,9 +131,7 @@ const NyArtikkel = () => {
               <Select id="filter">
                 {kategorier &&
                   kategorier.map((kategori) => (
-                    <option value={kategori.category}>
-                      {kategori.category}
-                    </option>
+                    <option value={kategori.id}>{kategori.category}</option>
                   ))}
               </Select>
               <Button onClick={filter}>FILTRER KATEGORI</Button>

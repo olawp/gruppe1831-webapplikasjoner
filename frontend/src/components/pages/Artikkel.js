@@ -251,7 +251,11 @@ export class Artikkel extends Component {
             updateCategory={this.updateCategory.bind(this)}
           />
         </div>
-        <header>
+        <header
+          style={{
+            backgroundImage: `url('http://localhost:5000/images/testimage.png')`,
+          }}
+        >
           <h1 id="tittel">{this.state.artikkel.title}</h1>
         </header>
         <main>

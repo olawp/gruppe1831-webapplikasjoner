@@ -50,7 +50,8 @@ const NyArtikkel = () => {
 
   function filter() {
     const filter = document.getElementById('filter').value;
-    URL += `&category=${filter}`;
+    console.log(filter);
+    URL += `&categoryname=${filter}`;
     const fetchData = async () => {
       const { data, error } = await list(URL);
       if (error) {
@@ -102,7 +103,6 @@ const NyArtikkel = () => {
   }
 
   if (artikkler !== null && kategorier !== null) {
-    const categories = [];
     let tittel = '';
     const pageButtons = [];
 
@@ -112,18 +112,11 @@ const NyArtikkel = () => {
       }
     }
 
-    for (let i = 0; i < kategorier.length; i++) {
-      categories.push(
-        <option value={kategorier[i].category}>{kategorier[i].category}</option>
-      );
-    }
-
     if (artikkler.results === 0) {
       tittel = 'Fant ingen artikler som passet søket ditt';
     } else {
       tittel = 'Fagartikler';
     }
-    console.log(categories);
     return (
       <div>
         <header>

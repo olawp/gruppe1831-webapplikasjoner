@@ -15,6 +15,7 @@ import {
   Select,
 } from '../../styled/style';
 import DeleteEditKnapper from '../artikkel/DeleteEditKnapp';
+import CategoryModal from '../artikkel/CategoryModal';
 
 export class Artikkel extends Component {
   state = {
@@ -22,6 +23,9 @@ export class Artikkel extends Component {
     kategorier: [],
     forfattere: ['Lars Larsen', 'Gunn Gundersen', 'Simen Simensen'],
     display: 'none',
+    kategorien: '',
+    kategoriID: '',
+    categoryModal: 'none',
   };
 
   componentDidMount() {
@@ -47,7 +51,7 @@ export class Artikkel extends Component {
     Axios.get('http://localhost:5000/api/v1/categories')
       .then((res) => this.setState({ kategorier: res.data }))
       .catch((error) =>
-        alert(`Kategorier ble ikke hentet ordentlig. \n Error: ${{ error }}`)
+        alert(`Kategorier ble ikke hentet ordentlig. \n Error: ${error}`)
       );
   }
 
@@ -84,8 +88,8 @@ export class Artikkel extends Component {
         title: document.getElementById('title').value,
         ingress: document.getElementById('ingress').value,
         content: document.getElementById('content').value,
-        author: document.getElementById('author').value,
         category: document.getElementById('category').value,
+        author: document.getElementById('author').value,
         hidden: document.getElementById('hiddenCheckbox').checked,
       }
     )
@@ -104,25 +108,64 @@ export class Artikkel extends Component {
     document.getElementById('title').value = this.state.artikkel.title;
     document.getElementById('ingress').value = this.state.artikkel.ingress;
     document.getElementById('content').value = this.state.artikkel.content;
+    document.getElementById('category').value = this.state.kategoriID;
     document.getElementById('author').value = this.state.artikkel.author;
-    document.getElementById('category').value = this.state.artikkel.category;
     document.getElementById(
       'hiddenCheckbox'
     ).checked = this.state.artikkel.hidden;
   };
 
-  render() {
-    const categories = [];
+  compareReturnCategory(categoryA, categoryB) {
+    if (categoryA.id === categoryB) {
+      return categoryA.category;
+    }
+  }
 
-    for (let i = 0; i < this.state.kategorier.length; i++) {
-      categories.push(
-        <option
-          key={this.state.kategorier[i].category}
-          value={this.state.kategorier[i].category}
-        >
-          {this.state.kategorier[i].category}
-        </option>
+  compareReturnID(categoryA, categoryB) {
+    if (categoryA.id === categoryB) {
+      return categoryA.id;
+    }
+  }
+
+  closeCategory() {
+    this.setState({ categoryModal: 'none' });
+  }
+
+  openCategory() {
+    this.setState({ categoryModal: '' });
+  }
+
+  updateCategory() {
+    Axios.get('http://localhost:5000/api/v1/categories')
+      .then((res) => this.setState({ kategorier: res.data }))
+      .catch((error) =>
+        alert(`Kategorier ble ikke hentet ordentlig. \n Error: ${error}`)
       );
+  }
+
+  render() {
+    if (JSON.stringify(this.state.kategorier.data) !== undefined) {
+      // eslint-disable-next-line array-callback-return
+      this.state.kategorier.data.map((kategori) => {
+        if (
+          this.compareReturnCategory(kategori, this.state.artikkel.category) !==
+          undefined
+        ) {
+          this.state.kategorien = this.compareReturnCategory(
+            kategori,
+            this.state.artikkel.category
+          );
+        }
+        if (
+          this.compareReturnID(kategori, this.state.artikkel.category) !==
+          undefined
+        ) {
+          this.state.kategoriID = this.compareReturnID(
+            kategori,
+            this.state.artikkel.category
+          );
+        }
+      });
     }
 
     return (
@@ -160,9 +203,23 @@ export class Artikkel extends Component {
                 onClick={this.test}
               ></Input>
               <br />
-              <label>Kategori</label>
+              <label htmlFor="category">Kategori</label>
               <br />
-              <Select id="category">{categories}</Select>
+              <Select id="category" name="category">
+                {this.state.kategorier.data &&
+                  this.state.kategorier.data.map((kategori) => (
+                    <option key={kategori._id} value={kategori._id}>
+                      {kategori.category}
+                    </option>
+                  ))}
+              </Select>
+              <Button
+                type="button"
+                style={{ backgroundColor: 'green' }}
+                onClick={this.openCategory.bind(this)}
+              >
+                LAG NY KATEGORI
+              </Button>
               <br />
               <label>Forfatternavn</label>
               <br />
@@ -184,6 +241,15 @@ export class Artikkel extends Component {
             </Form>
           </div>
         </div>
+        <div
+          className="nykategori"
+          style={{ display: this.state.categoryModal }}
+        >
+          <CategoryModal
+            close={this.closeCategory.bind(this)}
+            updateCategory={this.updateCategory.bind(this)}
+          />
+        </div>
         <header>
           <h1 id="tittel">{this.state.artikkel.title}</h1>
         </header>
@@ -196,7 +262,7 @@ export class Artikkel extends Component {
           </div>
           <ArtikkelTekst>{this.state.artikkel.ingress}</ArtikkelTekst>
           <ArtikkelTekst>{this.state.artikkel.content}</ArtikkelTekst>
-          <ArtikkelKategori>{this.state.artikkel.category}</ArtikkelKategori>
+          <ArtikkelKategori>{this.state.kategorien}</ArtikkelKategori>
           <div>
             <DeleteEditKnapper
               edit={this.openEditArticle}

@@ -1,7 +1,7 @@
 /**
  * @author Robert Alexander Dankertsen
- * @desc Denne classeen skriver ut korta til ansatte ved kontorer
- * @borrows React & Component fra react
+ * @desc Denne klassen skriver ut korta til ansatte ved kontorer
+ * @exports AnsattCard
  */
 
 // eslint-disable-next-line no-unused-vars

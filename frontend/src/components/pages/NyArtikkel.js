@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er siden for å opprette en ny artikkel
+ * @exports NyArtikkel
+ */
+
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import NyArtikkelForm from '../artikkel/NyArtikkelForm';

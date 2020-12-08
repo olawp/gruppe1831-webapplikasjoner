@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Alle routes som viderefører brukeren
+ * @exports routes
+ */
+
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-unused-vars */
@@ -17,6 +23,10 @@ import Footer from '../layout/Footer';
 import { useAuthContext } from '../../context/AuthProvider';
 import NoMatch from '../NoMatch';
 
+/**
+ * @param  {} children er barna til AdminRoutes
+ * @param  {array} ...rest er informasjon som blir videresendt
+ */
 const AdminRoutes = ({ children, ...rest }) => {
   const { isLoggedIn, isAdmin, isLoading } = useAuthContext();
   return (

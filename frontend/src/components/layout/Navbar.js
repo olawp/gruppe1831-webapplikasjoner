@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er navigasjonsmenyen til siden
+ * @exports Navbar
+ */
+
 /* eslint-disable no-undef */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
@@ -8,11 +14,17 @@ import { logout } from '../../utils/authService';
 
 let click = 0;
 
+/**
+ * @returns Skriver ut navigasjonsmenyen
+ */
 const Navbar = () => {
   const { isLoggedIn, setUser } = useAuthContext();
 
   const [display, setDisplay] = useState('');
 
+  /**
+   * @function activePage endrer på navigasjonsmenyen for å tydelig vide hvilken side brukeren er på
+   */
   function activePage(...pages) {
     for (let i = 0; i < pages.length; i++) {
       if (pages[i] === window.location.href.split('/')[3]) {
@@ -21,11 +33,17 @@ const Navbar = () => {
     }
   }
 
+  /**
+   * @function loggut logger ut brukeren
+   */
   const loggut = async () => {
     await logout();
     setUser(null);
   };
 
+  /**
+   * @function burgerMenu viser "burgermeny" for mobile brukere
+   */
   function burgerMenu() {
     if (click === 0) {
       setDisplay('inline');

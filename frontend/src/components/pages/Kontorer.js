@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er siden som lister kontorer
+ * @exports Kontorer
+ */
+
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
@@ -5,6 +11,9 @@ import KontorCard from '../kontor/KontorCard';
 import KontorListe from '../kontor/KontorListe';
 import { Select, Button } from '../../styled/style';
 
+/**
+ * @returns skriver ut alle kontorene, og du kan velge mellom listet eller grid
+ */
 export class Kontorer extends Component {
   state = {
     displayGrid: 'grid',

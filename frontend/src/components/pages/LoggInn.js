@@ -1,3 +1,10 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @author Ola Wethal Petersen
+ * @desc Denne klassen er siden for å logge inn
+ * @exports LoggInn
+ */
+
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
@@ -7,6 +14,9 @@ import { Form, Input, Button } from '../../styled/style';
 import { login } from '../../utils/authService.js';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
+/**
+ * @returns skriver ut logg inn skjema
+ */
 const LoggInn = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -28,6 +38,10 @@ const LoggInn = () => {
     }
   }, [history, isLoggedIn, state]);
 
+  /**
+   * @function onSubmit sender data inn til databasen fra skjemaet
+   * @param {*} credentials login informasjonen
+   */
   const onSubmit = async (credentials) => {
     const { data } = await login(credentials);
     if (!data.success) {

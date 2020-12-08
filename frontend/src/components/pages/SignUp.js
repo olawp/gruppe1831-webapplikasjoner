@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er siden for å registrere seg
+ * @exports SignUp
+ */
+
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
@@ -8,6 +14,9 @@ import { Form, Input, Button } from '../../styled/style';
 import { signup } from '../../utils/signUpService.js';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
+/**
+ * @returns skriver ut registrerings skjema
+ */
 const SignUp = () => {
   const [/* error, */ setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -25,6 +34,12 @@ const SignUp = () => {
     }
   }, [history, isLoggedIn, state]);
 
+  /**
+   * @function onSubmit sender data inn til databasen fra skjemaet
+   * @param {*} credentials registrering informasjonen
+   * @const hasNumber regex som sjekker om passord har nummer
+   * @const isEmail regex som sjekker om email er en epost
+   */
   const onSubmit = async (credentials) => {
     // eslint-disable-next-line no-constant-condition
     const hasNumber = new RegExp('/[0-9]/g');

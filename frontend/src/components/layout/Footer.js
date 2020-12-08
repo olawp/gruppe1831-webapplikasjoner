@@ -1,8 +1,17 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er footeren til siden
+ * @exports Footer
+ */
+
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { FooterStyle } from '../../styled/style';
 
+/**
+ * @returns footeren blir skrevet ut
+ */
 export class Footer extends Component {
   render() {
     return (

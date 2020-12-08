@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er siden som viser en detaljert artikkel
+ * @exports Artikkel
+ */
+
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
@@ -17,6 +23,9 @@ import {
 import DeleteEditKnapper from '../artikkel/DeleteEditKnapp';
 import CategoryModal from '../artikkel/CategoryModal';
 
+/**
+ * @returns Skriver ut artikkelen
+ */
 export class Artikkel extends Component {
   state = {
     artikkel: [],
@@ -57,6 +66,9 @@ export class Artikkel extends Component {
       );
   }
 
+  /**
+   * @function getImage henter bildet til artikkelen
+   */
   getImage() {
     if (this.state.artikkel.image !== undefined) {
       Axios.get(
@@ -67,6 +79,9 @@ export class Artikkel extends Component {
     }
   }
 
+  /**
+   * @function convertDate omgjør bildet fra ISO-format til DD.MM.YYYY
+   */
   convertDate() {
     const date = new Date(this.state.artikkel.createdAt);
     if (date.toString() !== 'Invalid Date') {
@@ -76,6 +91,9 @@ export class Artikkel extends Component {
     }
   }
 
+  /**
+   * @function deleteArticle sletter den aktive artikkelen
+   */
   deleteArticle() {
     Axios.delete(
       `http://localhost:5000/api/v1/articles/${window.location.href
@@ -91,6 +109,9 @@ export class Artikkel extends Component {
       );
   }
 
+  /**
+   * @function editArticle sender inn den redigerte artikkelen til databasen
+   */
   editArticle() {
     Axios.put(
       `http://localhost:5000/api/v1/articles/${window.location.href
@@ -116,6 +137,9 @@ export class Artikkel extends Component {
       );
   }
 
+  /**
+   * @function openEditArticle Åpner modalen for å redigere artikkelen
+   */
   openEditArticle = () => {
     this.setState({ display: '' });
     document.getElementById('title').value = this.state.artikkel.title;
@@ -128,26 +152,41 @@ export class Artikkel extends Component {
     ).checked = this.state.artikkel.hidden;
   };
 
+  /**
+   * @function compareReturnCategory sammenligner kategorien sin id og returnerer navnet på kategorien
+   */
   compareReturnCategory(categoryA, categoryB) {
     if (categoryA.id === categoryB) {
       return categoryA.category;
     }
   }
 
+  /**
+   * @function compareReturnID sammenligner kategorien sin id og returnerer ID på kategorien
+   */
   compareReturnID(categoryA, categoryB) {
     if (categoryA.id === categoryB) {
       return categoryA.id;
     }
   }
 
+  /**
+   * @function closeCategory lukker kategorimodalen
+   */
   closeCategory() {
     this.setState({ categoryModal: 'none' });
   }
 
+  /**
+   * @function openCategory åpner kategorimodalen
+   */
   openCategory() {
     this.setState({ categoryModal: '' });
   }
 
+  /**
+   * @function updateCategory oppdaterer kategoriene i modalen
+   */
   updateCategory() {
     Axios.get('http://localhost:5000/api/v1/categories')
       .then((res) => this.setState({ kategorier: res.data }))
@@ -157,6 +196,9 @@ export class Artikkel extends Component {
   }
 
   render() {
+    /**
+     * @desc denne IF testen setter kategori og kategoriID derson staten ikke er tom
+     */
     if (JSON.stringify(this.state.kategorier.data) !== undefined) {
       // eslint-disable-next-line array-callback-return
       this.state.kategorier.data.map((kategori) => {
@@ -181,6 +223,9 @@ export class Artikkel extends Component {
       });
     }
 
+    /**
+     * @desc Dersom bildet staten er tom, hent bildet
+     */
     if (this.state.artikkel.image !== undefined) {
       if (!this.state.loadedOnce) {
         this.getImage();
@@ -188,8 +233,10 @@ export class Artikkel extends Component {
       }
     }
 
-    // console.log(this.state.image);
-
+    /**
+     * @desc henter navnet på bildet
+     * @const string er strengen til filplassering av bildet på serveren
+     */
     if (this.state.image.data !== undefined) {
       const string = this.state.image.data.image.file_path.split('\\')[2];
       this.setState({ image: string });

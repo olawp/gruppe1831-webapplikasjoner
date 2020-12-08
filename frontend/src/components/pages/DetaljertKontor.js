@@ -1,3 +1,11 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er siden som viser en detaljert versjon av kontorene
+ * @const lokasjon henter plasseringen til kontoret basert på URL'en
+ * @const nummer henter nummeret til kontoret basert på URL'en
+ * @exports DetaljertKontor
+ */
+
 /* eslint-disable no-undef */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-unused-vars */
@@ -10,8 +18,14 @@ const nummer = window.location.href.split('/')[5];
 let antallAnsatte = 0;
 let ansattDiv = '';
 
+/**
+ * @returns Skriver ut kontoret's informasjon
+ */
 export class DetaljertKontor extends Component {
   render() {
+    /**
+     * @desc sjekker lokasjonen til kontoret for å gi antall ansatte
+     */
     if (lokasjon === 'fredrikstad') {
       antallAnsatte = 6;
       ansattDiv = 'ansattDiv';

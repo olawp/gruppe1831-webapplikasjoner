@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er styled components
+ * @exports Style
+ */
+
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';

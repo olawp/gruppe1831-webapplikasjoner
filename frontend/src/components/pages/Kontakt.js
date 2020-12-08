@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er kontaktsiden
+ * @exports Kontakt
+ */
+
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React from 'react';
@@ -5,12 +11,20 @@ import Axios from 'axios';
 import { Form, Input, Button } from '../../styled/style';
 import { useAuthContext } from '../../context/AuthProvider.jsx';
 
+/**
+ * @returns skriver ut kontakt oss skjemaet
+ */
+
 const Kontakt = () => {
   const { user } = useAuthContext();
   if (user !== null) {
     document.getElementById('name').value = user.name;
     document.getElementById('mail').value = user.email;
   }
+
+  /**
+   * @function submitClicked sender inn kontaktskjemaet
+   */
 
   function submitClicked() {
     Axios.post('http://localhost:5000/api/v1/contact', {

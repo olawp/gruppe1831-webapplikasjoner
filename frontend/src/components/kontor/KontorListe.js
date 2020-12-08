@@ -1,8 +1,18 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen skriver ut listeversjonen av kontorene
+ * @exports KontorListe
+ */
+
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { KontorListStyle } from '../../styled/style';
 
+/**
+ * @desc Skriver ut alle kontorene basert på props informasjonen som blir videre sendt fra Kontorer.js
+ * @returns alle kontorene i listeversjon
+ */
 export class KontorListe extends Component {
   render() {
     const liste = [];

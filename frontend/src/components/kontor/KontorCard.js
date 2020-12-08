@@ -1,8 +1,18 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen skriver ut gridversjonen av kontorene
+ * @exports KontorCard
+ */
+
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { KontorCardStyle } from '../../styled/style';
 
+/**
+ * @desc Skriver ut alle kontorene basert på props informasjonen som blir videre sendt fra Kontorer.js
+ * @returns alle kortene til kontorene
+ */
 export class KontorCard extends Component {
   render() {
     const kort = [];

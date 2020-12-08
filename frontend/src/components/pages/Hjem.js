@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er hovedsiden
+ * @exports Fagartikler
+ */
+
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Section } from '../../styled/style';

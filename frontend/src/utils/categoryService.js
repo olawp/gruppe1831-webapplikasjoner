@@ -1,7 +1,19 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen som kommuniserer med API i backend for kategori
+ * @exports create
+ * @exports list
+ * @exports get
+ * @exports listURL
+ */
+
 import http from './http';
 
 const API_URL = '/categories';
 
+/**
+ * @param  {string} url URL'en som skal uthentes
+ */
 export const listURL = async (url) => {
   try {
     return await http.get(`${API_URL}${url}`);
@@ -18,6 +30,9 @@ export const list = async () => {
   }
 };
 
+/**
+ * @param  {string} id henter kategori basert på ID
+ */
 export const get = async (id) => {
   try {
     return await http.get(`${API_URL}/${id}`);
@@ -26,6 +41,9 @@ export const get = async (id) => {
   }
 };
 
+/**
+ * @param  {} data data som skal brukes til å opprette kategori
+ */
 export const create = async (data) => {
   try {
     return await http.post(`${API_URL}`, { ...data });

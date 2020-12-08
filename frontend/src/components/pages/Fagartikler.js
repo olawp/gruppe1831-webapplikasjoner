@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen er siden som viser en liste av artikkler
+ * @exports Fagartikler
+ */
+
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-plusplus */
@@ -11,7 +17,10 @@ import NyArtikkelKnapp from '../artikkel/NyArtikkelKnapp';
 import ArtikkelList from '../artikkel/ArtikkelList';
 import { useAuthContext } from '../../context/AuthProvider';
 
-const NyArtikkel = () => {
+/**
+ * @returns skriver ut alle artikklene i listet paginert, listet format. antall artikkler er satt maks på 5 per side.
+ */
+const Fagartikler = () => {
   const { isLoggedIn } = useAuthContext();
   const [artikkler, setArtikkler] = useState(null);
   const [kategorier, setKategorier] = useState(null);
@@ -41,6 +50,10 @@ const NyArtikkel = () => {
     fetchCategoryData();
   }, []);
 
+  /**
+   * @function updateArtikkler oppdaterer visningen av artikkler basert på handlinger brukeren gjør
+   * @param {string} URL URLen som skal hente artikklene
+   */
   function updateArtikkler(URL) {
     const fetchData = async () => {
       const { data, error } = await list(URL);
@@ -53,8 +66,10 @@ const NyArtikkel = () => {
     fetchData();
   }
 
-  // FILTER OG SEARCH GJØRE QUERIEN UNØDVENDIG LANG, MEN DEN FUNKER !!!SE ETTER FIKS!!!
-
+  /**
+   * @function filter oppdaterer URL en som blir sendt inn til backend basert på filtrering brukeren gjør
+   * @TODO Query blir unødvendig lang !!!SE ETTER FIKS!!!
+   */
   function filter() {
     const filter = document.getElementById('filter').value;
     setURL(`${URL}&categoryid=${filter}&page=1`);
@@ -63,6 +78,11 @@ const NyArtikkel = () => {
 
   let searchTerm = '';
 
+  /**
+   * @function search oppdaterer URL en som blir sendt inn til backend basert på søk brukeren gjør
+   * @desc KJENT BUG: søk kan brukes til å vise skjulte artikkler ved å skrive inn "&hidden=true"
+   * @TODO Query blir unødvendig lang !!!SE ETTER FIKS!!!
+   */
   function search() {
     if (
       !document.getElementById('searchField').value.replace(/\s/g, '').length &&
@@ -77,11 +97,18 @@ const NyArtikkel = () => {
     }
   }
 
+  /**
+   * @function page oppdaterer URL en som blir sendt inn til backend basert på paginering brukeren gjør
+   * @TODO Query blir unødvendig lang !!!SE ETTER FIKS!!!
+   */
   function page() {
     setURL(`${URL}&page=${this}`);
     updateArtikkler(`${URL}&page=${this}`);
   }
 
+  /**
+   * @desc sjekker om artikkler eller kategorier er tomme. lager paginerings knapper basert på artikkelantall. dersom ingen artikkler er funnet så gjør den om tittelen til siden. sjekker også om brukeren er logget inn.
+   */
   if (artikkler !== null && kategorier !== null) {
     let tittel = '';
     const pageButtons = [];
@@ -159,4 +186,4 @@ const NyArtikkel = () => {
   );
 };
 
-export default NyArtikkel;
+export default Fagartikler;

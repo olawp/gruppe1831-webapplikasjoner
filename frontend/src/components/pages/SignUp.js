@@ -39,6 +39,7 @@ const SignUp = () => {
    * @param {*} credentials registrering informasjonen
    * @const hasNumber regex som sjekker om passord har nummer
    * @const isEmail regex som sjekker om email er en epost
+   * @const isName regex som sjekker om name er et navn
    */
   const onSubmit = async (credentials) => {
     // eslint-disable-next-line no-constant-condition
@@ -47,8 +48,10 @@ const SignUp = () => {
     const isEmail = new RegExp(
       '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
     );
+    const isName = new RegExp('/^[a-z ,.\'-]+$/');
     const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
     if (
       !hasNumber.test(password) &&
       password.replace(hasNumber, '').length === 3
@@ -56,6 +59,8 @@ const SignUp = () => {
       alert('Passord må minst ha 3 bokstaver og ett tall');
     } else if (!isEmail.test(email)) {
       alert('Epost må være gyldig');
+    } else if (!isName.test(name)) {
+      alert('Navn må være gyldig');
     } else if (
       document.getElementById('password').value ===
       document.getElementById('confirmPassword').value

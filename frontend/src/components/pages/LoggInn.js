@@ -41,16 +41,27 @@ const LoggInn = () => {
   /**
    * @function onSubmit sender data inn til databasen fra skjemaet
    * @param {*} credentials login informasjonen
+   * @const email eposten som brukeren har skrevet inn
+   * @const isEmail regex som sjekker mail
    */
   const onSubmit = async (credentials) => {
-    const { data } = await login(credentials);
-    if (!data.success) {
-      setError(data.message);
+    const email = document.getElementById('email').value;
+    // eslint-disable-next-line no-invalid-regexp
+    const isEmail = new RegExp(
+      '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
+    );
+    if (!isEmail.test(email)) {
+      alert('Epost må være gyldig');
     } else {
-      const user = data?.user;
-      setUser({ ...user });
-      setSuccess(true);
-      history.push('/');
+      const { data } = await login(credentials);
+      if (!data.success) {
+        setError(data.message);
+      } else {
+        const user = data?.user;
+        setUser({ ...user });
+        setSuccess(true);
+        history.push('/');
+      }
     }
   };
 

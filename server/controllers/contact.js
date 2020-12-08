@@ -14,6 +14,10 @@ export const get = catchAsyncErrors(async (req, res, next) => {
 
 export const create = catchAsyncErrors(async (req, res, next) => {
   const contact = await contactService.createContact(req.body);
+  /**
+   * @author Robert Alexander Dankertsen
+   * @desc sender mail til brukeren og kundeservice med spørsmålet
+   */
   try {
     await sendMail({
       email: contact.email,

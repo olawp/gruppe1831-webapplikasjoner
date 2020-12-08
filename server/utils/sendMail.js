@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen sender mail når en bruker sender inn et kontakt skjema
+ * @exports ApiFilters
+ */
+
 import nodemailer from 'nodemailer';
 
 export const sendMail = async (options) => {

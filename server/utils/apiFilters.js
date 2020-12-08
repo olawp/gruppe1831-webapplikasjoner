@@ -1,9 +1,18 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen som filtrerer artikler basert på hva brukeren gjør i frontend
+ * @exports ApiFilters
+ */
+
 export class ApiFilters {
   constructor(query, queryStr) {
     this.query = query;
     this.queryStr = queryStr;
   }
 
+  /**
+   * @function filter filtrerer atrikklene
+   */
   filter() {
     const query = { ...this.queryStr };
     const removeFields = ['q', 'limit', 'page'];
@@ -19,6 +28,9 @@ export class ApiFilters {
     return this;
   }
 
+  /**
+   * @function searchByQuery søker etter artikler basert på query string
+   */
   searchByQuery() {
     if (this.queryStr.q) {
       const term = this.queryStr.q.split('-').join(' ');
@@ -27,6 +39,9 @@ export class ApiFilters {
     return this;
   }
 
+  /**
+   * @function pagination begrenser antall artikler man kan hente ut, og hvilken side man er på
+   */
   pagination() {
     const page = parseInt(this.queryStr.page, 10) || 1;
     const limit = parseInt(this.queryStr.limit, 5) || 5;

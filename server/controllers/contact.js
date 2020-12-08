@@ -9,7 +9,7 @@ export const get = catchAsyncErrors(async (req, res, next) => {
   if (!contact) {
     return next(new ErrorHandler('Finner ikke kontakskjema', 404));
   }
-  res.status(201).json(contact);
+  res.status(200).json(contact);
 });
 
 export const create = catchAsyncErrors(async (req, res, next) => {

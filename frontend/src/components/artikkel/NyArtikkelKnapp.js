@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen skriver ut "Lag ny artikkel" knappen, basert på dersom brukeren er en admin, og er logget inn.
+ * @exports NyArtikkelKnapp
+ */
+
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 import React from 'react';

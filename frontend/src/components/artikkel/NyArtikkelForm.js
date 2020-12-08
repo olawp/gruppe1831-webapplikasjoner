@@ -1,3 +1,9 @@
+/**
+ * @author Robert Alexander Dankertsen
+ * @desc Denne klassen skriver ut hele skjemaet for å opprette en ny artikkel
+ * @exports NyArtikkelForm
+ */
+
 /* eslint-disable no-undef */
 /* eslint-disable spaced-comment */
 /* eslint-disable import/order */
@@ -12,6 +18,9 @@ import { useAuthContext } from '../../context/AuthProvider.jsx';
 import { useHistory, useLocation } from 'react-router-dom';
 import { upload } from '../../utils/imageService';
 
+/**
+ * @returns Skriver ut skjemaet
+ */
 const NyArtikkelForm = () => {
   const { user } = useAuthContext();
   const [error, setError] = useState(null);
@@ -28,17 +37,17 @@ const NyArtikkelForm = () => {
   const [file, setFile] = useState();
   const [src, setSrc] = useState();
   const [imageId, setImageId] = useState(null);
-  // let imageId;
 
   const { register, handleSubmit, formState } = useForm({
     mode: 'onBlur',
   });
 
+  /**
+   * @function handleSubmitImage sender bildet videre til server og databasen
+   * @param {*} image bildet som skal bli sendt
+   */
   const handleImageSubmit = async (image) => {
-    console.log(image);
-
     const { data } = await upload(image);
-    console.log(data);
     if (!data.success) {
       setError(data.message);
     } else {
@@ -46,7 +55,6 @@ const NyArtikkelForm = () => {
       setSuccess(true);
       setError(null);
     }
-    console.log(imageId);
   };
 
   useEffect(() => {
@@ -55,6 +63,10 @@ const NyArtikkelForm = () => {
     }
   }, [history, state]);
 
+  /**
+   * @function handleSubmitImage sender informasjonen som omhandler artikklen videre til databasen
+   * @param {*} credentials informasjonen som skal bli sendt
+   */
   const onSubmit = async (credentials) => {
     let data;
 
@@ -87,13 +99,13 @@ const NyArtikkelForm = () => {
       setError(data.message);
     } else {
       setSuccess(true);
+      history.push('/fagartikler');
     }
-    history.push('/fagartikler'); // Denne må kanskje flyttes, vil redirecte uansett outcome
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await list(); // Endre url senere
+      const { data } = await list();
       if (!data.success) {
         setError(error);
       } else {
@@ -104,9 +116,12 @@ const NyArtikkelForm = () => {
     fetchData();
   }, []);
 
+  /**
+   * @function updateCategory oppdaterer kategoriene i skjemaet
+   */
   function updateCategory() {
     const fetchData = async () => {
-      const { data } = await list(); // Endre url senere
+      const { data } = await list();
       if (!data.success) {
         setError(error);
       } else {
@@ -117,6 +132,9 @@ const NyArtikkelForm = () => {
     fetchData();
   }
 
+  /**
+   * @function handleValidation validerer at alle feltene som er påkrevde er utfylte og endrer stilen
+   */
   function handleValidation() {
     let isValid = true;
 
@@ -158,10 +176,16 @@ const NyArtikkelForm = () => {
     }
   }
 
+  /**
+   * @function closeCategory lukker kategorimodalen
+   */
   function closeCategory() {
     setCategoryModal('none');
   }
 
+  /**
+   * @function openCategory åpner kategorimodalen
+   */
   function openCategory() {
     setCategoryModal('');
   }

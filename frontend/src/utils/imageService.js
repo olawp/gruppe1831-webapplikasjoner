@@ -1,3 +1,8 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Metoder som beskriver hvordan vi skal håndtere bilder som blir laster opp og lastet ned.
+ * @exports upload download
+ */
 import http from './http';
 
 const API_UPLOAD = '/upload';

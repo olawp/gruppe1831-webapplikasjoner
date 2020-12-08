@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @decs Context som lar oss få tilgang til bruker objektet gjennom hele systemet. Via provideren kan vi lagren en bruker i en state, som vi kan hente ut andre steder i systemet
+ * @exports AuthProvider
+ */
+
 /* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getUserInfo } from '../utils/authService.js';

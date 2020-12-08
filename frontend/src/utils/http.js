@@ -1,3 +1,9 @@
+/**
+ *@author Ola Wethal Petersen
+ *@desc Kobler frontenden og backenden sammen
+ *@exports http
+ */
+
 import Axios from 'axios';
 
 const http = Axios.create({

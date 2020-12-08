@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Modell for bruker schema
+ * @exports User
+ */
+
 import mongoose from 'mongoose';
 import validator from 'validator';
 import argon2 from 'argon2';

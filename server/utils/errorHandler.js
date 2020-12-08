@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen, Marius Wallin
+ * @desc Håndterer errorer. Skriver ut en statuscode og en message
+ * @exports  ErrorHandler
+ */
+
 export default class ErrorHandler extends Error {
   constructor(message, statusCode) {
     super(message);
@@ -5,5 +11,3 @@ export default class ErrorHandler extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
-
-// Lånt fra foreleser

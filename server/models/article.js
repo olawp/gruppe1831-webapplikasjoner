@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Modell for atikkel schema
+ * @exports Article
+ */
+
 import mongoose from 'mongoose';
 
 const { Schema } = mongoose;

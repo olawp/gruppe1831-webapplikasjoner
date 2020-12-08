@@ -1,3 +1,8 @@
+/**
+ * @author Ola Wethal Petersen, Marius Wallin
+ * @desc Håndterer jwt token som blir knyttet opp mot en bruker. Tatt fra pensum
+ * @exports  sendToken
+ */
 export const sendToken = (user, res) => {
   const token = user.getJwtToken();
 

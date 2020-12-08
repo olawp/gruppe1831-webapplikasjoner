@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Kontakt controller. Definere hvordan kontaktskjema data skal bli behandlet
+ * @exports get create remove
+ */
+
 // eslint-disable-next-line import/named
 import { contactService, userService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';

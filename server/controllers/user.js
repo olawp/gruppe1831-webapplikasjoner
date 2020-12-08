@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc User controller. Definerer hvordan vi skal behandle bruker data.
+ * @exports create
+ */
+
 // eslint-disable-next-line import/named
 import { userService } from '../services/index.js';
 import catchAsyncErrors from '../middleware/catchAsync.js';

@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Authorization controller. Definerer hvordan brukerdata og autorisering skal behandles. 
+ * @exports login logout currentUser
+ */
+
 import catchAsyncErrors from '../middleware/catchAsync.js';
 // eslint-disable-next-line import/named
 import { userService } from '../services/index.js';

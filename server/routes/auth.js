@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Routes for authorization. Bestemmer hvor authdata skal sendes.
+ * @exports router
+ */
+
 import express from 'express';
 // eslint-disable-next-line import/named
 import { authController } from '../controllers/index.js';

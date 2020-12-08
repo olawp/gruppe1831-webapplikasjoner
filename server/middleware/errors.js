@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen, Marius Wallin
+ * @desc Mellomvare for errorhåndtering. Brukes sammen med errorhandler
+ * @exports Unnamed function
+ */
+
 import ErrorHandler from '../utils/errorHandler.js';
 
 export default (err, res) => {

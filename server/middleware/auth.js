@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Mellomvare for authorization. Gjør så vi kan sjekke om en bruker er autentisert(logget inn) og sjekke om brukeren er autorisert(har tilgang til visse ting)
+ * @exports isAuthenticated isAuthorized
+ */
+
 import jwt from 'jsonwebtoken';
 // eslint-disable-next-line import/named
 import { userService } from '../services/index.js';

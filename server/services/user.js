@@ -1,3 +1,8 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Serivce for brukerdata. Beskriver hvordan dataen skal behandles mot databasen
+ * @exports createUser getUserById getUserByEmail 
+ */
 import User from '../models/user.js';
 
 export const createUser = async (data) => User.create(data);

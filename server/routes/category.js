@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Routes for kategoridata. Bestemmer hvor kategoridataen skal sendes.
+ * @exports router
+ */
+
 import express from 'express';
 // eslint-disable-next-line import/named
 import { categoryController } from '../controllers/index.js';

@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Serivce for bildedata. Beskriver hvordan dataen skal behandles mot databasen
+ * @exports  uploadImage getImageById
+ */
+
 import Image from '../models/image.js';
 
 export const uploadImage = async (data) => {

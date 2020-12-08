@@ -1,3 +1,8 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Controller for artikkler. Definerer hvordan artikkel data skal håndteres
+ * @exports get list create update remove
+ */
 // eslint-disable-next-line import/named
 import { articleService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';

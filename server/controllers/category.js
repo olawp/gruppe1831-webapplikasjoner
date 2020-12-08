@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Kategori controller. Definerer hvordan kategori data skal bli behandlet
+ * @exports get list create
+ */
+
 // eslint-disable-next-line import/named
 import { categoryService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';

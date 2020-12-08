@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Routes for artikkeldata. Bestemmer hvor artikkeldata skal sendes.
+ * @exports router
+ */
+
 import express from 'express';
 // eslint-disable-next-line import/named
 import { articleController } from '../controllers/index.js';

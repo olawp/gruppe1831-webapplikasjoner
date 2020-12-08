@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Mellomvare for håndtering av bilder. Inneholder en filteringsfunksjon som sjekker filformat, en storage funksjon som bestemmer hvor filer skal lagres
+ * @exports upload
+ */
+
 import multer from 'multer';
 import ErrorHandler from '../utils/errorHandler.js';
 

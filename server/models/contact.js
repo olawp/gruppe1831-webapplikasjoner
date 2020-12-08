@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Modell for kontakt schema
+ * @exports Contact
+ */
+
 import mongoose from 'mongoose';
 
 const { Schema } = mongoose;

@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Routes for bildedata. Bestemmer hvor dataen skal sendes.
+ * @exports router
+ */
+
 import express from 'express';
 // eslint-disable-next-line import/named
 import { imageController } from '../controllers/index.js';

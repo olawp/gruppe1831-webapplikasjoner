@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Modell for bruker schema
+ * @exports User
+ */
+
 import mongoose from 'mongoose';
 import validator from 'validator';
 import argon2 from 'argon2';
@@ -19,7 +25,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, 'A password is required'],
-      minlength: [3, 'Password must contain more than 3 letters'],
+      minlength: [4, 'Password must contain more than 3 letters'],
       select: false,
     },
     role: {

@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Modell for bilde schema
+ * @exports Image
+ */
+
 import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
@@ -24,3 +30,5 @@ imageSchema.virtual('articles', {
 });
 
 export default mongoose.model('Image', imageSchema);
+
+export default Image;

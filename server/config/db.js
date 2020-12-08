@@ -1,3 +1,9 @@
+/** 
+ * @author Ola Wethal Petersen
+ * @desc Denne funksjonen står for oppkobling mot database. Eksempel tatt fra pensum
+ * @exports databaseConnection
+ */
+
 import mongoose from 'mongoose';
 import { dbPort } from '../constants/index.js';
 
@@ -14,7 +20,7 @@ const databaseConnection = async () => {
     console.log(error.message);
   }
 
-  console.log(`Connected to Mongo on: ${db.connection.host}:${dbPort}`)
+  console.log(`Connected to Mongo on: ${db.connection.host}:${dbPort}`);
 };
 
 export default databaseConnection;

@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Serivce for artikkeldata. Beskriver hvordan dataen skal behandles mot databasen
+ * @exports getArticleById listArticles createArticles updateArticle removeArticle
+ */
+
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import Article from '../models/article.js';

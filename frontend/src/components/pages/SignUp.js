@@ -18,7 +18,7 @@ import { useAuthContext } from '../../context/AuthProvider.jsx';
  * @returns skriver ut registrerings skjema
  */
 const SignUp = () => {
-  const [/* error, */ setError] = useState(null);
+  const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const { setUser, isLoggedIn } = useAuthContext();
   const history = useHistory();
@@ -48,10 +48,11 @@ const SignUp = () => {
     const isEmail = new RegExp(
       '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
     );
-    const isName = new RegExp('/^[æøåÆØÅA-Za-z ,.\'-]+$/');
+    const isName = new RegExp(`^[æøåÆØÅA-Za-z ,.'-]+$`);
     const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
     const name = document.getElementById('name').value;
+    
     if (
       !hasNumber.test(password) &&
       password.replace(hasNumber, '').length === 3

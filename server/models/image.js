@@ -30,5 +30,3 @@ imageSchema.virtual('articles', {
 });
 
 export default mongoose.model('Image', imageSchema);
-
-export default Image;

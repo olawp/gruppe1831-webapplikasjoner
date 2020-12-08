@@ -43,7 +43,7 @@ const SignUp = () => {
    */
   const onSubmit = async (credentials) => {
     // eslint-disable-next-line no-constant-condition
-    const hasNumber = new RegExp('/[0-9]/g');
+    const hasNumber = new RegExp('[0-9]');
     // eslint-disable-next-line no-invalid-regexp
     const isEmail = new RegExp(
       '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'

@@ -8,7 +8,7 @@ export const get = catchAsyncErrors(async (req, res, next) => {
   if (!article) {
     return next(new ErrorHandler('Finner ikke artikkel', 404));
   }
-  res.status(201).json(article);
+  res.status(200).json(article);
 });
 
 export const list = catchAsyncErrors(async (req, res, next) => {

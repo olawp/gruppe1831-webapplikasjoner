@@ -4,6 +4,12 @@ import { userService } from '../services/index.js';
 import ErrorHandler from '../utils/errorHandler.js';
 import { sendToken } from '../utils/jwtToken.js';
 
+/*
+I login kunne vi også satt alle responskoder til "Feil passord eller mail" og responsekoden til 404.
+I en mer realistisk situasjon vil man kanskje ikke fortelle brukeren at det finnes en bruker som denne mailen knyttet til seg, av sikkerhetsmessige grunner.
+I dette tilfellet har vi bestemt å returnere hva som er galt, for enklere bruk/debugging
+*/
+
 export const login = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {

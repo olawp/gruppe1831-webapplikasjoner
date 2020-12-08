@@ -48,7 +48,7 @@ const SignUp = () => {
     const isEmail = new RegExp(
       '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
     );
-    const isName = new RegExp('/^[a-z ,.\'-]+$/');
+    const isName = new RegExp('/^[æøåÆØÅA-Za-z ,.\'-]+$/');
     const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
     const name = document.getElementById('name').value;

@@ -1,7 +1,7 @@
 /**
  * @author Robert Alexander Dankertsen
  * @author Ola Wethal Petersen
- * @desc Denne klassen er siden for å logge inn
+ * @desc Denne klassen er siden for å logge inn. Ola forbedret error visning.
  * @exports LoggInn
  */
 

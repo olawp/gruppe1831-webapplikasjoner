@@ -1,6 +1,7 @@
 /**
  * @author Robert Alexander Dankertsen
- * @desc Denne klassen er siden for å registrere seg
+ * @author Ola Wethal Petersen
+ * @desc Denne klassen er siden for å registrere seg. Ola forbedret error visning.
  * @exports SignUp
  */
 

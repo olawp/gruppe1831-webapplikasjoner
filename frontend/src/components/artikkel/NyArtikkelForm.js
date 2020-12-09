@@ -99,8 +99,8 @@ const NyArtikkelForm = () => {
       setError(data.message);
     } else {
       setSuccess(true);
-      history.push('/fagartikler');
     }
+    history.push('/fagartikler'); //redirects no matter the outcome
   };
 
   useEffect(() => {

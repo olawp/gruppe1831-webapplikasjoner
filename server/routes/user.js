@@ -6,9 +6,11 @@
 import express from 'express';
 // eslint-disable-next-line import/named
 import { userController } from '../controllers/index.js';
+import { validateField } from '../middleware/validate.js';
+import { registerSchema } from '../schemas/user.js';
 
 const router = express.Router();
 
-router.post('/', userController.create);
+router.post('/', validateField(registerSchema), userController.create);
 
 export default router;

@@ -23,6 +23,7 @@ const SignUp = () => {
   const { setUser, isLoggedIn } = useAuthContext();
   const history = useHistory();
   const { state } = useLocation();
+  const [signupError, setSignupError] = useState(null);
 
   const { register, handleSubmit } = useForm({
     mode: 'onBlur',
@@ -42,40 +43,21 @@ const SignUp = () => {
    * @const isName regex som sjekker om name er et navn
    */
   const onSubmit = async (credentials) => {
-    // eslint-disable-next-line no-constant-condition
-    const hasNumber = new RegExp('[0-9]');
-    // eslint-disable-next-line no-invalid-regexp
-    const isEmail = new RegExp(
-      '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
-    );
-    const isName = new RegExp(`^[æøåÆØÅA-Za-z ,.'-]+$`);
-    const password = document.getElementById('password').value;
-    const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
-    
     if (
-      !hasNumber.test(password) &&
-      password.replace(hasNumber, '').length === 3
-    ) {
-      alert('Passord må minst ha 3 bokstaver og ett tall');
-    } else if (!isEmail.test(email)) {
-      alert('Epost må være gyldig');
-    } else if (!isName.test(name)) {
-      alert('Navn må være gyldig');
-    } else if (
-      document.getElementById('password').value ===
+      document.getElementById('password').value !==
       document.getElementById('confirmPassword').value
     ) {
+      setSignupError('Passordene stemmer ikke overens');
+    } else {
       const { data } = await signup(credentials);
-      if (data.success) {
+      if (!data.success) {
         setError(data.message);
+        console.log(data.message);
       } else {
         setSuccess(true);
         alert('Du er nå registrert, vennligst logg inn');
         history.push('/');
       }
-    } else {
-      alert('Passordene stemmer ikke overens');
     }
   };
 
@@ -86,6 +68,16 @@ const SignUp = () => {
           <h1>Registrer Deg</h1>
         </header>
         <main>
+          <div>
+            {signupError && <p style={{ color: 'red' }}>{signupError}</p>}
+            {error && (
+              <div>
+                {error.map((err) => (
+                  <p style={{ color: 'red' }}>{err.message}</p>
+                ))}
+              </div>
+            )}
+          </div>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="name">Name*:</label>
             <br />
@@ -117,7 +109,6 @@ const SignUp = () => {
               id="password"
               ref={register({
                 required: true,
-                minLength: 3,
               })}
             />
             <br />

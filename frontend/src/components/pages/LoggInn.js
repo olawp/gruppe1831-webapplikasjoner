@@ -23,6 +23,7 @@ const LoggInn = () => {
   const { setUser, isLoggedIn } = useAuthContext();
   const history = useHistory();
   const { state } = useLocation();
+  const [loginError, setLoginError] = useState(null);
 
   function signUp() {
     window.location.href = 'http://localhost:3000/registrerdeg';
@@ -45,23 +46,15 @@ const LoggInn = () => {
    * @const isEmail regex som sjekker mail
    */
   const onSubmit = async (credentials) => {
-    const email = document.getElementById('email').value;
-    // eslint-disable-next-line no-invalid-regexp
-    const isEmail = new RegExp(
-      '[/ÆØÅæøå\\w-.]+@([ÆØÅæøå\\w-]+.)+[ÆØÅæøå\\w-]{2,6}'
-    );
-    if (!isEmail.test(email)) {
-      alert('Epost må være gyldig');
+    const { data } = await login(credentials);
+    if (!data.success) {
+      setError(data.message);
+      setLoginError('Kunne ikke logge inn');
     } else {
-      const { data } = await login(credentials);
-      if (!data.success) {
-        setError(data.message);
-      } else {
-        const user = data?.user;
-        setUser({ ...user });
-        setSuccess(true);
-        history.push('/');
-      }
+      const user = data?.user;
+      setUser({ ...user });
+      setSuccess(true);
+      history.push('/');
     }
   };
 
@@ -71,6 +64,16 @@ const LoggInn = () => {
         <header>
           <h1>Logg inn</h1>
         </header>
+        <div>
+          {loginError && <p style={{ color: 'red' }}>Feil passord</p>}
+          {error && (
+            <div>
+              {error.map((err) => (
+                <p style={{ color: 'red' }}>{err.message}</p>
+              ))}
+            </div>
+          )}
+        </div>
         <main>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="email">E-mail*:</label>
@@ -92,7 +95,6 @@ const LoggInn = () => {
               id="password"
               ref={register({
                 required: true,
-                minLength: 3,
               })}
             />
             <br />

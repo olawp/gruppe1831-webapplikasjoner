@@ -1,5 +1,5 @@
 /**
- * @author Robert Alexander Dankertsen
+ * @author Robert Alexander Dankertsen , Ola Wethal Petersen
  * @desc Denne klassen er kontaktsiden
  * @exports Kontakt
  */
@@ -33,7 +33,8 @@ const Kontakt = () => {
       question: document.getElementById('question').value,
     })
       .then((document.getElementById('question').value = ''))
-      .catch((error) => alert(`Kunne ikke kontakte. \n Error: ${error}`));
+      .catch((error) => alert(`Kunne ikke kontakte. \n Error: ${error}`))
+      .finally(alert('Din henvendelse har blitt sendt'));
   }
 
   return (

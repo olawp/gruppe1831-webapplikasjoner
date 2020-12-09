@@ -1,6 +1,14 @@
 {
   "short_name": "Webapp Eksamen",
   "name": "Webapp Eksamen Gruppe 1831",
+  "_comment": "Logo from https://www.stockio.com/free-icon/taylor-icon-set-wrench",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

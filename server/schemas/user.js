@@ -34,6 +34,7 @@ const registerUserSchema = {
 
 export const registerSchema = Joi.object()
   .keys({
+    role: Joi.string(),
     ...registerUserSchema,
   })
   .options({ abortEarly: false });

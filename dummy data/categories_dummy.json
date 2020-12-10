@@ -1,0 +1,61 @@
+[{
+    "_id": {
+      "$oid": "5fd20c24083da053dc83cedf"
+    },
+    "category": "Rør",
+    "createdAt": {
+      "$date": "2020-12-10T11:53:08.866Z"
+    },
+    "updatedAt": {
+      "$date": "2020-12-10T11:53:08.866Z"
+    },
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "5fd20c28083da053dc83cee0"
+    },
+    "category": "Bad",
+    "createdAt": {
+      "$date": "2020-12-10T11:53:12.076Z"
+    },
+    "updatedAt": {
+      "$date": "2020-12-10T11:53:12.076Z"
+    },
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "5fd20c2f083da053dc83cee1"
+    },
+    "category": "Kjøkken",
+    "createdAt": {
+      "$date": "2020-12-10T11:53:19.776Z"
+    },
+    "updatedAt": {
+      "$date": "2020-12-10T11:53:19.776Z"
+    },
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "5fd20c35083da053dc83cee2"
+    },
+    "category": "Kupplinger",
+    "createdAt": {
+      "$date": "2020-12-10T11:53:25.052Z"
+    },
+    "updatedAt": {
+      "$date": "2020-12-10T11:53:25.052Z"
+    },
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "5fd20c39083da053dc83cee3"
+    },
+    "category": "Kloakk",
+    "createdAt": {
+      "$date": "2020-12-10T11:53:29.936Z"
+    },
+    "updatedAt": {
+      "$date": "2020-12-10T11:53:29.936Z"
+    },
+    "__v": 0
+  }]

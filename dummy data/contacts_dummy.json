@@ -1,0 +1,15 @@
+[{
+    "_id": {
+      "$oid": "5fd20e8a083da053dc83cef8"
+    },
+    "name": "Arne Bjarne Bjørnson",
+    "email": "arnebjarne@mail.com",
+    "question": "Hei! Dette er ett spørsmål!",
+    "createdAt": {
+      "$date": "2020-12-10T12:03:22.507Z"
+    },
+    "updatedAt": {
+      "$date": "2020-12-10T12:03:22.507Z"
+    },
+    "__v": 0
+  }]

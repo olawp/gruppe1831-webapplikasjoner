@@ -6,7 +6,7 @@
     ],
     "testEnvironment": "node",
     "testMatch": [
-      "<rootDir>/test/**/?(*.)+(spec|test).[tj]s?(x)"
+      "<rootDir>/test/**/*.spec.js"
     ]
   },
   "version": "1.0.0",

@@ -14,4 +14,4 @@
  * I terminal 2 (server) skriv "npm i" inn i terminalen
    * Etter NPM i har blitt fullført, skriv "npm run dev" inn i terminalen
      * Serveren vil nå kjøre
-       * Om du vil teste frontend, skriv "npm run test"
+       * Om du vil teste server, skriv "npm run test"

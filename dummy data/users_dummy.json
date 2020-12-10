@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "5fd206b9173c6a57b8555936"
+  },
+  "role": "user",
+  "name": "User Navnesen",
+  "email": "user@mail.no",
+  "password": "$argon2i$v=19$m=4096,t=3,p=1$7rXLY/+r+8hMlffoir9+Wg$i0DquLbn3Lvh5xqrljjr9kyeI2S3YZI+NOhT7Lg7alI",
+  "createdAt": {
+    "$date": "2020-12-10T11:30:01.372Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-10T11:30:01.372Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd206b9173a6a57b8555936"
+  },
+  "role": "admin",
+  "name": "Admin Navnesen",
+  "email": "admin@mail.no",
+  "password": "$argon2i$v=19$m=4096,t=3,p=1$7rXLY/+r+8hMlffoir9+Wg$i0DquLbn3Lvh5xqrljjr9kyeI2S3YZI+NOhT7Lg7alI",
+  "createdAt": {
+    "$date": "2020-12-10T11:30:01.372Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-10T11:30:01.372Z"
+  },
+  "__v": 0
+}]

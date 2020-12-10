@@ -18,4 +18,4 @@ Feltene som er av typen ObjectId er relasjoner til andre collections. Vi setter 
 * Relasjonen til image lar oss koble et bilde opp mot artikkelen. Vi har satt opp sånn at et bilde ikke er nødvendig for å lage en artikkel. 
 * Relasjonen til user lar oss koble en bruker opp mot en artikkel. I dette tilfellet er dette en admin, siden kun admins skal kunne lage artikler. 
 
-Vi kunne her også forklart resten av collectionene, men siden de ikke inneholer relasjoner, syntes vi at UMLen snakker for seg selv. 
+Vi kunne her også forklart resten av collectionene, men siden de ikke inneholder relasjoner, syntes vi at UMLen snakker for seg selv. 

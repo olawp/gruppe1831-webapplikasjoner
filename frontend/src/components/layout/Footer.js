@@ -15,7 +15,7 @@ import { FooterStyle } from '../../styled/style';
  */
 export class Footer extends Component {
   render() {
-    // start - funnet på stackoverflow https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
+    // start - mesteparten er funnet på stackoverflow med enkelte modifikasjoner https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
     let time;
     let timeSite;
     window.onload = function () {
@@ -23,8 +23,14 @@ export class Footer extends Component {
     };
 
     window.onbeforeunload = function () {
-      timeSite = new Date() - time;
-      console.log(timeSite);
+      timeSite = new Date();
+      console.log(
+        `På: ${window.location.href}\nBrukte en bruker: ${
+          timeSite.getHours() - time.getHours()
+        } Timer, ${timeSite.getMinutes() - time.getMinutes()} Minutter og ${
+          timeSite.getSeconds() - time.getSeconds()
+        } Sekunder.`
+      );
     };
     // slutt
     return (

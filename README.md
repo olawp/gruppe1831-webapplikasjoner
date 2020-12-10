@@ -11,7 +11,7 @@
    * Etter NPM i har blitt fullført, skriv "npm run dev" inn i terminalen
      * Serveren vil nå kjøre
        * Om du vil teste server, skriv "npm run test"
-  * I terminal 2 (frontend) skriv "npm i" inn i terminalen (SØRG FOR AT SERVER KJØRER - hvist ikke kommer sidene til å være tomme)
+  * I terminal 2 (frontend) skriv "npm i" inn i terminalen (SØRG FOR AT SERVER KJØRER - hvis ikke kommer sidene til å være tomme)
     * Etter NPM i har blitt fullført, skriv "npm start" inn i terminalen
       * Frontend vil nå åpnes
     * Om du vil teste frontend, skriv "npm run test"

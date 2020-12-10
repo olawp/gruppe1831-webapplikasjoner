@@ -20,6 +20,7 @@ import auth from './routes/auth.js';
 import category from './routes/category.js';
 import contact from './routes/contact.js';
 import image from './routes/image.js';
+import time from './routes/time.js';
 
 const app = express();
 app.use(helmet());
@@ -62,6 +63,7 @@ app.use(`${process.env.BASEURL}/`, auth);
 app.use(`${process.env.BASEURL}/categories`, category);
 app.use(`${process.env.BASEURL}/contact`, contact);
 app.use(`${process.env.BASEURL}/`, image);
+app.use(`${process.env.BASEURL}/times`, time);
 
 app.use(errorMiddleware);
 

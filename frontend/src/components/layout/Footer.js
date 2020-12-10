@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * @author Robert Alexander Dankertsen
  * @desc Denne klassen er footeren til siden
@@ -14,6 +15,18 @@ import { FooterStyle } from '../../styled/style';
  */
 export class Footer extends Component {
   render() {
+    // start - funnet på stackoverflow https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
+    let time;
+    let timeSite;
+    window.onload = function () {
+      time = new Date();
+    };
+
+    window.onbeforeunload = function () {
+      timeSite = new Date() - time;
+      console.log(timeSite);
+    };
+    // slutt
     return (
       <div>
         <FooterStyle>

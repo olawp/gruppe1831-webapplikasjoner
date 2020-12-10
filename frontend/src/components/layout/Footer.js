@@ -15,7 +15,7 @@ import { FooterStyle } from '../../styled/style';
  */
 export class Footer extends Component {
   render() {
-    // start - er funnet på stackoverflow med enkelte modifikasjoner https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
+    // start - er funnet på stackoverflow, men har modifikasjoner https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
     let startTid;
     let sluttTid;
     window.onload = function () {

@@ -1,6 +1,5 @@
-import { timeService } from '../services/index.js';
-import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from '../middleware/catchAsync.js';
+import { timeService } from '../services/index.js';
 
 export const list = catchAsyncErrors(async (req, res, next) => {
   const times = await timeService.listTimes();
@@ -8,6 +7,6 @@ export const list = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const create = catchAsyncErrors(async (req, res, next) => {
-  const time = await timeService(req.body);
+  const time = await timeService.createTime(req.body);
   res.status(201).json(time);
 });

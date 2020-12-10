@@ -4,6 +4,7 @@
 * Tatt inspirasjon fra forelesers eksempler til kode, ellers er ingenting kopiert.
 ## How To - Setup
 ### Database
+* Sørg for at Mongo kjører på default port 27017, eller eventuelt bytt databaseadreesen i server/.env
 * Opprett database i Mongo med navn "gruppe1831"
   * Opprett collections med navn: "articles", "categories", "contacts", "images" og "users"
     * Importer JSON data fra mappen "dummy data" inn til deres respektive collections

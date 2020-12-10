@@ -15,20 +15,20 @@ import { FooterStyle } from '../../styled/style';
  */
 export class Footer extends Component {
   render() {
-    // start - mesteparten er funnet på stackoverflow med enkelte modifikasjoner https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
-    let time;
-    let timeSite;
+    // start - er funnet på stackoverflow med enkelte modifikasjoner https://stackoverflow.com/questions/20972745/how-to-track-time-spent-on-web-site
+    let startTid;
+    let sluttTid;
     window.onload = function () {
-      time = new Date();
+      startTid = new Date();
     };
 
     window.onbeforeunload = function () {
-      timeSite = new Date();
+      sluttTid = new Date();
       console.log(
         `På: ${window.location.href}\nBrukte en bruker: ${
-          timeSite.getHours() - time.getHours()
-        } Timer, ${timeSite.getMinutes() - time.getMinutes()} Minutter og ${
-          timeSite.getSeconds() - time.getSeconds()
+          sluttTid.getHours() - startTid.getHours()
+        } Timer, ${sluttTid.getMinutes() - startTid.getMinutes()} Minutter og ${
+          sluttTid.getSeconds() - startTid.getSeconds()
         } Sekunder.`
       );
     };

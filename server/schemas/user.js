@@ -1,3 +1,8 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc Schemas som definerer hvordan vi skal validere signup og login
+ */
+
 import Joi from 'joi';
 
 const userSchema = {

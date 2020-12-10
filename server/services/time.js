@@ -1,4 +1,4 @@
-import Time from '../models/time';
+import Time from '../models/time.js';
 
 export const createTime = async (data) => Time.create(data);
 

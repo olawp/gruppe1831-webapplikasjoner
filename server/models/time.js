@@ -20,7 +20,7 @@ const timeSchema = new Schema(
     },
     secondsSpent: {
       type: Number,
-    }
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

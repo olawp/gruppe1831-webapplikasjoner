@@ -1,9 +1,10 @@
 # gruppe1831-webapplikasjoner
 ## Generell info
 * Default pass for bruker og admin sin dummy data er Asdf1.
-* Tatt inspirasjon fra forelesers eksempler til kode. En kopi fra stackoverflow på Footer.js (fra linje 18 til 35)
+* Tatt inspirasjon fra forelesers eksempler til kode.
+* Linje 18 til 35 i Footer.js er funnet på stackoverflow, men har modifikasjoner.
 * .env er lagt med, vet at dette egentlig ikke skal gjøres - men er for en lettere setup (MAIL_USER og MAIL_PASSWORD er det eneste som må endres)
-* Alle filer er dokumentert med JSDoc
+* Alle filer er dokumentert med JSDoc kommentarer
 ## How To - Setup
 ### Database
 * Sørg for at Mongo kjører på default port 27017, eller eventuelt bytt databaseadreesen i server/.env

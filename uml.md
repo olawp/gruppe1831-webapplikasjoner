@@ -1,5 +1,5 @@
 # Article
-Article er den eneste collectionen med relasjoner
+Article er den eneste collectionen med relasjoner.  
 Article colletionen består av feltene og typene:
 * _id string
 * title string

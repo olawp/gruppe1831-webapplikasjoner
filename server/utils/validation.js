@@ -1,3 +1,9 @@
+/**
+ * @author Ola Wethal Petersen
+ * @desc sender validaringserrorene til frontenden i ett 'message' field i responsen
+ * @exports validateInput validationError
+ */
+
 export const validateInput = async (schema, input) => {
   try {
     return await schema.validateAsync({ ...input });
